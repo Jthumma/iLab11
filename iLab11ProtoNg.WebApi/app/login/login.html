@@ -1,0 +1,129 @@
+﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="today-datas">
+                        <!--<li class="blightblue">
+                            <div class="pull-left"><i class="fa fa-plane"></i></div>
+                            <div class="datas-text pull-right">
+                                <span class="bold">May 18 - 19, 2015</span> Castle Resort, Neverland
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>-->
+
+                        <li class="borange">
+                            <div class="pull-left"><i class="fa fa-envelope"></i></div>
+                            <div class="datas-text pull-right">
+                                <!--<span class="bold">{{vm.messageCount}}</span> changes-->
+                                {{vm.messageCount}} changes
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget wviolet">
+                        <div data-cc-widget-header title="Policies"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Policy</th>
+                                        <th>Eff Date</th>
+                                        <!--<th>Age</th>
+                                            <th>Location</th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="p in vm.policies">
+                                        <td>{{p.firstName}}</td>
+                                        <td>{{p.lastName}}</td>
+                                        <!--<td>{{p.age}}</td>
+            <td>{{p.location}}</td>-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"><a href="/app/policy/policy.html"> more...</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-md-6">
+                    <div class="widget wgreen">
+                        <div data-cc-widget-header title="{{vm.news.title}}"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <small>{{vm.news.description}}</small>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="widget wblue">
+                        <div data-cc-widget-header title="Claims"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Desc</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="p in vm.claims">
+                                        <td>{{p.ClaimId}}</td>
+                                        <td>{{p.ClaimDesc}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"><a href="/app/claims/claims.html"> more...</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="widget wred">
+                        <div data-cc-widget-header title="Billing"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <!--<table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Policy</th>
+                            <th>Eff Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="p in vm.people">
+                            <td>{{p.firstName}}</td>
+                            <td>{{p.lastName}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>-->
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"><a href="/app/billing/billing.html"> more...</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
