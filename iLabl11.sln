@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iLab11ProtoNg", "iLab11ProtoNg\iLab11ProtoNg.csproj", "{D6729670-DFD4-4638-933F-86BF548BB007}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iLab11ProtoNg.DomainServices", "iLab11ProtoNg.DomainServices\iLab11ProtoNg.DomainServices.csproj", "{87264688-E20C-41E9-B765-CE7E2B42048D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iLab11ProtoNg.Tests", "iLab11ProtoNg.Tests\iLab11ProtoNg.Tests.csproj", "{E8F4375B-B4E3-4E17-A1AA-17A9A09A9A90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iLab11ProtoNg.Provider.WcfServices", "iLab11ProtoNg.Provider.WcfServices\iLab11ProtoNg.Provider.WcfServices.csproj", "{E2E9CA37-9D59-42C6-8CF7-56FD1488A7C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iLab11ProtoNg.Core.Domain", "iLab11ProtoNg.Core.Domain\iLab11ProtoNg.Core.Domain.csproj", "{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iLab11ProtoNg.WebApi", "iLab11ProtoNg.WebApi\iLab11ProtoNg.WebApi.csproj", "{D6729670-DFD4-4638-933F-86BF548BB007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iLab11ProtoNg.WebApi.Tests", "iLab11ProtoNg.WebApi.Tests\iLab11ProtoNg.WebApi.Tests.csproj", "{E8F4375B-B4E3-4E17-A1AA-17A9A09A9A90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +19,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87264688-E20C-41E9-B765-CE7E2B42048D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87264688-E20C-41E9-B765-CE7E2B42048D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87264688-E20C-41E9-B765-CE7E2B42048D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87264688-E20C-41E9-B765-CE7E2B42048D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E9CA37-9D59-42C6-8CF7-56FD1488A7C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E9CA37-9D59-42C6-8CF7-56FD1488A7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E9CA37-9D59-42C6-8CF7-56FD1488A7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E9CA37-9D59-42C6-8CF7-56FD1488A7C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6729670-DFD4-4638-933F-86BF548BB007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6729670-DFD4-4638-933F-86BF548BB007}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6729670-DFD4-4638-933F-86BF548BB007}.Release|Any CPU.ActiveCfg = Release|Any CPU
