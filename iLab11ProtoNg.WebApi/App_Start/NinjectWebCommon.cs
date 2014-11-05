@@ -1,5 +1,5 @@
 using iLab11ProtoNg.DomainServices;
-using iLab11ProtoNg.Provider.WcfServices.bootstrap;
+using iLab11ProtoNg.Provider.WcfServices;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(iLab11ProtoNg.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(iLab11ProtoNg.App_Start.NinjectWebCommon), "Stop")]

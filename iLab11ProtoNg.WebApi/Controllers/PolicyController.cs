@@ -1,28 +1,27 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using iLab11ProtoNg.Models;
+﻿using System.Web.Mvc;
+using iLab11ProtoNg.DomainServices;
 
 namespace iLab11ProtoNg.Controllers
 {
     public class PolicyController : Controller
     {
+        private readonly IAgentService _agentService;
+        private readonly IPolicyService _policyService;
+
+        public PolicyController(IPolicyService policyService, IAgentService agentService)
+        {
+            _policyService = policyService;
+            _agentService = agentService;
+        }
+
         public ActionResult GetPolicies()
         {
-            var list = new List<PolicyModel>
-            {
-                new PolicyModel {PolicyId = 1, Product = "BAP", Number = "2345671", Mod = 0, Version = 0},
-                new PolicyModel {PolicyId = 2, Product = "ABC", Number = "8723089", Mod = 0, Version = 1}
-            };
-            return Json(list, JsonRequestBehavior.AllowGet);
+            return Json(_policyService.GetPolicies(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetAgentInfo()
         {
-            var agentInfo = new AgentModel {Name = "Agent Andy", AgencyName = "XYZ Agency", Address = new Address{Line1 = "234 Line1", City = "Colorado Spring", State = "CO", Zip = "45202"}};
-
-
-            return Json(agentInfo, JsonRequestBehavior.AllowGet);
+            return Json(_agentService.GetAgentInfo(), JsonRequestBehavior.AllowGet);
         }
-
     }
 }

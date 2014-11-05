@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Login";
+    //Layout = "_Layout";
+}
+
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Authentication", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <fieldset>
+            <legend>Login</legend>
+            <br />
+            <p>
+                <input type="text" name="USER" id="USER" />
+            </p>
+            <p>
+                <input type="password" name="PASSWORD" id="PASSWORD" />
+            </p>
+            <p>
+                <input type="submit" value="Log in" class="btn btn-primary" />
+            </p>
+        </fieldset>
+    }
+</section>

@@ -45,12 +45,18 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Common">
       <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.WebApi">
       <HintPath>..\packages\Ninject.Web.WebApi.3.2.3.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
@@ -168,6 +174,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AngularController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AgentModel.cs" />
     <Compile Include="Models\ClaimsModel.cs" />
@@ -265,8 +273,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="index1.html" />
-    <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-route.js" />
@@ -318,8 +324,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Scripts\toastr.min.js.map" />
+    <Content Include="Views\Authentication\Login.cshtml" />
+    <Content Include="Views\Angular\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iLab11ProtoNg.Core.Domain\iLab11ProtoNg.Core.Domain.csproj">
+      <Project>{3aca60d5-9529-45e0-a580-5e6a3aaa6d21}</Project>
+      <Name>iLab11ProtoNg.Core.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iLab11ProtoNg.DomainServices\iLab11ProtoNg.DomainServices.csproj">
       <Project>{87264688-E20C-41E9-B765-CE7E2B42048D}</Project>
       <Name>iLab11ProtoNg.DomainServices</Name>

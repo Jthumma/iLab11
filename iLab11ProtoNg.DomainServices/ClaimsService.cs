@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using iLab11ProtoNg.Models;
 
 namespace iLab11ProtoNg.DomainServices
 {
     public class ClaimsService : IClaimsService
     {
+        public List<ClaimsModel> GetClaims()
+        {
+            var claims = new List<ClaimsModel>
+            {
+                new ClaimsModel {ClaimId = 1, ClaimDesc = "first claim"},
+                new ClaimsModel {ClaimId = 2, ClaimDesc = "Second claim"}
+            };
+            return claims;
+        }
     }
 }

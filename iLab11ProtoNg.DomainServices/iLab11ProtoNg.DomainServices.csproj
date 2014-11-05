@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -42,8 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentService.cs" />
+    <Compile Include="AuthorizationService.cs" />
     <Compile Include="DomainServicesBootstrap.cs" />
     <Compile Include="ClaimsService.cs" />
+    <Compile Include="IAgentService.cs" />
+    <Compile Include="IAuthorizationService.cs" />
     <Compile Include="IClaimsService.cs" />
     <Compile Include="IPolicyService.cs" />
     <Compile Include="PolicyService.cs" />
@@ -51,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iLab11ProtoNg.Core.Domain\iLab11ProtoNg.Core.Domain.csproj">
+      <Project>{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}</Project>
+      <Name>iLab11ProtoNg.Core.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
