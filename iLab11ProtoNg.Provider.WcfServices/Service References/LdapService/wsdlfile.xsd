@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:tns="http://ldap.services.gaic.com/" targetNamespace="http://ldap.services.gaic.com/" version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CommonUtilException" type="tns:CommonUtilException" />
+  <xs:element name="InputValidationException" type="tns:InputValidationException" />
+  <xs:element name="LdapServiceException" type="tns:LdapServiceException" />
+  <xs:element name="MultipleResultsException" type="tns:MultipleResultsException" />
+  <xs:element name="NameNotFoundException" type="tns:NameNotFoundException" />
+  <xs:element name="addGroupsToPerson" type="tns:addGroupsToPerson" />
+  <xs:element name="addGroupsToPersonResponse" type="tns:addGroupsToPersonResponse" />
+  <xs:element name="changeLogLevel" type="tns:changeLogLevel" />
+  <xs:element name="changeLogLevelResponse" type="tns:changeLogLevelResponse" />
+  <xs:element name="checkDependencies" type="tns:checkDependencies" />
+  <xs:element name="checkDependenciesResponse" type="tns:checkDependenciesResponse" />
+  <xs:element name="getGroup" type="tns:getGroup" />
+  <xs:element name="getGroupMembers" type="tns:getGroupMembers" />
+  <xs:element name="getGroupMembersResponse" type="tns:getGroupMembersResponse" />
+  <xs:element name="getGroupMembership" type="tns:getGroupMembership" />
+  <xs:element name="getGroupMembershipForGroup" type="tns:getGroupMembershipForGroup" />
+  <xs:element name="getGroupMembershipForGroupResponse" type="tns:getGroupMembershipForGroupResponse" />
+  <xs:element name="getGroupMembershipResponse" type="tns:getGroupMembershipResponse" />
+  <xs:element name="getGroupResponse" type="tns:getGroupResponse" />
+  <xs:element name="getParameters" type="tns:getParameters" />
+  <xs:element name="getParametersResponse" type="tns:getParametersResponse" />
+  <xs:element name="getPerson" type="tns:getPerson" />
+  <xs:element name="getPersonResponse" type="tns:getPersonResponse" />
+  <xs:element name="getVersion" type="tns:getVersion" />
+  <xs:element name="getVersionResponse" type="tns:getVersionResponse" />
+  <xs:element name="isMember" type="tns:isMember" />
+  <xs:element name="isMemberResponse" type="tns:isMemberResponse" />
+  <xs:element name="ping" type="tns:ping" />
+  <xs:element name="pingResponse" type="tns:pingResponse" />
+  <xs:element name="refreshCprProperties" type="tns:refreshCprProperties" />
+  <xs:element name="refreshCprPropertiesResponse" type="tns:refreshCprPropertiesResponse" />
+  <xs:element name="removeGroupsFromPerson" type="tns:removeGroupsFromPerson" />
+  <xs:element name="removeGroupsFromPersonResponse" type="tns:removeGroupsFromPersonResponse" />
+  <xs:element name="search" type="tns:search" />
+  <xs:element name="searchResponse" type="tns:searchResponse" />
+  <xs:complexType name="nameValueDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="person" type="tns:personDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="personDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:baseEntityDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accountStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="accountType" type="xs:string" />
+          <xs:element minOccurs="0" name="address" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="billingProducerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="businessUnit" type="xs:string" />
+          <xs:element minOccurs="0" name="businessUnitExecutive" type="xs:string" />
+          <xs:element minOccurs="0" name="cell" type="xs:string" />
+          <xs:element minOccurs="0" name="city" type="xs:string" />
+          <xs:element minOccurs="0" name="commonName" type="xs:string" />
+          <xs:element minOccurs="0" name="companyCode" type="xs:string" />
+          <xs:element minOccurs="0" name="companyName" type="xs:string" />
+          <xs:element minOccurs="0" name="contractorSponsor" type="xs:string" />
+          <xs:element minOccurs="0" name="country" type="xs:string" />
+          <xs:element minOccurs="0" name="countryAbbreviation" type="xs:string" />
+          <xs:element minOccurs="0" name="department" type="xs:string" />
+          <xs:element minOccurs="0" name="divDeptDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="division" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="employeeNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="employeeStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="employeeType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="extParameters" nillable="true" type="tns:nameValueDto" />
+          <xs:element minOccurs="0" name="fax" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="firstNamePreferred" type="xs:string" />
+          <xs:element minOccurs="0" name="floorNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="hid" type="xs:string" />
+          <xs:element minOccurs="0" name="isManager" type="xs:boolean" />
+          <xs:element minOccurs="0" name="lastName" type="xs:string" />
+          <xs:element minOccurs="0" name="mailStop" type="xs:string" />
+          <xs:element minOccurs="0" name="managerDn" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="memberOf" nillable="true" type="tns:groupDto" />
+          <xs:element minOccurs="0" name="middleInitial" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parametersFilter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="phone" type="xs:string" />
+          <xs:element minOccurs="0" name="phoneExtension" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="producerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="producerName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="roles" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="roomNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="state" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="topSecretId" type="xs:string" />
+          <xs:element minOccurs="0" name="vid" type="xs:string" />
+          <xs:element minOccurs="0" name="zip" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="baseEntityDto" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dn" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="objectClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="objectClassType" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="groupDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:baseEntityDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="hasSubGroups" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="numberOfSubGroups" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="owners" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parametersFilter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="uniqueMembers" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getPersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:personDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InputValidationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NameNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MultipleResultsException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LdapServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembership">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="person" type="tns:personDto" />
+      <xs:element name="deepSearch" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembershipResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="tns:groupDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="group" type="tns:groupDto" />
+      <xs:element minOccurs="0" name="deepSearch" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="tns:personDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembershipForGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="group" type="tns:groupDto" />
+      <xs:element name="deepSearch" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembershipForGroupResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="tns:groupDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ping">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="pingResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVersion">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CommonUtilException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevelResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="checkDependencies">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="checkDependenciesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeGroupsFromPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="person" type="tns:personDto" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="groups" nillable="true" type="tns:groupDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeGroupsFromPersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:batchUpdateResponseDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="batchUpdateResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="messages" nillable="true" type="tns:statusMessageDto" />
+      <xs:element name="summaryCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="statusMessageDto">
+    <xs:sequence>
+      <xs:element name="code" type="xs:int" />
+      <xs:element minOccurs="0" name="entityDn" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isMember">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="person" type="tns:personDto" />
+      <xs:element minOccurs="0" name="group" type="tns:groupDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isMemberResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="group" type="tns:groupDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:groupDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="search">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="searchDto" type="tns:searchDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="filter" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refreshCprProperties">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="refreshCprPropertiesResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="addGroupsToPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="person" type="tns:personDto" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="groups" nillable="true" type="tns:groupDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGroupsToPersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:batchUpdateResponseDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getParameters">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getParametersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

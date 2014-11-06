@@ -49,10 +49,6 @@
     <Compile Include="AuthorizationService.cs" />
     <Compile Include="DomainServicesBootstrap.cs" />
     <Compile Include="ClaimsService.cs" />
-    <Compile Include="IAgentService.cs" />
-    <Compile Include="IAuthorizationService.cs" />
-    <Compile Include="IClaimsService.cs" />
-    <Compile Include="IPolicyService.cs" />
     <Compile Include="PolicyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

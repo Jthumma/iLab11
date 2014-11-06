@@ -1,4 +1,6 @@
 ﻿using iLab11ProtoNg.Core.Domain;
+using iLab11ProtoNg.Core.Domain.interfaces.service;
+using iLab11ProtoNg.Core.Domain.models;
 
 namespace iLab11ProtoNg.DomainServices
 {

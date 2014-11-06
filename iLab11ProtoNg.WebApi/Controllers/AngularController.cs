@@ -11,7 +11,7 @@ namespace iLab11ProtoNg.Controllers
         // GET: Angular
         public ActionResult Index()
         {
-            Log.DebugFormat("Lauching Angular app");
+            Log.DebugFormat("Launching Angular app");
             return View();
         }
     }

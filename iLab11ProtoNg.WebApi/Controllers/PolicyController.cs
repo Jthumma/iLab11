@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using iLab11ProtoNg.Core.Domain.interfaces.service;
 using iLab11ProtoNg.DomainServices;
 
 namespace iLab11ProtoNg.Controllers

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GAIC.Utility">
+      <HintPath>..\packages\GAIC.Util.2.0\lib\2.0\GAIC.Utility.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -38,6 +41,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,11 +50,180 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adapters\EDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeLdapClientAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeSsoLoginPortClientAdapter.cs" />
+    <Compile Include="adapters\interfaces\IEDocClientAdapter.cs" />
+    <Compile Include="adapters\interfaces\ILdapClientAdapter.cs" />
+    <Compile Include="adapters\LdapClientAdapter.cs" />
+    <Compile Include="bindings\WcfBasicHttpBindingAdapter.cs" />
+    <Compile Include="bindings\WcfBasicNoneHttpBindingAdapter.cs" />
+    <Compile Include="bindings\WcfEndpointAddressAdapter.cs" />
+    <Compile Include="bindings\WcfSecuredBasicHttpBindingAdapter.cs" />
+    <Compile Include="adapters\interfaces\ISsoLoginPortClientAdapter.cs" />
+    <Compile Include="bindings\interfaces\IWcfEndpointAddressAdapter.cs" />
+    <Compile Include="bindings\interfaces\IWcfHttpBindingAdapter.cs" />
+    <Compile Include="providers\WcfEDocProvider.cs" />
+    <Compile Include="providers\WcfLdapProvider.cs" />
+    <Compile Include="providers\WcfSingleSignonProvider.cs" />
+    <Compile Include="Service References\eDocMtomService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LdapService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SSOLoginService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="adapters\SsoLoginPortClientAdapter.cs" />
     <Compile Include="WcfServicesBootstrap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Service References\eDocMtomService\edoc.wsdl" />
+    <None Include="Service References\eDocMtomService\iLab11ProtoNg.Provider.WcfServices.eDocMtomService.AddCustomerDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\iLab11ProtoNg.Provider.WcfServices.eDocMtomService.AddDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\iLab11ProtoNg.Provider.WcfServices.eDocMtomService.CheckInResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\iLab11ProtoNg.Provider.WcfServices.eDocMtomService.CheckInWithAnnotationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\iLab11ProtoNg.Provider.WcfServices.eDocMtomService.CheckInWithUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\iLab11ProtoNg.Provider.WcfServices.eDocMtomService.Document.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\iLab11ProtoNg.Provider.WcfServices.eDocMtomService.statusCode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.addGroupsToPersonResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.batchUpdateResponseDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.changeLogLevelResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.checkDependenciesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.getGroupMembershipForGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.getGroupMembershipResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.getGroupMembersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.getGroupResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.getParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.getPersonResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.getVersionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.groupDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.isMemberResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.personDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.pingResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.removeGroupsFromPersonResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\iLab11ProtoNg.Provider.WcfServices.LdapService.searchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\LdapServiceService.wsdl" />
+    <None Include="Service References\LdapService\wsdlfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SSOLoginService\iLab11ProtoNg.Provider.WcfServices.SSOLoginService.loginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SSOLoginService\SSOLoginService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\eDocMtomService\" />
+    <WCFMetadataStorage Include="Service References\LdapService\" />
+    <WCFMetadataStorage Include="Service References\SSOLoginService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eDocMtomService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eDocMtomService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eDocMtomService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iLab11ProtoNg.Core.Domain\iLab11ProtoNg.Core.Domain.csproj">
+      <Project>{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}</Project>
+      <Name>iLab11ProtoNg.Core.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iLab11ProtoNg.Provider.Cpr\iLab11ProtoNg.Provider.Cpr.csproj">
+      <Project>{6ffcabbd-ea11-4494-a934-8862dd68d960}</Project>
+      <Name>iLab11ProtoNg.Provider.Cpr</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SSOLoginService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SSOLoginService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SSOLoginService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LdapService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LdapService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LdapService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

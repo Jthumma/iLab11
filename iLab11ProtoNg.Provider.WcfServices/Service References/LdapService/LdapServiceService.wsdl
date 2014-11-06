@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/wsdl/jms/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ldap.services.gaic.com/"
+             xmlns:ns0="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns:ns3="http://www.w3.org/2006/05/addressing/wsdl" name="LdapServiceService"
+             targetNamespace="http://ldap.services.gaic.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:UsingPolicy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" wsdl:Required="true"
+                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SecurityHeader MustManifestEncryption="true" MustPrepend="true"
+                       xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SecurityTokens" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="refreshCprProperties_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="changeLogLevel_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ping_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getVersion_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getGroupMembershipForGroup_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="isMember_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="removeGroupsFromPerson_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="addGroupsToPerson_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getGroupMembership_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getGroupMembers_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getPerson_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="checkDependencies_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getGroup_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getParameters_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="search_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="./wsdlfile.asvc?keyid=0a32e00d-4al107nvi0-126c"
+                  namespace="http://ldap.services.gaic.com/" />
+    </xsd:schema>
+  </types>
+  <message name="isMemberResponse">
+    <part name="parameters" element="tns:isMemberResponse" />
+  </message>
+  <message name="checkDependencies">
+    <part name="parameters" element="tns:checkDependencies" />
+  </message>
+  <message name="getGroupMembersResponse">
+    <part name="parameters" element="tns:getGroupMembersResponse" />
+  </message>
+  <message name="getVersionResponse">
+    <part name="parameters" element="tns:getVersionResponse" />
+  </message>
+  <message name="getPerson">
+    <part name="parameters" element="tns:getPerson" />
+  </message>
+  <message name="LdapServiceException">
+    <part name="fault" element="tns:LdapServiceException" />
+  </message>
+  <message name="search">
+    <part name="parameters" element="tns:search" />
+  </message>
+  <message name="getGroupMembershipForGroupResponse">
+    <part name="parameters" element="tns:getGroupMembershipForGroupResponse" />
+  </message>
+  <message name="getVersion">
+    <part name="parameters" element="tns:getVersion" />
+  </message>
+  <message name="removeGroupsFromPerson">
+    <part name="parameters" element="tns:removeGroupsFromPerson" />
+  </message>
+  <message name="InputValidationException">
+    <part name="fault" element="tns:InputValidationException" />
+  </message>
+  <message name="ping">
+    <part name="parameters" element="tns:ping" />
+  </message>
+  <message name="getGroup">
+    <part name="parameters" element="tns:getGroup" />
+  </message>
+  <message name="MultipleResultsException">
+    <part name="fault" element="tns:MultipleResultsException" />
+  </message>
+  <message name="searchResponse">
+    <part name="parameters" element="tns:searchResponse" />
+  </message>
+  <message name="refreshCprPropertiesResponse">
+    <part name="parameters" element="tns:refreshCprPropertiesResponse" />
+  </message>
+  <message name="getParametersResponse">
+    <part name="parameters" element="tns:getParametersResponse" />
+  </message>
+  <message name="checkDependenciesResponse">
+    <part name="parameters" element="tns:checkDependenciesResponse" />
+  </message>
+  <message name="pingResponse">
+    <part name="parameters" element="tns:pingResponse" />
+  </message>
+  <message name="getGroupMembershipForGroup">
+    <part name="parameters" element="tns:getGroupMembershipForGroup" />
+  </message>
+  <message name="getGroupMembers">
+    <part name="parameters" element="tns:getGroupMembers" />
+  </message>
+  <message name="changeLogLevelResponse">
+    <part name="parameters" element="tns:changeLogLevelResponse" />
+  </message>
+  <message name="getGroupMembership">
+    <part name="parameters" element="tns:getGroupMembership" />
+  </message>
+  <message name="changeLogLevel">
+    <part name="parameters" element="tns:changeLogLevel" />
+  </message>
+  <message name="addGroupsToPersonResponse">
+    <part name="parameters" element="tns:addGroupsToPersonResponse" />
+  </message>
+  <message name="getGroupResponse">
+    <part name="parameters" element="tns:getGroupResponse" />
+  </message>
+  <message name="getParameters">
+    <part name="parameters" element="tns:getParameters" />
+  </message>
+  <message name="addGroupsToPerson">
+    <part name="parameters" element="tns:addGroupsToPerson" />
+  </message>
+  <message name="refreshCprProperties">
+    <part name="parameters" element="tns:refreshCprProperties" />
+  </message>
+  <message name="CommonUtilException">
+    <part name="fault" element="tns:CommonUtilException" />
+  </message>
+  <message name="getGroupMembershipResponse">
+    <part name="parameters" element="tns:getGroupMembershipResponse" />
+  </message>
+  <message name="removeGroupsFromPersonResponse">
+    <part name="parameters" element="tns:removeGroupsFromPersonResponse" />
+  </message>
+  <message name="getPersonResponse">
+    <part name="parameters" element="tns:getPersonResponse" />
+  </message>
+  <message name="NameNotFoundException">
+    <part name="fault" element="tns:NameNotFoundException" />
+  </message>
+  <message name="isMember">
+    <part name="parameters" element="tns:isMember" />
+  </message>
+  <portType name="LdapService">
+    <operation name="search">
+      <input message="tns:search" />
+      <output message="tns:searchResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+    </operation>
+    <operation name="getParameters">
+      <input message="tns:getParameters" />
+      <output message="tns:getParametersResponse" />
+    </operation>
+    <operation name="getGroup">
+      <input message="tns:getGroup" />
+      <output message="tns:getGroupResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="MultipleResultsException" message="tns:MultipleResultsException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="checkDependencies">
+      <input message="tns:checkDependencies" />
+      <output message="tns:checkDependenciesResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="getPerson">
+      <input message="tns:getPerson" />
+      <output message="tns:getPersonResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="MultipleResultsException" message="tns:MultipleResultsException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="getGroupMembers">
+      <input message="tns:getGroupMembers" />
+      <output message="tns:getGroupMembersResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="getGroupMembership">
+      <input message="tns:getGroupMembership" />
+      <output message="tns:getGroupMembershipResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="MultipleResultsException" message="tns:MultipleResultsException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="addGroupsToPerson">
+      <input message="tns:addGroupsToPerson" />
+      <output message="tns:addGroupsToPersonResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="removeGroupsFromPerson">
+      <input message="tns:removeGroupsFromPerson" />
+      <output message="tns:removeGroupsFromPersonResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="isMember">
+      <input message="tns:isMember" />
+      <output message="tns:isMemberResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="MultipleResultsException" message="tns:MultipleResultsException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="getGroupMembershipForGroup">
+      <input message="tns:getGroupMembershipForGroup" />
+      <output message="tns:getGroupMembershipForGroupResponse" />
+      <fault name="LdapServiceException" message="tns:LdapServiceException" />
+      <fault name="MultipleResultsException" message="tns:MultipleResultsException" />
+      <fault name="NameNotFoundException" message="tns:NameNotFoundException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+    </operation>
+    <operation name="getVersion">
+      <input message="tns:getVersion" />
+      <output message="tns:getVersionResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="ping">
+      <input message="tns:ping" />
+      <output message="tns:pingResponse" />
+    </operation>
+    <operation name="changeLogLevel">
+      <input message="tns:changeLogLevel" />
+      <output message="tns:changeLogLevelResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="refreshCprProperties">
+      <input message="tns:refreshCprProperties" />
+      <output message="tns:refreshCprPropertiesResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+  </portType>
+  <binding name="LdapServicePortBinding" type="tns:LdapService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="search">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#search_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getParameters">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getParameters_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getGroup_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="MultipleResultsException">
+        <soap:fault use="literal" name="MultipleResultsException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="checkDependencies">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#checkDependencies_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getPerson">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getPerson_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="MultipleResultsException">
+        <soap:fault use="literal" name="MultipleResultsException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getGroupMembers">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#getGroupMembers_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getGroupMembership">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#getGroupMembership_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="MultipleResultsException">
+        <soap:fault use="literal" name="MultipleResultsException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addGroupsToPerson">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#addGroupsToPerson_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="removeGroupsFromPerson">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#removeGroupsFromPerson_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="isMember">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#isMember_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="MultipleResultsException">
+        <soap:fault use="literal" name="MultipleResultsException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getGroupMembershipForGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#getGroupMembershipForGroup_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="LdapServiceException">
+        <soap:fault use="literal" name="LdapServiceException" namespace="" />
+      </fault>
+      <fault name="MultipleResultsException">
+        <soap:fault use="literal" name="MultipleResultsException" namespace="" />
+      </fault>
+      <fault name="NameNotFoundException">
+        <soap:fault use="literal" name="NameNotFoundException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getVersion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getVersion_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="ping">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ping_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="changeLogLevel">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#changeLogLevel_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="refreshCprProperties">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#refreshCprProperties_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="LdapServiceService">
+    <port name="LdapServicePort" binding="tns:LdapServicePortBinding">
+      <soap:address location="https://sstdev.td.afg:1024/sst/ldap_3" />
+    </port>
+  </service>
+</definitions>

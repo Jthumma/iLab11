@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using iLab11ProtoNg.Core.Domain.interfaces.service;
 using iLab11ProtoNg.DomainServices;
 using log4net;
 
@@ -26,9 +28,11 @@ namespace iLab11ProtoNg.Controllers
         {
             _log.DebugFormat("Requesting authentication for {0}", USER);
 
-            if (!_authorizationService.AuthorizeUser(false))
+            var user = _authorizationService.AuthorizeUser(false);
+            if (user == null)
             {
                 _log.DebugFormat("Authentication for {0} failed", USER);
+                ViewBag.AuthenticationMessage = String.Format("Authentication for {0} failed", USER);
                 return View();
             }
 
@@ -44,5 +48,11 @@ namespace iLab11ProtoNg.Controllers
             //_log.DebugFormat("Redirecting to Flex App");
             //return RedirectToAction("Index", "Flex");
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
     }
 }

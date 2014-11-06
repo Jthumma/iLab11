@@ -1,0 +1,1853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:tns="http://edocwebservicemtom.gaic.com/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:ns0="http://schemas.xmlsoap.org/wsdl/jms/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="http://edocwebservicemtom.gaic.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:UsingPolicy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" wsdl:Required="true"
+                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SecurityHeader MustManifestEncryption="true" MustPrepend="true"
+                       xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SecurityTokens" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetStatus_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetVersion_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="TestEDocWebService_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ConvertDateToW3CFormat_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetSupportedFileTypes_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocTypes_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocCategory_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetAllDocumentSections_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocumentSection_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="DeleteDocument_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="PromoteSubmissionToPolicyByCustomer_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="PromoteSubmissionToPolicyGeneral_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="PromoteSubmissionToPolicySHS_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="PromoteSubmissionToPolicy_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MyFileGetDocumentContentUrl_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocumentContentUrlForClaims_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocumentContentUrlExternal_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocumentContentUrl_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetBravaMultiDocumentsContentURI_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocumentContentURI_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SearchPolicyDocuments_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SearchDocumentWithCredentials_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SearchDocuments_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SearchDocumentPropertiesLite_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="UpdateSinglePropertyInMultiDocuments_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="UpdateDocumentProperty_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="UpdateCustomerDocumentProperties_input_policy"
+              xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="UpdateDocumentProperties_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SearchDocumentGeneral_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SearchDocumentProperties_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SearchDocumentByID_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CancelCheckOut_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CheckInWithUpdate_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CheckInWithAnnotations_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CheckIn_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CheckOut_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CopyAnnotations_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CopyDocumentsToNewPolicy_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CopyDocument_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocumentContentInline_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="GetDocument_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="AddCustomerDocument_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="AddDocument_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+              xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://edocwebservicemtom.gaic.com/">
+      <s:element name="AddDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="metadata" type="tns:ArrayOfProperty" />
+            <s:element minOccurs="0" maxOccurs="1" name="className" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:Property" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Property">
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Value" type="s:string" />
+      </s:complexType>
+      <s:element name="AddDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddDocumentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCustomerDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="metadata" type="tns:ArrayOfProperty" />
+            <s:element minOccurs="0" maxOccurs="1" name="className" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCustomerDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddCustomerDocumentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentResult" type="tns:ArrayOfBase64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDocumentContentInline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentInlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentContentInlineResult" type="tns:ArrayOfBase64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CopyDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docClass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="metadata" type="tns:ArrayOfProperty" />
+            <s:element minOccurs="1" maxOccurs="1" name="copyAnnot" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CopyDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CopyDocumentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CopyDocumentsToNewPolicy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPolicyNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPolicyNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CopyDocumentsToNewPolicyResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CopyAnnotations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docId1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docId2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="os" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CopyAnnotationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checkedOutBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checkedOutName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckOutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="attachmentFilename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInWithAnnotations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="attachmentFilename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInWithAnnotationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckInWithUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="attachmentFilename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="metadata" type="tns:ArrayOfProperty" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInWithUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckInWithUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelCheckOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reservationID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelCheckOutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchDocumentByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocumentByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDocumentByIDResult" type="tns:Document" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Document">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Property" type="tns:Property" />
+        </s:sequence>
+        <s:attribute name="id" type="s:string" />
+      </s:complexType>
+      <s:element name="SearchDocumentProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="whereClause" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocumentPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDocumentPropertiesResult" type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Document" nillable="true" type="tns:Document" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchDocumentGeneral">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentClass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="whereClause" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocumentGeneralResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDocumentGeneralResult" type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocumentProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="metadata" type="tns:ArrayOfProperty" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocumentPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDocumentPropertiesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCustomerDocumentProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="metadata" type="tns:ArrayOfProperty" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCustomerDocumentPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateCustomerDocumentPropertiesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocumentProperty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="propertyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="propertyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocumentPropertyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDocumentPropertyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSinglePropertyInMultiDocuments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPropertyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPropertyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPropertyValue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPropertyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSinglePropertyInMultiDocumentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateSinglePropertyInMultiDocumentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocumentPropertiesLite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docClass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="whereClause" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocumentPropertiesLiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDocumentPropertiesLiteResult" type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocuments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="whereClause" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocumentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDocumentsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchDocumentWithCredentials">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentClass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="whereClause" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDocumentWithCredentialsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDocumentWithCredentialsResult"
+                       type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchPolicyDocuments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="whereClause" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchPolicyDocumentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchPolicyDocumentsResult" type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentURI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentURIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentContentURIResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBravaMultiDocumentsContentURI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentIds" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBravaMultiDocumentsContentURIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBravaMultiDocumentsContentURIResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentContentUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentUrlExternal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentUrlExternalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentContentUrlExternalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentUrlForClaims">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentContentUrlForClaimsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentContentUrlForClaimsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MyFileGetDocumentContentUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MyFileGetDocumentContentUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MyFileGetDocumentContentUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="submissionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="policyNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="symbol" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PromoteSubmissionToPolicyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicySHS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="submissionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="policyNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="symbol" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicySHSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PromoteSubmissionToPolicySHSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicyGeneral">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="submissionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="policyNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="symbol" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicyGeneralResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PromoteSubmissionToPolicyGeneralResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicyByCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="policyNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="symbol" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoteSubmissionToPolicyByCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PromoteSubmissionToPolicyByCustomerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocumentResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDocumentSection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docCategory" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentSectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentSectionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDocumentSections">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllDocumentSectionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDocumentSectionsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocCategory">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDocCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocCategoryResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docCategory" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocTypesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupportedFileTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSupportedFileTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSupportedFileTypesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertDateToW3CFormat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="simpleDateString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertDateToW3CFormatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConvertDateToW3CFormatResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestEDocWebService">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestEDocWebServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestEDocWebServiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStatusResult" type="tns:statusCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="statusCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="NORMAL" />
+          <s:enumeration value="WARNING" />
+          <s:enumeration value="ERROR" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CancelCheckOutSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelCheckOut" />
+  </wsdl:message>
+  <wsdl:message name="GetBravaMultiDocumentsContentURISoapIn">
+    <wsdl:part name="parameters" element="tns:GetBravaMultiDocumentsContentURI" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentInlineSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentInline" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomerDocumentPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerDocumentProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentUrlExternalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentUrlExternalResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSinglePropertyInMultiDocumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSinglePropertyInMultiDocuments" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDocumentByID" />
+  </wsdl:message>
+  <wsdl:message name="GetSupportedFileTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupportedFileTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInWithAnnotationsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInWithAnnotations" />
+  </wsdl:message>
+  <wsdl:message name="MyFileGetDocumentContentUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:MyFileGetDocumentContentUrl" />
+  </wsdl:message>
+  <wsdl:message name="ConvertDateToW3CFormatSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertDateToW3CFormatResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentUrlForClaimsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentUrlForClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchPolicyDocumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchPolicyDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDocumentSectionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDocumentSectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentSection" />
+  </wsdl:message>
+  <wsdl:message name="GetSupportedFileTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupportedFileTypes" />
+  </wsdl:message>
+  <wsdl:message name="CopyDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:CopyDocument" />
+  </wsdl:message>
+  <wsdl:message name="CheckInWithUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInWithUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckIn" />
+  </wsdl:message>
+  <wsdl:message name="AddDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDocument" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentWithCredentialsSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDocumentWithCredentials" />
+  </wsdl:message>
+  <wsdl:message name="SearchPolicyDocumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchPolicyDocuments" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicyGeneralSoapOut">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicyGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicySHSSoapOut">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicySHSResponse" />
+  </wsdl:message>
+  <wsdl:message name="MyFileGetDocumentContentUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:MyFileGetDocumentContentUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentPropertySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDocumentProperty" />
+  </wsdl:message>
+  <wsdl:message name="CopyDocumentsToNewPolicySoapOut">
+    <wsdl:part name="parameters" element="tns:CopyDocumentsToNewPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCustomerDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCustomerDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetDocCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInWithUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInWithUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GetDocTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicyByCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicyByCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestEDocWebServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestEDocWebService" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDocumentPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentGeneralSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDocumentGeneral" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentWithCredentialsSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDocumentWithCredentialsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicySoapOut">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOut" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentGeneralSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDocumentGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInWithAnnotationsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInWithAnnotationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDocumentProperties" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSinglePropertyInMultiDocumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSinglePropertyInMultiDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentPropertiesLiteSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDocumentPropertiesLiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertDateToW3CFormatSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertDateToW3CFormat" />
+  </wsdl:message>
+  <wsdl:message name="GetDocCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocCategory" />
+  </wsdl:message>
+  <wsdl:message name="AddCustomerDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCustomerDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDocuments" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDocumentByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentPropertySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDocumentPropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicyGeneralSoapIn">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicyGeneral" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicySoapIn">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicy" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelCheckOutSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelCheckOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentURISoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentURI" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicySHSSoapIn">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicySHS" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentUrlForClaimsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentUrlForClaims" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyAnnotationsSoapIn">
+    <wsdl:part name="parameters" element="tns:CopyAnnotations" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDocumentSectionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDocumentSections" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyDocumentsToNewPolicySoapIn">
+    <wsdl:part name="parameters" element="tns:CopyDocumentsToNewPolicy" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentURISoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentURIResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDocumentPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:CopyDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentUrlExternalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentUrlExternal" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDocumentProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentContentInlineSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentContentInlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="PromoteSubmissionToPolicyByCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:PromoteSubmissionToPolicyByCustomer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomerDocumentPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerDocumentPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentPropertiesLiteSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDocumentPropertiesLite" />
+  </wsdl:message>
+  <wsdl:message name="TestEDocWebServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestEDocWebServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetBravaMultiDocumentsContentURISoapOut">
+    <wsdl:part name="parameters" element="tns:GetBravaMultiDocumentsContentURIResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyAnnotationsSoapOut">
+    <wsdl:part name="parameters" element="tns:CopyAnnotationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:portType name="ECMServiceSoap">
+    <wsdl:operation name="AddDocument">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to add new Document to the FileNet P8 Content repository.</wsdl:documentation>
+      <wsdl:input message="tns:AddDocumentSoapIn" />
+      <wsdl:output message="tns:AddDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomerDocument">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to add new Document associated with the Customer to the FileNet P8 Content repository. This operation expects a file to be added as DIME attachment and all the metadata values as metadata object.</wsdl:documentation>
+      <wsdl:input message="tns:AddCustomerDocumentSoapIn" />
+      <wsdl:output message="tns:AddCustomerDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <wsdl:input message="tns:GetDocumentSoapIn" />
+      <wsdl:output message="tns:GetDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentInline">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to retrieve the content of a given Document as a byte[].</wsdl:documentation>
+      <wsdl:input message="tns:GetDocumentContentInlineSoapIn" />
+      <wsdl:output message="tns:GetDocumentContentInlineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyDocument">
+      <wsdl:input message="tns:CopyDocumentSoapIn" />
+      <wsdl:output message="tns:CopyDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyDocumentsToNewPolicy">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to schedule Documents copying between Policies.</wsdl:documentation>
+      <wsdl:input message="tns:CopyDocumentsToNewPolicySoapIn" />
+      <wsdl:output message="tns:CopyDocumentsToNewPolicySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyAnnotations">
+      <wsdl:input message="tns:CopyAnnotationsSoapIn" />
+      <wsdl:output message="tns:CopyAnnotationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOut">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to Check Out a document.</wsdl:documentation>
+      <wsdl:input message="tns:CheckOutSoapIn" />
+      <wsdl:output message="tns:CheckOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to Check In a document.</wsdl:documentation>
+      <wsdl:input message="tns:CheckInSoapIn" />
+      <wsdl:output message="tns:CheckInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInWithAnnotations">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to Check In a document with Annotations.</wsdl:documentation>
+      <wsdl:input message="tns:CheckInWithAnnotationsSoapIn" />
+      <wsdl:output message="tns:CheckInWithAnnotationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInWithUpdate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to Check In a Document with updated metadata</wsdl:documentation>
+      <wsdl:input message="tns:CheckInWithUpdateSoapIn" />
+      <wsdl:output message="tns:CheckInWithUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelCheckOut">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to cancel Check out a document.</wsdl:documentation>
+      <wsdl:input message="tns:CancelCheckOutSoapIn" />
+      <wsdl:output message="tns:CancelCheckOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentByID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to search Document metadata for a given Document ID.</wsdl:documentation>
+      <wsdl:input message="tns:SearchDocumentByIDSoapIn" />
+      <wsdl:output message="tns:SearchDocumentByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to search Document metadata. This operation expects search SQL WHERE clause.</wsdl:documentation>
+      <wsdl:input message="tns:SearchDocumentPropertiesSoapIn" />
+      <wsdl:output message="tns:SearchDocumentPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentGeneral">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to search Document metadata. This operation expects the document class to be searched and the search SQL WHERE clause.</wsdl:documentation>
+      <wsdl:input message="tns:SearchDocumentGeneralSoapIn" />
+      <wsdl:output message="tns:SearchDocumentGeneralSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocumentProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to update Document properties for a given Document ID.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateDocumentPropertiesSoapIn" />
+      <wsdl:output message="tns:UpdateDocumentPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerDocumentProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to update Document properties for a given Document ID.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateCustomerDocumentPropertiesSoapIn" />
+      <wsdl:output message="tns:UpdateCustomerDocumentPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocumentProperty">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to update a single Document property.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateDocumentPropertySoapIn" />
+      <wsdl:output message="tns:UpdateDocumentPropertySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSinglePropertyInMultiDocuments">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to update a given given Document property in the FileNet Documents.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSinglePropertyInMultiDocumentsSoapIn" />
+      <wsdl:output message="tns:UpdateSinglePropertyInMultiDocumentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentPropertiesLite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">A lite operation to search Document metadata. This operation expects document class and search SQL WHERE clause.</wsdl:documentation>
+      <wsdl:input message="tns:SearchDocumentPropertiesLiteSoapIn" />
+      <wsdl:output message="tns:SearchDocumentPropertiesLiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocuments">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to search Document IDs matching search SQL WHERE clause.</wsdl:documentation>
+      <wsdl:input message="tns:SearchDocumentsSoapIn" />
+      <wsdl:output message="tns:SearchDocumentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentWithCredentials">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to search Document metadata. This operation expects the document class to be searched and the search SQL WHERE clause.</wsdl:documentation>
+      <wsdl:input message="tns:SearchDocumentWithCredentialsSoapIn" />
+      <wsdl:output message="tns:SearchDocumentWithCredentialsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchPolicyDocuments">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to search Policy Documents matching search SQL WHERE clause.</wsdl:documentation>
+      <wsdl:input message="tns:SearchPolicyDocumentsSoapIn" />
+      <wsdl:output message="tns:SearchPolicyDocumentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentURI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to retrieve the content URI for a given Document ID in P8 Workplace.</wsdl:documentation>
+      <wsdl:input message="tns:GetDocumentContentURISoapIn" />
+      <wsdl:output message="tns:GetDocumentContentURISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBravaMultiDocumentsContentURI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to retrieve the content URI for multiple Documents for Brava.</wsdl:documentation>
+      <wsdl:input message="tns:GetBravaMultiDocumentsContentURISoapIn" />
+      <wsdl:output message="tns:GetBravaMultiDocumentsContentURISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentUrl">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to retrieve the content URL for a given Document ID in P8 Workplace.</wsdl:documentation>
+      <wsdl:input message="tns:GetDocumentContentUrlSoapIn" />
+      <wsdl:output message="tns:GetDocumentContentUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentUrlExternal">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to retrieve the content URL for a given Document ID in P8 Workplace for external users.</wsdl:documentation>
+      <wsdl:input message="tns:GetDocumentContentUrlExternalSoapIn" />
+      <wsdl:output message="tns:GetDocumentContentUrlExternalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentUrlForClaims">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to retrieve the content URL for a given Document ID in P8 myFileClaimsWorkplace.</wsdl:documentation>
+      <wsdl:input message="tns:GetDocumentContentUrlForClaimsSoapIn" />
+      <wsdl:output message="tns:GetDocumentContentUrlForClaimsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MyFileGetDocumentContentUrl">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to retrieve the content URL for a given Document ID in P8 Workplace.</wsdl:documentation>
+      <wsdl:input message="tns:MyFileGetDocumentContentUrlSoapIn" />
+      <wsdl:output message="tns:MyFileGetDocumentContentUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicy">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Promote Submission documents to Policy.</wsdl:documentation>
+      <wsdl:input message="tns:PromoteSubmissionToPolicySoapIn" />
+      <wsdl:output message="tns:PromoteSubmissionToPolicySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicySHS">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Promote SHS Submission documents to Policy.</wsdl:documentation>
+      <wsdl:input message="tns:PromoteSubmissionToPolicySHSSoapIn" />
+      <wsdl:output message="tns:PromoteSubmissionToPolicySHSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicyGeneral">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Promote Submission documents to Policy.</wsdl:documentation>
+      <wsdl:input message="tns:PromoteSubmissionToPolicyGeneralSoapIn" />
+      <wsdl:output message="tns:PromoteSubmissionToPolicyGeneralSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicyByCustomer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Promote Submission documents to Policy by Customer Number.</wsdl:documentation>
+      <wsdl:input message="tns:PromoteSubmissionToPolicyByCustomerSoapIn" />
+      <wsdl:output message="tns:PromoteSubmissionToPolicyByCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to delete a document.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteDocumentSoapIn" />
+      <wsdl:output message="tns:DeleteDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentSection">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to get the Document Section.</wsdl:documentation>
+      <wsdl:input message="tns:GetDocumentSectionSoapIn" />
+      <wsdl:output message="tns:GetDocumentSectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDocumentSections">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to get all the Document sections.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllDocumentSectionsSoapIn" />
+      <wsdl:output message="tns:GetAllDocumentSectionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocCategory">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to get the available Document Categories.</wsdl:documentation>
+      <wsdl:input message="tns:GetDocCategorySoapIn" />
+      <wsdl:output message="tns:GetDocCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to get the Document Types for a given Document Category.</wsdl:documentation>
+      <wsdl:input message="tns:GetDocTypesSoapIn" />
+      <wsdl:output message="tns:GetDocTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSupportedFileTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Operation to get the supported file types by EDM.</wsdl:documentation>
+      <wsdl:input message="tns:GetSupportedFileTypesSoapIn" />
+      <wsdl:output message="tns:GetSupportedFileTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertDateToW3CFormat">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The operation to Convert a simple Date format 'MM/dd/yyyy HH:mm:ss [AM/PM]' to W3C Format yyyy-MM-ddTHH:mm:ss-05:00.</wsdl:documentation>
+      <wsdl:input message="tns:ConvertDateToW3CFormatSoapIn" />
+      <wsdl:output message="tns:ConvertDateToW3CFormatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestEDocWebService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">check the status of the service</wsdl:documentation>
+      <wsdl:input message="tns:TestEDocWebServiceSoapIn" />
+      <wsdl:output message="tns:TestEDocWebServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return the current version of the service.</wsdl:documentation>
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get the current status of the service</wsdl:documentation>
+      <wsdl:input message="tns:GetStatusSoapIn" />
+      <wsdl:output message="tns:GetStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ECMServiceSoap" type="tns:ECMServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddDocument">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/AddDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#AddDocument_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomerDocument">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/AddCustomerDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#AddCustomerDocument_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#GetDocument_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentInline">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocumentContentInline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetDocumentContentInline_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CopyDocument">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CopyDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#CopyDocument_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CopyDocumentsToNewPolicy">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CopyDocumentsToNewPolicy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#CopyDocumentsToNewPolicy_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CopyAnnotations">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CopyAnnotations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#CopyAnnotations_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOut">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CheckOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#CheckOut_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIn">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CheckIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#CheckIn_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInWithAnnotations">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CheckInWithAnnotations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#CheckInWithAnnotations_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInWithUpdate">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CheckInWithUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#CheckInWithUpdate_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCheckOut">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/CancelCheckOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#CancelCheckOut_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentByID">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/SearchDocumentByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#SearchDocumentByID_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentProperties">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/SearchDocumentProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#SearchDocumentProperties_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentGeneral">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/SearchDocumentGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#SearchDocumentGeneral_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocumentProperties">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/UpdateDocumentProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#UpdateDocumentProperties_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerDocumentProperties">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/UpdateCustomerDocumentProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#UpdateCustomerDocumentProperties_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocumentProperty">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/UpdateDocumentProperty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#UpdateDocumentProperty_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSinglePropertyInMultiDocuments">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/UpdateSinglePropertyInMultiDocuments"
+                      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#UpdateSinglePropertyInMultiDocuments_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentPropertiesLite">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/SearchDocumentPropertiesLite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#SearchDocumentPropertiesLite_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocuments">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/SearchDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#SearchDocuments_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDocumentWithCredentials">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/SearchDocumentWithCredentials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#SearchDocumentWithCredentials_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPolicyDocuments">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/SearchPolicyDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#SearchPolicyDocuments_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentURI">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocumentContentURI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetDocumentContentURI_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBravaMultiDocumentsContentURI">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetBravaMultiDocumentsContentURI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetBravaMultiDocumentsContentURI_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentUrl">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocumentContentUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetDocumentContentUrl_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentUrlExternal">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocumentContentUrlExternal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetDocumentContentUrlExternal_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentContentUrlForClaims">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocumentContentUrlForClaims" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetDocumentContentUrlForClaims_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MyFileGetDocumentContentUrl">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/MyFileGetDocumentContentUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#MyFileGetDocumentContentUrl_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicy">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/PromoteSubmissionToPolicy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#PromoteSubmissionToPolicy_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicySHS">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/PromoteSubmissionToPolicySHS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#PromoteSubmissionToPolicySHS_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicyGeneral">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/PromoteSubmissionToPolicyGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#PromoteSubmissionToPolicyGeneral_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromoteSubmissionToPolicyByCustomer">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/PromoteSubmissionToPolicyByCustomer"
+                      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#PromoteSubmissionToPolicyByCustomer_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#DeleteDocument_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentSection">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocumentSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetDocumentSection_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDocumentSections">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetAllDocumentSections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetAllDocumentSections_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocCategory">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetDocCategory_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocTypes">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetDocTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#GetDocTypes_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupportedFileTypes">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetSupportedFileTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#GetSupportedFileTypes_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertDateToW3CFormat">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/ConvertDateToW3CFormat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#ConvertDateToW3CFormat_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestEDocWebService">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/TestEDocWebService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                             URI="#TestEDocWebService_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#GetVersion_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap:operation soapAction="http://edocwebservicemtom.gaic.com/GetStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#GetStatus_input_policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ECMService">
+    <wsdl:port name="ECMServiceSoap" binding="tns:ECMServiceSoap">
+      <soap:address location="https://sstdev.td.afg:1024/sst/edoc.mtom_1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

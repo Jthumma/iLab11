@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using iLab11ProtoNg.Core.Domain.interfaces.service;
+using log4net;
 using Ninject.Modules;
 
 namespace iLab11ProtoNg.DomainServices
