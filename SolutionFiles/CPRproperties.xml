@@ -5,8 +5,10 @@
   
   <!-- INSURED PORTAL -->
   <property name="com.gaic.insuredPortal.service.ssoLogin.url" value="https://sstdev.td.afg:1024/sst/sso.token_1" level="Local" encrypted="false" />
-  <property name="com.gaic.insuredPortal.service.ldap.url" value="https://sstdev.td.afg:1024/sst/ldap_3?WSDL" level="Local" encrypted="false" />
-  <property name="com.gaic.insuredPortal.service.eDoc.url" value="https://sstdev.td.afg:1024/sst/edoc.mtom_1?WSDL" level="Local" encrypted="false" />
-  
-
+  <property name="com.gaic.insuredPortal.service.ldap.url" value="https://sstdev.td.afg:1024/sst/ldap_3?wsdl" level="Local" encrypted="false" />
+  <property name="com.gaic.insuredPortal.service.eDocMtom.url" value="https://sstdev.td.afg:1024/sst/edoc.mtom_1?wsdl" level="Local" encrypted="false" />
+  <property name="com.gaic.insuredPortal.service.claimsEcm.url" value="https://sstdev.td.afg:1024/sst/claims.ecm_1?wsdl" level="Local" encrypted="false" />
+  <property name="com.gaic.insuredPortal.service.fdwInquiry.url" value="https://sstdev.td.afg:1024/sst/fdw.inquiry_11?wsdl" level="Local" encrypted="false" />
+  <property name="com.gaic.insuredPortal.service.bcPortal.url" value="https://sstdev.td.afg:1024/sst/bc.portal_1?wsdl" level="Local" encrypted="false" />
+  <property name="com.gaic.insuredPortal.service.idvConsumer.url" value="https://sstdev.td.afg:1024/sst/idv.consumer_1?wsdl" level="Local" encrypted="false" />
 </properties>

@@ -32,6 +32,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<ISingleSignonProvider>().To<WcfSingleSignonProvider>();
             Bind<ILdapProvider>().To<WcfLdapProvider>();
             Bind<IEDocProvider>().To<WcfEDocProvider>();
+            Bind<IIdvConsumerProvider>().To<WcfIdvConsumerProvider>();
+            Bind<IBcPortalProvider>().To<WcfBcPortalProvider>();
         }
 
         private void RegisterAdapters()
@@ -39,6 +41,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<ISsoLoginPortClientAdapter>().To<SsoLoginPortClientAdapter>().InSingletonScope();
             Bind<ILdapClientAdapter>().To<LdapClientAdapter>().InSingletonScope();
             Bind<IEDocClientAdapter>().To<EDocClientAdapter>().InSingletonScope();
+            Bind<IIdvConsumerAdapter>().To<IdvConsumerAdapter>().InSingletonScope();
+            Bind<IBcPortalAdapter>().To<BcPortalAdapter>().InSingletonScope();
         }
 
         private void RegisterFakeAdapters()
@@ -46,6 +50,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<ISsoLoginPortClientAdapter>().To<FakeSsoLoginPortClientAdapter>().InSingletonScope();
             Bind<ILdapClientAdapter>().To<FakeLdapClientAdapter>().InSingletonScope();
             Bind<IEDocClientAdapter>().To<FakeEDocClientAdapter>().InSingletonScope();
+            Bind<IIdvConsumerAdapter>().To<FakeIdvConsumerAdapter>().InSingletonScope();
+            Bind<IBcPortalAdapter>().To<FakeBcPortalAdapter>().InSingletonScope();
         }
 
         private void RegisterBindings()
@@ -70,10 +76,22 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
                 .WhenInjectedInto<LdapClientAdapter>()
                 .WithConstructorArgument("cprKey", "service.ldap.url");
 
-            //eDOC
+            //eDocMtom
             Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
                 .WhenInjectedInto<EDocClientAdapter>()
-                .WithConstructorArgument("cprKey", "service.eDoc.url");
+                .WithConstructorArgument("cprKey", "service.eDocMtom.url");
+
+            //BCPORTAL
+            Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
+                .WhenInjectedInto<BcPortalAdapter>()
+                .WithConstructorArgument("cprKey", "service.bcPortal.url");
+
+            //idvConsumer
+            Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
+                .WhenInjectedInto<IdvConsumerAdapter>()
+                .WithConstructorArgument("cprKey", "service.idvConsumer.url");
+
+            
         }
     }
 }

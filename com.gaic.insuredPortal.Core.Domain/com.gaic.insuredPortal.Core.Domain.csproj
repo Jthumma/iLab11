@@ -52,8 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="interfaces\provider\ContextType.cs" />
+    <Compile Include="interfaces\provider\IBcPortalProvider.cs" />
     <Compile Include="interfaces\provider\IHttpContextAdapter.cs" />
     <Compile Include="interfaces\provider\IHttpContextStrategyProvider.cs" />
+    <Compile Include="interfaces\provider\IIdvConsumerProvider.cs" />
     <Compile Include="models\AddressModel.cs" />
     <Compile Include="models\AgentModel.cs" />
     <Compile Include="models\ClaimsModel.cs" />
