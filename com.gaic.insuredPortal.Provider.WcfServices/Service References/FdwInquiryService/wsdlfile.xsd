@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://fdwinquiry.services.gaic.com/" targetNamespace="http://fdwinquiry.services.gaic.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CommonUtilException" type="tns:CommonUtilException" />
+  <xs:element name="FdwInquiryException" type="tns:FdwInquiryException" />
+  <xs:element name="changeLogLevel" type="tns:changeLogLevel" />
+  <xs:element name="changeLogLevelResponse" type="tns:changeLogLevelResponse" />
+  <xs:element name="checkDependencies" type="tns:checkDependencies" />
+  <xs:element name="checkDependenciesResponse" type="tns:checkDependenciesResponse" />
+  <xs:element name="getStatus" type="tns:getStatus" />
+  <xs:element name="getStatusResponse" type="tns:getStatusResponse" />
+  <xs:element name="getVersion" type="tns:getVersion" />
+  <xs:element name="getVersionResponse" type="tns:getVersionResponse" />
+  <xs:element name="ping" type="tns:ping" />
+  <xs:element name="pingResponse" type="tns:pingResponse" />
+  <xs:element name="refreshCprProperties" type="tns:refreshCprProperties" />
+  <xs:element name="refreshCprPropertiesResponse" type="tns:refreshCprPropertiesResponse" />
+  <xs:element name="retrieveECFInfo" type="tns:retrieveECFInfo" />
+  <xs:element name="retrieveECFInfoResponse" type="tns:retrieveECFInfoResponse" />
+  <xs:element name="searchCustomers" type="tns:searchCustomers" />
+  <xs:element name="searchCustomersResponse" type="tns:searchCustomersResponse" />
+  <xs:element name="searchFDW" type="tns:searchFDW" />
+  <xs:element name="searchFDWResponse" type="tns:searchFDWResponse" />
+  <xs:element name="searchRenewals" type="tns:searchRenewals" />
+  <xs:element name="searchRenewalsResponse" type="tns:searchRenewalsResponse" />
+  <xs:complexType name="policyClaimLookupFDW">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:policyClaimLookupBaseClaims">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policyClaimLookupBaseClaims" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:policyClaimLookupBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="animalAge" type="xs:string" />
+          <xs:element minOccurs="0" name="animalBreed" type="xs:string" />
+          <xs:element minOccurs="0" name="animalSex" type="xs:string" />
+          <xs:element minOccurs="0" name="animalUse" type="xs:string" />
+          <xs:element minOccurs="0" name="claimAdjusterId" type="xs:string" />
+          <xs:element minOccurs="0" name="claimAdjusterName" type="xs:string" />
+          <xs:element minOccurs="0" name="claimNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="claimantName" type="xs:string" />
+          <xs:element minOccurs="0" name="claimantSsn" type="xs:string" />
+          <xs:element minOccurs="0" name="convertedClaimInd" type="xs:string" />
+          <xs:element minOccurs="0" name="creationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateOfLoss" type="xs:string" />
+          <xs:element minOccurs="0" name="destructionDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fieldClaimOfficeCode" type="xs:string" />
+          <xs:element minOccurs="0" name="fieldClaimOfficeName" type="xs:string" />
+          <xs:element minOccurs="0" name="incident" type="xs:string" />
+          <xs:element minOccurs="0" name="incidentCloseDt" type="xs:string" />
+          <xs:element minOccurs="0" name="lastUpdateDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="legacyClaimNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="legalHoldInd" type="xs:string" />
+          <xs:element minOccurs="0" name="lossDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="policyId" type="xs:decimal" />
+          <xs:element minOccurs="0" name="policyState" type="xs:string" />
+          <xs:element minOccurs="0" name="processingOfficeCode" type="xs:string" />
+          <xs:element minOccurs="0" name="processingOfficeName" type="xs:string" />
+          <xs:element minOccurs="0" name="propertyName" type="xs:string" />
+          <xs:element minOccurs="0" name="recoveryAdjusterId" type="xs:string" />
+          <xs:element minOccurs="0" name="recoveryAdjusterName" type="xs:string" />
+          <xs:element minOccurs="0" name="sbuCode" type="xs:string" />
+          <xs:element minOccurs="0" name="sbuDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="totalIncurred" type="xs:decimal" />
+          <xs:element minOccurs="0" name="underwriterTsoId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policyClaimLookupBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:policyClaimLookup">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="billingType" type="xs:string" />
+          <xs:element minOccurs="0" name="birthDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="businessUnitCode" type="xs:string" />
+          <xs:element minOccurs="0" name="cancellationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="cclaims" type="tns:combinedClaims" />
+          <xs:element minOccurs="0" name="companyNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="customerNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="dailyPolicyId" type="xs:decimal" />
+          <xs:element minOccurs="0" name="divisionalId" type="xs:string" />
+          <xs:element minOccurs="0" name="eipInd" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredCity" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredName" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredNameCont" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredNameLastFirst" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredState" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredStreet" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredZip" type="xs:string" />
+          <xs:element minOccurs="0" name="itdGrossEyEarnedPremAmt" type="xs:decimal" />
+          <xs:element minOccurs="0" name="itdGrossPyWrittenPremAmt" type="xs:decimal" />
+          <xs:element minOccurs="0" name="lob" type="xs:string" />
+          <xs:element minOccurs="0" name="minorChildInd" type="xs:boolean" />
+          <xs:element minOccurs="0" name="policyEffectiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="policyExpirationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="policyInceptionDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="policyModule" type="xs:string" />
+          <xs:element minOccurs="0" name="policyNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="policyStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="policySymbol" type="xs:string" />
+          <xs:element minOccurs="0" name="policyVersion" type="xs:string" />
+          <xs:element minOccurs="0" name="producerNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="profitCenter" type="xs:string" />
+          <xs:element minOccurs="0" name="RPolicyClaimLookup10yrId" type="xs:decimal" />
+          <xs:element minOccurs="0" name="reportedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="sourceSystem" type="xs:string" />
+          <xs:element minOccurs="0" name="underwriterName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policyClaimLookup">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="combinedClaims">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="claimNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="reportedDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="policyClaimLookupECF">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:policyClaimLookupBaseClaims">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="claimAdjusterFName" type="xs:string" />
+          <xs:element minOccurs="0" name="claimAdjusterLName" type="xs:string" />
+          <xs:element minOccurs="0" name="claimAdjusterVid" type="xs:string" />
+          <xs:element minOccurs="0" name="coverageType" type="xs:string" />
+          <xs:element minOccurs="0" name="decPageNmTxt" type="xs:string" />
+          <xs:element minOccurs="0" name="featureType" type="xs:string" />
+          <xs:element minOccurs="0" name="fmInsuredAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="incidentOnlyInd" type="xs:string" />
+          <xs:element minOccurs="0" name="producerName" type="xs:string" />
+          <xs:element name="recCount" type="xs:int" />
+          <xs:element minOccurs="0" name="recoveryAdjusterFName" type="xs:string" />
+          <xs:element minOccurs="0" name="recoveryAdjusterLName" type="xs:string" />
+          <xs:element minOccurs="0" name="recoveryAdjusterVid" type="xs:string" />
+          <xs:element name="score" type="xs:float" />
+          <xs:element minOccurs="0" name="underwriterFname" type="xs:string" />
+          <xs:element minOccurs="0" name="underwriterLname" type="xs:string" />
+          <xs:element minOccurs="0" name="underwriterVid" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policyClaimLookupPolicy">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:policyClaimLookupBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policyClaimLookupCustomer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:policyClaimLookup">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="companyNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="customerNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredCity" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredName" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredNameCont" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredNameLastFirst" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredState" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredStreet" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredZip" type="xs:string" />
+          <xs:element name="pifCount" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="searchCustomers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fdwCriteria" type="tns:serviceSearchCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="additionalInsured" type="xs:string" />
+      <xs:element minOccurs="0" name="auditFreq" type="xs:string" />
+      <xs:element minOccurs="0" name="autoFastInd" type="xs:string" />
+      <xs:element minOccurs="0" name="businessUnitCode" type="xs:string" />
+      <xs:element name="bypassLdapSearch" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canNr" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="claimNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="claimantName" type="xs:string" />
+      <xs:element minOccurs="0" name="claimantSsn" type="xs:string" />
+      <xs:element name="claimsExist" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="currentProfitCenters" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="customerNumbers" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dateOfLoss" type="xs:string" />
+      <xs:element name="distinctPolicies" type="xs:boolean" />
+      <xs:element minOccurs="0" name="divId" type="xs:string" />
+      <xs:element minOccurs="0" name="endCancellationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="endExpirationDate" type="xs:dateTime" />
+      <xs:element name="endExpiringPremium" type="xs:long" />
+      <xs:element name="endIncurredAmount" type="xs:long" />
+      <xs:element name="endLossRatio" type="xs:long" />
+      <xs:element name="equineClaims" type="xs:boolean" />
+      <xs:element name="excludeCanceledPolicyMoreThanAYear" type="xs:boolean" />
+      <xs:element name="excludeExpiredPolicyMoreThanAYear" type="xs:boolean" />
+      <xs:element name="excludeFlatCancels" type="xs:boolean" />
+      <xs:element name="excludePolicySymbol" type="xs:boolean" />
+      <xs:element minOccurs="0" name="facRe" type="xs:string" />
+      <xs:element minOccurs="0" name="fieldCode" type="xs:string" />
+      <xs:element name="fuzzySearch" type="xs:boolean" />
+      <xs:element minOccurs="0" name="insuredCity" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredCityState" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredName" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredNameCont" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredNameOperator" type="tns:operator" />
+      <xs:element minOccurs="0" name="insuredState" type="xs:string" />
+      <xs:element name="maxSearchRows" type="xs:int" />
+      <xs:element name="offset" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="orders" nillable="true" type="tns:orderDto" />
+      <xs:element minOccurs="0" name="policyEffectiveDate" type="xs:string" />
+      <xs:element minOccurs="0" name="policyExpirationDate" type="xs:string" />
+      <xs:element minOccurs="0" name="policyId" type="xs:decimal" />
+      <xs:element minOccurs="0" name="policyModule" type="xs:string" />
+      <xs:element minOccurs="0" name="policyNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="policyState" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="policyStatuses" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="policySymbols" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="policyVersionCd" type="xs:string" />
+      <xs:element minOccurs="0" name="producerADesc" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="producerNumbers" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="propertyName" type="xs:string" />
+      <xs:element minOccurs="0" name="sbuCode" type="xs:string" />
+      <xs:element name="searchInsuredLastFirst" type="xs:boolean" />
+      <xs:element name="searchUniqueClaimNumber" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sicCode" type="xs:string" />
+      <xs:element minOccurs="0" name="startCancellationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="startExpirationDate" type="xs:dateTime" />
+      <xs:element name="startExpiringPremium" type="xs:long" />
+      <xs:element name="startIncurredAmount" type="xs:long" />
+      <xs:element name="startLossRatio" type="xs:long" />
+      <xs:element minOccurs="0" name="territoryCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orderDto">
+    <xs:sequence>
+      <xs:element name="ascending" type="xs:boolean" />
+      <xs:element minOccurs="0" name="orderBy" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchCustomersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResults" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchResults">
+    <xs:sequence>
+      <xs:element name="resultCount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="results" nillable="true" type="tns:policyClaimLookup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FdwInquiryException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchFDW">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fdwCriteria" type="tns:serviceSearchCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchFDWResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResults" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ping">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="pingResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStatus">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retrieveECFInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ecfCriteria" type="tns:serviceSearchCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retrieveECFInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResults" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refreshCprProperties">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="refreshCprPropertiesResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="CommonUtilException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVersion">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="logLevel" type="xs:string" />
+      <xs:element minOccurs="0" name="loggerName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevelResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="checkDependencies">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="checkDependenciesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchRenewals">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dprCriteria" type="tns:serviceSearchCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchRenewalsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:aPolicyRenewals" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="aPolicyRenewals">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="auditFreq" type="xs:string" />
+      <xs:element minOccurs="0" name="autoFastInd" type="xs:string" />
+      <xs:element minOccurs="0" name="billingAccount" type="xs:string" />
+      <xs:element minOccurs="0" name="canNr" type="xs:string" />
+      <xs:element minOccurs="0" name="canNrRsn" type="xs:string" />
+      <xs:element minOccurs="0" name="classOfBusiness" type="xs:string" />
+      <xs:element minOccurs="0" name="creationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="currentProfitCenter" type="xs:string" />
+      <xs:element minOccurs="0" name="customerNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="dailyPolicyId" type="xs:decimal" />
+      <xs:element minOccurs="0" name="divIdCode" type="xs:string" />
+      <xs:element minOccurs="0" name="facRe" type="xs:string" />
+      <xs:element minOccurs="0" name="fieldCode" type="xs:string" />
+      <xs:element minOccurs="0" name="fieldDesc" type="xs:string" />
+      <xs:element minOccurs="0" name="futureTermInd" type="xs:decimal" />
+      <xs:element minOccurs="0" name="gaiFeatureCnt" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredCityState" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredName" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredNameCont" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredStreetAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredZipCode" type="xs:string" />
+      <xs:element minOccurs="0" name="ioFeatureCnt" type="xs:string" />
+      <xs:element minOccurs="0" name="lastUpdateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="newRenewType" type="xs:string" />
+      <xs:element minOccurs="0" name="openFeatureCnt" type="xs:string" />
+      <xs:element minOccurs="0" name="originalUnderwriterDate" type="xs:string" />
+      <xs:element minOccurs="0" name="originalUnderwriterId" type="xs:string" />
+      <xs:element minOccurs="0" name="policyEffectiveDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="policyExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="policyExpirationYearMonth" type="xs:string" />
+      <xs:element minOccurs="0" name="policyId" type="xs:decimal" />
+      <xs:element minOccurs="0" name="policyModule" type="xs:string" />
+      <xs:element minOccurs="0" name="policyNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="policyState" type="xs:string" />
+      <xs:element minOccurs="0" name="policyStatus" type="xs:string" />
+      <xs:element minOccurs="0" name="policySymbol" type="xs:string" />
+      <xs:element minOccurs="0" name="policyVersionCd" type="xs:string" />
+      <xs:element minOccurs="0" name="previousPolicyNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="producerACode" type="xs:string" />
+      <xs:element minOccurs="0" name="producerADesc" type="xs:string" />
+      <xs:element minOccurs="0" name="profitCenterDesc" type="xs:string" />
+      <xs:element minOccurs="0" name="sicCode" type="xs:string" />
+      <xs:element minOccurs="0" name="sourceSystemId" type="xs:decimal" />
+      <xs:element minOccurs="0" name="sourceSystemName" type="xs:string" />
+      <xs:element minOccurs="0" name="taxonomyCode" type="xs:string" />
+      <xs:element minOccurs="0" name="territoryCode" type="xs:string" />
+      <xs:element minOccurs="0" name="territoryDesc" type="xs:string" />
+      <xs:element minOccurs="0" name="total5YrLossRatio" type="xs:string" />
+      <xs:element minOccurs="0" name="total5YrWrittenPremium" type="xs:string" />
+      <xs:element minOccurs="0" name="total5yrIncurredLosses" type="xs:string" />
+      <xs:element minOccurs="0" name="totalEarnedPremium" type="xs:string" />
+      <xs:element minOccurs="0" name="totalFeatureCnt" type="xs:string" />
+      <xs:element minOccurs="0" name="totalIncidentCnt" type="xs:string" />
+      <xs:element minOccurs="0" name="totalIncurredLosses" type="xs:string" />
+      <xs:element minOccurs="0" name="totalLossRatio" type="xs:string" />
+      <xs:element minOccurs="0" name="totalOriginalPremium" type="xs:string" />
+      <xs:element minOccurs="0" name="totalWrittenPremium" type="xs:string" />
+      <xs:element minOccurs="0" name="underwritingCode" type="xs:string" />
+      <xs:element minOccurs="0" name="updatedUnderwriterDate" type="xs:string" />
+      <xs:element minOccurs="0" name="updatedUnderwriterId" type="xs:string" />
+      <xs:element minOccurs="0" name="zipCodeCity" type="xs:string" />
+      <xs:element minOccurs="0" name="zipCodeState" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="operator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="StartsWith" />
+      <xs:enumeration value="Contains" />
+      <xs:enumeration value="Equals" />
+      <xs:enumeration value="ContainsWithin" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

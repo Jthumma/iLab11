@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2E9CA37-9D59-42C6-8CF7-56FD1488A7C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.gaic.insuredPortal.Provider.WcfServices</RootNamespace>
+    <AssemblyName>com.gaic.insuredPortal.Provider.WcfServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="GAIC.Utility">
+      <HintPath>..\packages\GAIC.Util.2.0\lib\2.0\GAIC.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="adapters\EDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeFdwInquiryAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeLdapClientAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeSsoLoginPortClientAdapter.cs" />
+    <Compile Include="adapters\FdwInquiryAdapter.cs" />
+    <Compile Include="adapters\interfaces\IEDocClientAdapter.cs" />
+    <Compile Include="adapters\interfaces\IFdwInquiryAdapter.cs" />
+    <Compile Include="adapters\interfaces\ILdapClientAdapter.cs" />
+    <Compile Include="adapters\LdapClientAdapter.cs" />
+    <Compile Include="bindings\WcfBasicHttpBindingAdapter.cs" />
+    <Compile Include="bindings\WcfBasicNoneHttpBindingAdapter.cs" />
+    <Compile Include="bindings\WcfEndpointAddressAdapter.cs" />
+    <Compile Include="bindings\WcfSecuredBasicHttpBindingAdapter.cs" />
+    <Compile Include="adapters\interfaces\ISsoLoginPortClientAdapter.cs" />
+    <Compile Include="bindings\interfaces\IWcfEndpointAddressAdapter.cs" />
+    <Compile Include="bindings\interfaces\IWcfHttpBindingAdapter.cs" />
+    <Compile Include="providers\WcfEDocProvider.cs" />
+    <Compile Include="providers\WcfLdapProvider.cs" />
+    <Compile Include="providers\WcfSingleSignonProvider.cs" />
+    <Compile Include="Service References\ClaimsEcmService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\eDocMtomService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FdwInquiryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LdapService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SSOLoginService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="adapters\SsoLoginPortClientAdapter.cs" />
+    <Compile Include="WcfServiceMapper.cs" />
+    <Compile Include="WcfServicesBootstrap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\ClaimsEcmService\claims.wsdl" />
+    <None Include="Service References\ClaimsEcmService\com.gaic.insuredPortal.Provider.WcfServices.ClaimsEcmService.AddDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClaimsEcmService\com.gaic.insuredPortal.Provider.WcfServices.ClaimsEcmService.Document.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClaimsEcmService\com.gaic.insuredPortal.Provider.WcfServices.ClaimsEcmService.MergeDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.AddCustomerDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.AddDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.CheckInResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.CheckInWithAnnotationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.CheckInWithUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.Document.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.statusCode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eDocMtomService\edoc.wsdl" />
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.aPolicyRenewals.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.changeLogLevelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.checkDependenciesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.getStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.getVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.pingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.retrieveECFInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.searchCustomersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.searchFDWResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.searchRenewalsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.searchResults.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FdwInquiryService\FdwInquiryServiceService.wsdl" />
+    <None Include="Service References\FdwInquiryService\wsdlfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.addGroupsToPersonResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.batchUpdateResponseDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.changeLogLevelResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.checkDependenciesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.getGroupMembershipForGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.getGroupMembershipResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.getGroupMembersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.getGroupResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.getParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.getPersonResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.getVersionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.groupDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.isMemberResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.personDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.pingResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.removeGroupsFromPersonResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\com.gaic.insuredPortal.Provider.WcfServices.LdapService.searchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LdapService\LdapServiceService.wsdl" />
+    <None Include="Service References\LdapService\wsdlfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SSOLoginService\com.gaic.insuredPortal.Provider.WcfServices.SSOLoginService.loginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SSOLoginService\SSOLoginService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ClaimsEcmService\" />
+    <WCFMetadataStorage Include="Service References\eDocMtomService\" />
+    <WCFMetadataStorage Include="Service References\FdwInquiryService\" />
+    <WCFMetadataStorage Include="Service References\LdapService\" />
+    <WCFMetadataStorage Include="Service References\SSOLoginService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eDocMtomService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eDocMtomService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eDocMtomService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\com.gaic.insuredPortal.Core.Domain\com.gaic.insuredPortal.Core.Domain.csproj">
+      <Project>{3ACA60D5-9529-45E0-A580-5E6A3AAA6D21}</Project>
+      <Name>com.gaic.insuredPortal.Core.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.gaic.insuredPortal.Provider.Cpr\com.gaic.insuredPortal.Provider.Cpr.csproj">
+      <Project>{6ffcabbd-ea11-4494-a934-8862dd68d960}</Project>
+      <Name>com.gaic.insuredPortal.Provider.Cpr</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SSOLoginService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SSOLoginService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SSOLoginService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LdapService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LdapService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LdapService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FdwInquiryService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FdwInquiryService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FdwInquiryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClaimsEcmService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClaimsEcmService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClaimsEcmService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

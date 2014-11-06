@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="com.gaic.insuredPortal.WebApi.WebApiApplication" Language="C#" %>
