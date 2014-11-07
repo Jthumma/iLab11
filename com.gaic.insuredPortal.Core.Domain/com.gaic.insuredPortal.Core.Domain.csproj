@@ -53,9 +53,11 @@
   <ItemGroup>
     <Compile Include="interfaces\provider\ContextType.cs" />
     <Compile Include="interfaces\provider\IBcPortalProvider.cs" />
+    <Compile Include="interfaces\provider\IEdwPsarProvider.cs" />
     <Compile Include="interfaces\provider\IHttpContextAdapter.cs" />
     <Compile Include="interfaces\provider\IHttpContextStrategyProvider.cs" />
     <Compile Include="interfaces\provider\IIdvConsumerProvider.cs" />
+    <Compile Include="interfaces\provider\IPermissionProvider.cs" />
     <Compile Include="models\AddressModel.cs" />
     <Compile Include="models\AgentModel.cs" />
     <Compile Include="models\ClaimsModel.cs" />
@@ -70,11 +72,12 @@
     <Compile Include="interfaces\service\IAuthorizationService.cs" />
     <Compile Include="interfaces\service\IClaimsService.cs" />
     <Compile Include="interfaces\service\IPolicyService.cs" />
-    <Compile Include="LookupListItem.cs" />
-    <Compile Include="LookupListItemRole.cs" />
+    <Compile Include="models\ListItemModel.cs" />
+    <Compile Include="models\RoleItemModel.cs" />
+    <Compile Include="models\PermissionModel.cs" />
     <Compile Include="models\PolicyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="domain\User.cs" />
+    <Compile Include="models\UserModel.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,8 @@
-﻿namespace com.gaic.insuredPortal.Core.Domain
+﻿namespace com.gaic.insuredPortal.Core.Domain.models
 {
-    public class LookupListItem
+    public class ListItemModel
     {
-        public LookupListItem(string code, string description)
+        public ListItemModel(string code, string description)
         {
             Code = code;
             Description = description;

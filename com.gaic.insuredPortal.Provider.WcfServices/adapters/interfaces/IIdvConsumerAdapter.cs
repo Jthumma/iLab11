@@ -2,5 +2,6 @@
 {
     public interface IIdvConsumerAdapter
     {
+        bool Ping(string token);
     }
 }

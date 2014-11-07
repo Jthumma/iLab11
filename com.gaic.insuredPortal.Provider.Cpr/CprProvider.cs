@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using com.gaic.insuredPortal.Core.Domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
+using com.gaic.insuredPortal.Core.Domain.models;
 
 namespace com.gaic.insuredPortal.Provider.Cpr
 {
@@ -33,7 +34,7 @@ namespace com.gaic.insuredPortal.Provider.Cpr
             _cprProviderAdapter.RefreshCpr();
         }
 
-        public List<LookupListItem> GetCprList()
+        public List<ListItemModel> GetCprList()
         {
             return _cprProviderAdapter.GetCprList();
         }

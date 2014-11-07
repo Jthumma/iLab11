@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-using com.gaic.insuredPortal.Core.Domain.domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
+using com.gaic.insuredPortal.Core.Domain.models;
 
 namespace com.gaic.insuredPortal.Provider.HttpContext
 {
@@ -37,7 +37,7 @@ namespace com.gaic.insuredPortal.Provider.HttpContext
             string smGroups = System.Web.HttpContext.Current != null
                 ? System.Web.HttpContext.Current.Request.Headers["GROUPS"]
                 : null;
-            return User.ParseLdapGroups(smGroups);
+            return UserModel.ParseLdapGroups(smGroups);
         }
 
         public string GetToken()
@@ -58,17 +58,17 @@ namespace com.gaic.insuredPortal.Provider.HttpContext
             return false;
         }
 
-        public void StoreAuthorizedUser(User user)
+        public void StoreAuthorizedUser(UserModel userModel)
         {
             //do nothing
         }
 
-        public User GetUser()
+        public UserModel GetUser()
         {
             string userId = GetUserName();
             if (String.IsNullOrEmpty(userId)) return null;
 
-            return new User
+            return new UserModel
             {
                 UserId = userId,
                 UniversalId = GetUserUniversalId(),
@@ -77,7 +77,7 @@ namespace com.gaic.insuredPortal.Provider.HttpContext
             };
         }
 
-        public User ClearUser()
+        public UserModel ClearUser()
         {
             throw new NotImplementedException();
         }
@@ -86,6 +86,21 @@ namespace com.gaic.insuredPortal.Provider.HttpContext
         {
             return System.Web.HttpContext.Current != null
                 ? System.Web.HttpContext.Current.Session.SessionID
+                : null;
+        }
+
+        public void ApplyPermissions(PermissionModel permission)
+        {
+            if (System.Web.HttpContext.Current != null)
+            {
+                System.Web.HttpContext.Current.Session["PERMISSIONSET"] = permission;
+            }
+        }
+
+        public PermissionModel GetPermissions()
+        {
+            return System.Web.HttpContext.Current != null
+                ? System.Web.HttpContext.Current.Session["PERMISSIONSET"] as PermissionModel
                 : null;
         }
     }

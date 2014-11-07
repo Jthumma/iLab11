@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using com.gaic.insuredPortal.Core.Domain;
-using com.gaic.insuredPortal.Core.Domain.domain;
+using com.gaic.insuredPortal.Core.Domain.models;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.LdapService;
@@ -26,16 +26,16 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             GC.SuppressFinalize(this);
         }
 
-        public User GetPerson(string userId, string token)
+        public UserModel GetPerson(string userId, string token)
         {
             var request = new personDto {vid = userId};
 
             SecureSoapContext.AttachSecurityToken(_ldapServiceClient.InnerChannel, token);
             personDto response = _ldapServiceClient.getPerson(request);
 
-            User user = MapPersonToUser(response);
-            user.Token = token;
-            return user;
+            UserModel userModel = MapPersonToUser(response);
+            userModel.Token = token;
+            return userModel;
         }
 
         public bool Ping(string token)
@@ -46,14 +46,14 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             return returnValue > 0;
         }
 
-        public List<User> GetPersonsInRole(string roleNameWithPrefix, string token)
+        public List<UserModel> GetPersonsInRole(string roleNameWithPrefix, string token)
         {
             var request = new groupDto {name = roleNameWithPrefix};
 
             SecureSoapContext.AttachSecurityToken(_ldapServiceClient.InnerChannel, token);
             personDto[] response = _ldapServiceClient.getGroupMembers(request, false);
 
-            var users = new List<User>();
+            var users = new List<UserModel>();
             if (Utils.HasRows<personDto>(response)) users.AddRange(response.Select(MapPersonToUser));
             return users;
         }
@@ -71,10 +71,10 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             return roles.OrderBy(x => x).ToList();
         }
 
-        private static User MapPersonToUser(personDto personDto)
+        private static UserModel MapPersonToUser(personDto personDto)
         {
-            List<LookupListItemRole> roles = LookupListItemRole.MapToRoles(GenerateGroupList(personDto.memberOf));
-            var user = new User
+            List<RoleItemModel> roles = RoleItemModel.MapToRoles(GenerateGroupList(personDto.memberOf));
+            var user = new UserModel
             {
                 UserId = personDto.vid,
                 UniversalId = personDto.hid,

@@ -60,6 +60,7 @@
     <Compile Include="adapters\EDocClientAdapter.cs" />
     <Compile Include="adapters\fakes\FakeBcPortalAdapter.cs" />
     <Compile Include="adapters\fakes\FakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeEdwPsarAdapter.cs" />
     <Compile Include="adapters\fakes\FakeFdwInquiryAdapter.cs" />
     <Compile Include="adapters\fakes\FakeIdvConsumerAdapter.cs" />
     <Compile Include="adapters\fakes\FakeLdapClientAdapter.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="adapters\IdvConsumerAdapter.cs" />
     <Compile Include="adapters\interfaces\IBcPortalAdapter.cs" />
     <Compile Include="adapters\interfaces\IEDocClientAdapter.cs" />
+    <Compile Include="adapters\interfaces\IEdwPsarAdapter.cs" />
     <Compile Include="adapters\interfaces\IFdwInquiryAdapter.cs" />
     <Compile Include="adapters\interfaces\IIdvConsumerAdapter.cs" />
     <Compile Include="adapters\interfaces\ILdapClientAdapter.cs" />
@@ -79,6 +81,12 @@
     <Compile Include="adapters\interfaces\ISsoLoginPortClientAdapter.cs" />
     <Compile Include="bindings\interfaces\IWcfEndpointAddressAdapter.cs" />
     <Compile Include="bindings\interfaces\IWcfHttpBindingAdapter.cs" />
+    <Compile Include="adapters\EdwPsarAdapter.cs" />
+    <Compile Include="providers\permissions\IRolePermissionAdapter.cs" />
+    <Compile Include="providers\permissions\PermissionProvider.cs" />
+    <Compile Include="providers\permissions\PolicyAdminRolePermissionAdapter.cs" />
+    <Compile Include="providers\permissions\PolicyViewRolePermissionAdapter.cs" />
+    <Compile Include="providers\WcfEdwPsarProvider.cs" />
     <Compile Include="providers\WcfBcPortalProvider.cs" />
     <Compile Include="providers\WcfEDocProvider.cs" />
     <Compile Include="providers\WcfIdvConsumerProvider.cs" />
@@ -94,7 +102,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ClaimsMobileService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\eDocMtomService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EdwPsarService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -177,6 +195,10 @@
     <None Include="Service References\ClaimsEcmService\com.gaic.insuredPortal.Provider.WcfServices.ClaimsEcmService.MergeDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ClaimsMobileService\ClaimCenterAPIService.wsdl" />
+    <None Include="Service References\ClaimsMobileService\wsdlfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.AddCustomerDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -199,6 +221,55 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\eDocMtomService\edoc.wsdl" />
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.changeLogLevelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.checkDependenciesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.equineName.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.findPolicyEquineNamesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.getEquineLookupValuesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.getEquineNamesMapResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.getVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.pingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.policySearchEquineNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.policySearchResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.policyTerm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.referenceType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.retrieveEDWPolicyTermResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.searchAndRetrieveLatestEDWPolicyTermResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\com.gaic.insuredPortal.Provider.WcfServices.EdwPsarService.searchEDWResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EdwPsarService\EDWPolicySearchAndRetrievalService.wsdl" />
+    <None Include="Service References\EdwPsarService\wsdlfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\FdwInquiryService\com.gaic.insuredPortal.Provider.WcfServices.FdwInquiryService.aPolicyRenewals.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -378,7 +449,9 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BcPortalService\" />
     <WCFMetadataStorage Include="Service References\ClaimsEcmService\" />
+    <WCFMetadataStorage Include="Service References\ClaimsMobileService\" />
     <WCFMetadataStorage Include="Service References\eDocMtomService\" />
+    <WCFMetadataStorage Include="Service References\EdwPsarService\" />
     <WCFMetadataStorage Include="Service References\FdwInquiryService\" />
     <WCFMetadataStorage Include="Service References\IdvConsumerService\" />
     <WCFMetadataStorage Include="Service References\LdapService\" />
@@ -474,6 +547,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\BcPortalService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EdwPsarService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EdwPsarService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EdwPsarService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClaimsMobileService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClaimsMobileService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClaimsMobileService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

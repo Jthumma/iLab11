@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using com.gaic.insuredPortal.Core.Domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
+using com.gaic.insuredPortal.Core.Domain.models;
 using Utility.CPR;
 
 namespace com.gaic.insuredPortal.Provider.Cpr
@@ -28,8 +29,8 @@ namespace com.gaic.insuredPortal.Provider.Cpr
 
         public bool PropertyExists(string propertyName)
         {
-            List<LookupListItem> list = GetCprList();
-            if (!Utils.HasRows<LookupListItem>(list)) return false;
+            List<ListItemModel> list = GetCprList();
+            if (!Utils.HasRows<ListItemModel>(list)) return false;
             return list.FirstOrDefault(x => x.Code == _cprPropertyConfigurer.Namespace + propertyName) != null;
         }
 
@@ -43,14 +44,14 @@ namespace com.gaic.insuredPortal.Provider.Cpr
             _cprProvider = new CPRPropertyProvider(_cprPropertyConfigurer.Namespace, GetEnvLevel());
         }
 
-        public List<LookupListItem> GetCprList()
+        public List<ListItemModel> GetCprList()
         {
             Dictionary<string, PropertyValue> dict = _cprProvider.getCPRDictionary();
             IOrderedEnumerable<KeyValuePair<string, PropertyValue>> sortedDict = dict.Where(
                 keyValuePair => keyValuePair.Key.StartsWith(_cprPropertyConfigurer.Namespace))
                 .OrderBy(keyValuePair => keyValuePair.Key.ToLower());
 
-            return sortedDict.Select(keyValuePair => new LookupListItem(keyValuePair.Key, keyValuePair.Value)).ToList();
+            return sortedDict.Select(keyValuePair => new ListItemModel(keyValuePair.Key, keyValuePair.Value)).ToList();
         }
     }
 }

@@ -15,13 +15,16 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
         private static void MapEDocMTomDocument()
         {
             Mapper.CreateMap<Document, PolicyModel>()
-                .ForMember(d => d.EffDate, opt => opt.Ignore())
+                .ForMember(d => d.EffectiveDate, opt => opt.Ignore())
+                .ForMember(d => d.ExpirationDate, opt => opt.Ignore())
                 .ForMember(d => d.Mod, opt => opt.Ignore())
                 .ForMember(d => d.Number, opt => opt.Ignore())
                 .ForMember(d => d.PolicyId, opt => opt.Ignore())
                 .ForMember(d => d.Product, opt => opt.Ignore())
                 .ForMember(d => d.Symbol, opt => opt.Ignore())
-                .ForMember(d => d.Version, opt => opt.Ignore());
+                .ForMember(d => d.Version, opt => opt.Ignore())
+                .ForMember(d => d.Status, opt => opt.Ignore())
+                .ForMember(d => d.Agent, opt => opt.Ignore());
         }
     }
 }

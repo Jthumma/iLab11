@@ -15,6 +15,27 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             _idvConsumerServiceClient = new IdvConsumerServiceClient(bindingAdapter.Binding,
                 endpointAddressAdapter.EndpointAddress);
 
+            //_idvConsumerServiceClient.authenticate();
+            //_idvConsumerServiceClient.changePassword();
+            //_idvConsumerServiceClient.checkDependencies();
+            //_idvConsumerServiceClient.createUser();
+            //_idvConsumerServiceClient.deleteUser();
+            //_idvConsumerServiceClient.describePasswordPolicy();
+            //_idvConsumerServiceClient.generatePassword();
+            //_idvConsumerServiceClient.getChallengesForSetup();
+            //_idvConsumerServiceClient.getRandomChallenges();
+            //_idvConsumerServiceClient.getUserByDn();
+            //_idvConsumerServiceClient.getUserByHid();
+            //_idvConsumerServiceClient.getUserByVid();
+            //_idvConsumerServiceClient.getVersion();
+            
+            //_idvConsumerServiceClient.refreshCprProperties();
+            //_idvConsumerServiceClient.resetPassword();
+            //_idvConsumerServiceClient.saveChallengeResponses();
+            //_idvConsumerServiceClient.search();
+            //_idvConsumerServiceClient.updateUser();
+            //_idvConsumerServiceClient.userHasSetupResponses();
+            //_idvConsumerServiceClient.validateChallegeResponses();
 
         }
 
@@ -32,6 +53,12 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
                 _idvConsumerServiceClient.Close();
             }
             // free native resources
+        }
+
+        public bool Ping(string token)
+        {
+            var value = _idvConsumerServiceClient.ping();
+            return value > 0;
         }
     }
 }

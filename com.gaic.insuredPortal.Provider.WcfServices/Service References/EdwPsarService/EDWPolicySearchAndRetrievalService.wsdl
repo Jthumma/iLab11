@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/wsdl/jms/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://psr.services.gaic.com/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ns0="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:ns3="http://www.w3.org/2006/05/addressing/wsdl" name="EDWPolicySearchAndRetrievalService" targetNamespace="http://psr.services.gaic.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:UsingPolicy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" wsdl:Required="true" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SecurityHeader MustManifestEncryption="true" MustPrepend="true" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SecurityTokens" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getVersion_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="checkDependencies_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="changeLogLevel_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ping_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="refreshCprProperties_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="findPolicyEquineNames_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getEquineNamesMap_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getEquineLookupValues_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="searchAndRetrieveLatestEDWPolicyTerm_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="retrieveEDWPolicyTerm_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="searchEDW_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="./wsdlfile.asvc?keyid=FDD7-HgSxhojWbvM5EEkB-940E23A0" namespace="http://psr.services.gaic.com/" />
+    </xsd:schema>
+  </types>
+  <message name="changeLogLevel">
+    <part name="parameters" element="tns:changeLogLevel" />
+  </message>
+  <message name="getEquineNamesMap">
+    <part name="parameters" element="tns:getEquineNamesMap" />
+  </message>
+  <message name="getEquineNamesMapResponse">
+    <part name="parameters" element="tns:getEquineNamesMapResponse" />
+  </message>
+  <message name="getVersion">
+    <part name="parameters" element="tns:getVersion" />
+  </message>
+  <message name="CommonUtilException">
+    <part name="fault" element="tns:CommonUtilException" />
+  </message>
+  <message name="refreshCprProperties">
+    <part name="parameters" element="tns:refreshCprProperties" />
+  </message>
+  <message name="searchEDWResponse">
+    <part name="parameters" element="tns:searchEDWResponse" />
+  </message>
+  <message name="ping">
+    <part name="parameters" element="tns:ping" />
+  </message>
+  <message name="findPolicyEquineNamesResponse">
+    <part name="parameters" element="tns:findPolicyEquineNamesResponse" />
+  </message>
+  <message name="retrieveEDWPolicyTerm">
+    <part name="parameters" element="tns:retrieveEDWPolicyTerm" />
+  </message>
+  <message name="refreshCprPropertiesResponse">
+    <part name="parameters" element="tns:refreshCprPropertiesResponse" />
+  </message>
+  <message name="getEquineLookupValuesResponse">
+    <part name="parameters" element="tns:getEquineLookupValuesResponse" />
+  </message>
+  <message name="checkDependenciesResponse">
+    <part name="parameters" element="tns:checkDependenciesResponse" />
+  </message>
+  <message name="checkDependencies">
+    <part name="parameters" element="tns:checkDependencies" />
+  </message>
+  <message name="searchEDW">
+    <part name="parameters" element="tns:searchEDW" />
+  </message>
+  <message name="GenericPolicySearchAndRetrievalException">
+    <part name="fault" element="tns:GenericPolicySearchAndRetrievalException" />
+  </message>
+  <message name="searchAndRetrieveLatestEDWPolicyTerm">
+    <part name="parameters" element="tns:searchAndRetrieveLatestEDWPolicyTerm" />
+  </message>
+  <message name="getVersionResponse">
+    <part name="parameters" element="tns:getVersionResponse" />
+  </message>
+  <message name="getEquineLookupValues">
+    <part name="parameters" element="tns:getEquineLookupValues" />
+  </message>
+  <message name="changeLogLevelResponse">
+    <part name="parameters" element="tns:changeLogLevelResponse" />
+  </message>
+  <message name="pingResponse">
+    <part name="parameters" element="tns:pingResponse" />
+  </message>
+  <message name="findPolicyEquineNames">
+    <part name="parameters" element="tns:findPolicyEquineNames" />
+  </message>
+  <message name="retrieveEDWPolicyTermResponse">
+    <part name="parameters" element="tns:retrieveEDWPolicyTermResponse" />
+  </message>
+  <message name="searchAndRetrieveLatestEDWPolicyTermResponse">
+    <part name="parameters" element="tns:searchAndRetrieveLatestEDWPolicyTermResponse" />
+  </message>
+  <portType name="EDWPolicySearchAndRetrievalServiceFacade">
+    <operation name="searchEDW">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/searchEDWRequest" message="tns:searchEDW" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/searchEDWResponse" message="tns:searchEDWResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/searchEDW/Fault/GenericPolicySearchAndRetrievalException" name="GenericPolicySearchAndRetrievalException" message="tns:GenericPolicySearchAndRetrievalException" />
+    </operation>
+    <operation name="retrieveEDWPolicyTerm">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/retrieveEDWPolicyTermRequest" message="tns:retrieveEDWPolicyTerm" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/retrieveEDWPolicyTermResponse" message="tns:retrieveEDWPolicyTermResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/retrieveEDWPolicyTerm/Fault/GenericPolicySearchAndRetrievalException" name="GenericPolicySearchAndRetrievalException" message="tns:GenericPolicySearchAndRetrievalException" />
+    </operation>
+    <operation name="searchAndRetrieveLatestEDWPolicyTerm">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/searchAndRetrieveLatestEDWPolicyTermRequest" message="tns:searchAndRetrieveLatestEDWPolicyTerm" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/searchAndRetrieveLatestEDWPolicyTermResponse" message="tns:searchAndRetrieveLatestEDWPolicyTermResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/searchAndRetrieveLatestEDWPolicyTerm/Fault/GenericPolicySearchAndRetrievalException" name="GenericPolicySearchAndRetrievalException" message="tns:GenericPolicySearchAndRetrievalException" />
+    </operation>
+    <operation name="getEquineLookupValues">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/getEquineLookupValuesRequest" message="tns:getEquineLookupValues" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/getEquineLookupValuesResponse" message="tns:getEquineLookupValuesResponse" />
+    </operation>
+    <operation name="getEquineNamesMap">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/getEquineNamesMapRequest" message="tns:getEquineNamesMap" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/getEquineNamesMapResponse" message="tns:getEquineNamesMapResponse" />
+    </operation>
+    <operation name="findPolicyEquineNames">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/findPolicyEquineNamesRequest" message="tns:findPolicyEquineNames" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/findPolicyEquineNamesResponse" message="tns:findPolicyEquineNamesResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/findPolicyEquineNames/Fault/GenericPolicySearchAndRetrievalException" name="GenericPolicySearchAndRetrievalException" message="tns:GenericPolicySearchAndRetrievalException" />
+    </operation>
+    <operation name="refreshCprProperties">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/refreshCprPropertiesRequest" message="tns:refreshCprProperties" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/refreshCprPropertiesResponse" message="tns:refreshCprPropertiesResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/refreshCprProperties/Fault/CommonUtilException" name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="ping">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/pingRequest" message="tns:ping" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/pingResponse" message="tns:pingResponse" />
+    </operation>
+    <operation name="changeLogLevel">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/changeLogLevelRequest" message="tns:changeLogLevel" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/changeLogLevelResponse" message="tns:changeLogLevelResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/changeLogLevel/Fault/CommonUtilException" name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="checkDependencies">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/checkDependenciesRequest" message="tns:checkDependencies" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/checkDependenciesResponse" message="tns:checkDependenciesResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/checkDependencies/Fault/CommonUtilException" name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="getVersion">
+      <input wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/getVersionRequest" message="tns:getVersion" />
+      <output wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/getVersionResponse" message="tns:getVersionResponse" />
+      <fault wsam:Action="http://psr.services.gaic.com/EDWPolicySearchAndRetrievalServiceFacade/getVersion/Fault/CommonUtilException" name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+  </portType>
+  <binding name="EDWPolicySearchAndRetrievalServiceFacadePortBinding" type="tns:EDWPolicySearchAndRetrievalServiceFacade">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="searchEDW">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#searchEDW_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GenericPolicySearchAndRetrievalException">
+        <soap:fault use="literal" name="GenericPolicySearchAndRetrievalException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="retrieveEDWPolicyTerm">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#retrieveEDWPolicyTerm_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GenericPolicySearchAndRetrievalException">
+        <soap:fault use="literal" name="GenericPolicySearchAndRetrievalException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="searchAndRetrieveLatestEDWPolicyTerm">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#searchAndRetrieveLatestEDWPolicyTerm_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GenericPolicySearchAndRetrievalException">
+        <soap:fault use="literal" name="GenericPolicySearchAndRetrievalException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEquineLookupValues">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getEquineLookupValues_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEquineNamesMap">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getEquineNamesMap_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="findPolicyEquineNames">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#findPolicyEquineNames_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="GenericPolicySearchAndRetrievalException">
+        <soap:fault use="literal" name="GenericPolicySearchAndRetrievalException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="refreshCprProperties">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#refreshCprProperties_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="ping">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ping_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="changeLogLevel">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#changeLogLevel_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="checkDependencies">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#checkDependencies_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getVersion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getVersion_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="EDWPolicySearchAndRetrievalService">
+    <port name="EDWPolicySearchAndRetrievalServiceFacadePort" binding="tns:EDWPolicySearchAndRetrievalServiceFacadePortBinding">
+      <soap:address location="https://sstdev.td.afg:1024/sst/edw.psar_8" />
+    </port>
+  </service>
+</definitions>

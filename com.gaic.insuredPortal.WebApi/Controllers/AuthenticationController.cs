@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using com.gaic.insuredPortal.Core.Domain.domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.service;
+using com.gaic.insuredPortal.Core.Domain.models;
 using log4net;
 
 namespace com.gaic.insuredPortal.WebApi.Controllers
@@ -28,8 +28,8 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
         {
             _log.DebugFormat("Requesting authentication for {0}", USER);
 
-            User user = _authorizationService.AuthorizeUser(false);
-            if (user == null)
+            UserModel userModel = _authorizationService.AuthorizeUser(false);
+            if (userModel == null)
             {
                 _log.DebugFormat("Authentication for {0} failed", USER);
                 ViewBag.AuthenticationMessage = String.Format("Authentication for {0} failed", USER);

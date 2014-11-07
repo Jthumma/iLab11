@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace com.gaic.insuredPortal.Core.Domain.domain
+namespace com.gaic.insuredPortal.Core.Domain.models
 {
-    public class User
+    public class UserModel
     {
         public string UserId { get; set; }
         public string UniversalId { get; set; }
@@ -19,7 +19,8 @@ namespace com.gaic.insuredPortal.Core.Domain.domain
         public string Division { get; set; }
         public string Department { get; set; }
         public string Token { get; set; }
-        public List<LookupListItemRole> Roles { get; set; }
+        public List<RoleItemModel> Roles { get; set; }
+        public PermissionModel Permission { get; set; }
 
         public static List<string> ParseLdapGroups(string userGroups)
         {

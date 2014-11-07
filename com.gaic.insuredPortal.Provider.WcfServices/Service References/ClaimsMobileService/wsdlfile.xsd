@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://claimcenterws.cc.integration.gaic.com/" targetNamespace="http://claimcenterws.cc.integration.gaic.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ClaimCenterWSException" nillable="true" type="tns:faultBean" />
+  <xs:element name="NewClaimRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Claim">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LossType" type="tns:LossTypeTypeList" />
+              <xs:element name="LossDate" type="xs:date" />
+              <xs:element name="ReportedDate" type="xs:date" />
+              <xs:element name="IncidentReport" type="xs:boolean" />
+              <xs:element name="LossLocation" type="tns:AddressType" />
+              <xs:element minOccurs="0" name="LossCause" type="tns:LossCauseTypeList" />
+              <xs:element name="Policy" type="tns:PolicyType" />
+              <xs:element minOccurs="0" name="ReportedBy" type="tns:ContactType" />
+              <xs:element minOccurs="0" name="LossDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="BusinessUnitExt" type="tns:BusinessUnitExtTypeList" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addClaimToClaimCenter" type="tns:addClaimToClaimCenter" />
+  <xs:element name="addClaimToClaimCenterResponse" type="tns:addClaimToClaimCenterResponse" />
+  <xs:element name="getVersion" type="tns:getVersion" />
+  <xs:element name="getVersionResponse" type="tns:getVersionResponse" />
+  <xs:element name="isClaimCenterOperational" type="tns:isClaimCenterOperational" />
+  <xs:element name="isClaimCenterOperationalResponse" type="tns:isClaimCenterOperationalResponse" />
+  <xs:element name="isProducerServiceOperational" type="tns:isProducerServiceOperational" />
+  <xs:element name="isProducerServiceOperationalResponse" type="tns:isProducerServiceOperationalResponse" />
+  <xs:complexType name="addClaimToClaimCenter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Claim">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="LossType" type="tns:LossTypeTypeList" />
+                  <xs:element name="LossDate" type="xs:date" />
+                  <xs:element name="ReportedDate" type="xs:date" />
+                  <xs:element name="IncidentReport" type="xs:boolean" />
+                  <xs:element name="LossLocation" type="tns:AddressType" />
+                  <xs:element minOccurs="0" name="LossCause" type="tns:LossCauseTypeList" />
+                  <xs:element name="Policy" type="tns:PolicyType" />
+                  <xs:element minOccurs="0" name="ReportedBy" type="tns:ContactType" />
+                  <xs:element minOccurs="0" name="LossDescription" type="xs:string" />
+                  <xs:element minOccurs="0" name="BusinessUnitExt" type="tns:BusinessUnitExtTypeList" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressLine1" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine2" type="xs:string" />
+      <xs:element minOccurs="0" name="City" type="xs:string" />
+      <xs:element name="State" type="xs:string" />
+      <xs:element minOccurs="0" name="PostalCode" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressTypeType" type="tns:AddressTypeList" />
+      <xs:element minOccurs="0" name="PrimaryFlag" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PolicyType">
+    <xs:sequence>
+      <xs:element name="PolicyNumber" type="xs:string" />
+      <xs:element name="PolicyType" type="xs:string" />
+      <xs:element name="PolicySuffix" type="xs:string" />
+      <xs:element name="PolicyVersion" type="xs:string" />
+      <xs:element name="EffectiveDate" type="xs:date" />
+      <xs:element name="ExpirationDate" type="xs:date" />
+      <xs:element minOccurs="0" name="ProducerCode" type="xs:string" />
+      <xs:element minOccurs="0" name="Account" type="xs:string" />
+      <xs:element name="Insured" type="tns:ContactType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Properties" type="tns:PropertyType" />
+      <xs:element name="UnverifiedRsnExt" type="tns:PolicyUnverifiedReasonExtTypeList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactType">
+    <xs:sequence>
+      <xs:element name="Name" type="tns:ContactNameType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Address" type="tns:AddressType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmailAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Phone" type="tns:PhoneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactNameType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" type="xs:string" />
+      <xs:element name="LastName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PhoneType">
+    <xs:sequence>
+      <xs:element name="PhoneNumber" type="xs:string" />
+      <xs:element name="PhoneNumberType" type="tns:PhoneNumberTypeList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PropertyType">
+    <xs:sequence>
+      <xs:element name="Location" type="xs:string" />
+      <xs:element minOccurs="0" name="BarnName" type="xs:string" />
+      <xs:element minOccurs="0" name="Breed" type="tns:EquineBreedTypeList" />
+      <xs:element minOccurs="0" name="DateofBirth" type="xs:integer" />
+      <xs:element minOccurs="0" name="Sex" type="tns:EquineSexTypeList" />
+      <xs:element minOccurs="0" name="AnimalUse" type="tns:EquineUseTypeList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addClaimToClaimCenterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="faultBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isClaimCenterOperational">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="isClaimCenterOperationalResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isProducerServiceOperational">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isProducerServiceOperationalResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVersion">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="LossTypeTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EQUINE" />
+      <xs:enumeration value="AGRIPROPERTY" />
+      <xs:enumeration value="AGRILIABILITY" />
+      <xs:enumeration value="AGRIAUTO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AddressTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="home" />
+      <xs:enumeration value="business" />
+      <xs:enumeration value="other" />
+      <xs:enumeration value="mailing" />
+      <xs:enumeration value="Tax" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LossCauseTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="accident" />
+      <xs:enumeration value="cardiac" />
+      <xs:enumeration value="castration" />
+      <xs:enumeration value="colicgastric" />
+      <xs:enumeration value="dentalproblem" />
+      <xs:enumeration value="disease" />
+      <xs:enumeration value="eye" />
+      <xs:enumeration value="foalingbreeding" />
+      <xs:enumeration value="geneticcondition" />
+      <xs:enumeration value="hernia" />
+      <xs:enumeration value="infection" />
+      <xs:enumeration value="lameness" />
+      <xs:enumeration value="neurologiccondition" />
+      <xs:enumeration value="respiratoryillness" />
+      <xs:enumeration value="theft" />
+      <xs:enumeration value="tumorscancer" />
+      <xs:enumeration value="allother" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PhoneNumberTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="home" />
+      <xs:enumeration value="work" />
+      <xs:enumeration value="cell" />
+      <xs:enumeration value="fax" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EquineBreedTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="al" />
+      <xs:enumeration value="an" />
+      <xs:enumeration value="ap" />
+      <xs:enumeration value="ar" />
+      <xs:enumeration value="as" />
+      <xs:enumeration value="ba" />
+      <xs:enumeration value="be" />
+      <xs:enumeration value="ca" />
+      <xs:enumeration value="cl" />
+      <xs:enumeration value="co" />
+      <xs:enumeration value="cr" />
+      <xs:enumeration value="do" />
+      <xs:enumeration value="dw" />
+      <xs:enumeration value="fr" />
+      <xs:enumeration value="fx" />
+      <xs:enumeration value="gv" />
+      <xs:enumeration value="ge" />
+      <xs:enumeration value="ha" />
+      <xs:enumeration value="he" />
+      <xs:enumeration value="hf" />
+      <xs:enumeration value="ho" />
+      <xs:enumeration value="hp" />
+      <xs:enumeration value="ic" />
+      <xs:enumeration value="is" />
+      <xs:enumeration value="li" />
+      <xs:enumeration value="ll" />
+      <xs:enumeration value="lu" />
+      <xs:enumeration value="mc" />
+      <xs:enumeration value="mi" />
+      <xs:enumeration value="ml" />
+      <xs:enumeration value="mo" />
+      <xs:enumeration value="mt" />
+      <xs:enumeration value="mu" />
+      <xs:enumeration value="mx" />
+      <xs:enumeration value="nf" />
+      <xs:enumeration value="ns" />
+      <xs:enumeration value="ol" />
+      <xs:enumeration value="or" />
+      <xs:enumeration value="os" />
+      <xs:enumeration value="pa" />
+      <xs:enumeration value="pe" />
+      <xs:enumeration value="pf" />
+      <xs:enumeration value="pi" />
+      <xs:enumeration value="pl" />
+      <xs:enumeration value="pn" />
+      <xs:enumeration value="po" />
+      <xs:enumeration value="pr" />
+      <xs:enumeration value="qh" />
+      <xs:enumeration value="ra" />
+      <xs:enumeration value="rh" />
+      <xs:enumeration value="rt" />
+      <xs:enumeration value="sb" />
+      <xs:enumeration value="sf" />
+      <xs:enumeration value="sh" />
+      <xs:enumeration value="sr" />
+      <xs:enumeration value="ss" />
+      <xs:enumeration value="st" />
+      <xs:enumeration value="sw" />
+      <xs:enumeration value="tb" />
+      <xs:enumeration value="tr" />
+      <xs:enumeration value="tw" />
+      <xs:enumeration value="wb" />
+      <xs:enumeration value="we" />
+      <xs:enumeration value="wp" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EquineSexTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="a" />
+      <xs:enumeration value="b" />
+      <xs:enumeration value="c" />
+      <xs:enumeration value="d" />
+      <xs:enumeration value="f" />
+      <xs:enumeration value="g" />
+      <xs:enumeration value="h" />
+      <xs:enumeration value="m" />
+      <xs:enumeration value="o" />
+      <xs:enumeration value="r" />
+      <xs:enumeration value="s" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EquineUseTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ba" />
+      <xs:enumeration value="br" />
+      <xs:enumeration value="ct" />
+      <xs:enumeration value="cu" />
+      <xs:enumeration value="dr" />
+      <xs:enumeration value="dv" />
+      <xs:enumeration value="ev" />
+      <xs:enumeration value="fs" />
+      <xs:enumeration value="fo" />
+      <xs:enumeration value="ha" />
+      <xs:enumeration value="hj" />
+      <xs:enumeration value="mp" />
+      <xs:enumeration value="ot" />
+      <xs:enumeration value="pc" />
+      <xs:enumeration value="pf" />
+      <xs:enumeration value="pl" />
+      <xs:enumeration value="po" />
+      <xs:enumeration value="pr" />
+      <xs:enumeration value="ra" />
+      <xs:enumeration value="rc" />
+      <xs:enumeration value="re" />
+      <xs:enumeration value="ro" />
+      <xs:enumeration value="rp" />
+      <xs:enumeration value="sh" />
+      <xs:enumeration value="st" />
+      <xs:enumeration value="tr" />
+      <xs:enumeration value="wn" />
+      <xs:enumeration value="yr" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PolicyUnverifiedReasonExtTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="prepo" />
+      <xs:enumeration value="nopolicyfnd" />
+      <xs:enumeration value="nopolicyfnd_suit" />
+      <xs:enumeration value="nocoverage" />
+      <xs:enumeration value="iphoneclaim" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BusinessUnitExtTypeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ab" />
+      <xs:enumeration value="eq" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

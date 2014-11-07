@@ -1,11 +1,11 @@
-﻿using com.gaic.insuredPortal.Core.Domain.domain;
+﻿using com.gaic.insuredPortal.Core.Domain.models;
 
 namespace com.gaic.insuredPortal.Core.Domain.interfaces.service
 {
     public interface IAuthorizationService
     {
-        User GetAuthorizedUser();
-        void StoreAuthorizedUser(User user);
-        User AuthorizeUser(bool siteMinderOnly);
+        UserModel GetAuthorizedUser();
+        void StoreAuthorizedUser(UserModel userModel);
+        UserModel AuthorizeUser(bool siteMinderOnly);
     }
 }

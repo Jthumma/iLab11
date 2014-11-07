@@ -5,6 +5,7 @@ using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.providers;
+using com.gaic.insuredPortal.Provider.WcfServices.providers.permissions;
 using Ninject.Modules;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices
@@ -17,14 +18,17 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             RegisterProviders();
 
             //ADAPTERS
-            //RegisterAdapters();
-            RegisterFakeAdapters();
+            RegisterAdapters();
+            //RegisterFakeAdapters();
 
             //BINDINGS
             RegisterBindings();
 
             //ENDPOINTS
             RegisterEndpoints();
+
+            //PERMISSIONS
+            RegisterPermissions();
         }
 
         private void RegisterProviders()
@@ -34,6 +38,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IEDocProvider>().To<WcfEDocProvider>();
             Bind<IIdvConsumerProvider>().To<WcfIdvConsumerProvider>();
             Bind<IBcPortalProvider>().To<WcfBcPortalProvider>();
+            Bind<IEdwPsarProvider>().To<WcfEdwPsarProvider>();
+            Bind<IPermissionProvider>().To<PermissionProvider>();
         }
 
         private void RegisterAdapters()
@@ -43,6 +49,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IEDocClientAdapter>().To<EDocClientAdapter>().InSingletonScope();
             Bind<IIdvConsumerAdapter>().To<IdvConsumerAdapter>().InSingletonScope();
             Bind<IBcPortalAdapter>().To<BcPortalAdapter>().InSingletonScope();
+            Bind<IEdwPsarAdapter>().To<EdwPsarAdapter>().InSingletonScope();
         }
 
         private void RegisterFakeAdapters()
@@ -52,6 +59,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IEDocClientAdapter>().To<FakeEDocClientAdapter>().InSingletonScope();
             Bind<IIdvConsumerAdapter>().To<FakeIdvConsumerAdapter>().InSingletonScope();
             Bind<IBcPortalAdapter>().To<FakeBcPortalAdapter>().InSingletonScope();
+            Bind<IEdwPsarAdapter>().To<FakeEdwPsarAdapter>().InSingletonScope();
         }
 
         private void RegisterBindings()
@@ -76,22 +84,31 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
                 .WhenInjectedInto<LdapClientAdapter>()
                 .WithConstructorArgument("cprKey", "service.ldap.url");
 
-            //eDocMtom
+            //EDOC MTOM
             Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
                 .WhenInjectedInto<EDocClientAdapter>()
                 .WithConstructorArgument("cprKey", "service.eDocMtom.url");
 
-            //BCPORTAL
+            //BC PORTAL
             Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
                 .WhenInjectedInto<BcPortalAdapter>()
                 .WithConstructorArgument("cprKey", "service.bcPortal.url");
 
-            //idvConsumer
+            //IDV CONSUMER
             Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
                 .WhenInjectedInto<IdvConsumerAdapter>()
                 .WithConstructorArgument("cprKey", "service.idvConsumer.url");
 
-            
+            //EDW PSAR
+            Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
+                .WhenInjectedInto<IEdwPsarAdapter>()
+                .WithConstructorArgument("cprKey", "service.edwPsar.url");
+        }
+
+        private void RegisterPermissions()
+        {
+            Bind<IRolePermissionAdapter>().To<PolicyAdminRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<PolicyViewRolePermissionAdapter>();
         }
     }
 }

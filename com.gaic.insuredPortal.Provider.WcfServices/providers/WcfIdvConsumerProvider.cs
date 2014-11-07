@@ -11,5 +11,10 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
         {
             _idvConsumerAdapter = idvConsumerAdapter;
         }
+
+        public bool Ping(string token)
+        {
+            return _idvConsumerAdapter.Ping(token);
+        }
     }
 }

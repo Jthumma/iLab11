@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using com.gaic.insuredPortal.Core.Domain.domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.service;
+using com.gaic.insuredPortal.Core.Domain.models;
 using log4net;
 
 namespace com.gaic.insuredPortal.WebApi.Controllers
@@ -24,17 +24,17 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
             //return View();
 
             _log.DebugFormat("Verify previoulsy authenticated");
-            User user = _authorizationService.GetAuthorizedUser();
+            UserModel userModel = _authorizationService.GetAuthorizedUser();
 
-            if (user == null)
+            if (userModel == null)
             {
                 _log.DebugFormat("Redirecting to LoginLocal");
                 return RedirectToAction("Login", "Authentication");
             }
 
-            _log.DebugFormat("Authentication successful for user {0} from IPAddress {1} ", user.UserId, user.IpAddress);
-            _log.DebugFormat("StoreAuthorizedUser {0} ", user.UserId);
-            _authorizationService.StoreAuthorizedUser(user);
+            _log.DebugFormat("Authentication successful for user {0} from IPAddress {1} ", userModel.UserId, userModel.IpAddress);
+            _log.DebugFormat("StoreAuthorizedUser {0} ", userModel.UserId);
+            _authorizationService.StoreAuthorizedUser(userModel);
 
             _log.DebugFormat("Redirecting to Flex App");
             return RedirectToAction("Index", "Angular");

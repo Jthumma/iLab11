@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://psr.services.gaic.com/" targetNamespace="http://psr.services.gaic.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CommonUtilException" type="tns:CommonUtilException" />
+  <xs:element name="GenericPolicySearchAndRetrievalException" type="tns:GenericPolicySearchAndRetrievalException" />
+  <xs:element name="changeLogLevel" type="tns:changeLogLevel" />
+  <xs:element name="changeLogLevelResponse" type="tns:changeLogLevelResponse" />
+  <xs:element name="checkDependencies" type="tns:checkDependencies" />
+  <xs:element name="checkDependenciesResponse" type="tns:checkDependenciesResponse" />
+  <xs:element name="findPolicyEquineNames" type="tns:findPolicyEquineNames" />
+  <xs:element name="findPolicyEquineNamesResponse" type="tns:findPolicyEquineNamesResponse" />
+  <xs:element name="getEquineLookupValues" type="tns:getEquineLookupValues" />
+  <xs:element name="getEquineLookupValuesResponse" type="tns:getEquineLookupValuesResponse" />
+  <xs:element name="getEquineNamesMap" type="tns:getEquineNamesMap" />
+  <xs:element name="getEquineNamesMapResponse" type="tns:getEquineNamesMapResponse" />
+  <xs:element name="getVersion" type="tns:getVersion" />
+  <xs:element name="getVersionResponse" type="tns:getVersionResponse" />
+  <xs:element name="ping" type="tns:ping" />
+  <xs:element name="pingResponse" type="tns:pingResponse" />
+  <xs:element name="refreshCprProperties" type="tns:refreshCprProperties" />
+  <xs:element name="refreshCprPropertiesResponse" type="tns:refreshCprPropertiesResponse" />
+  <xs:element name="retrieveEDWPolicyTerm" type="tns:retrieveEDWPolicyTerm" />
+  <xs:element name="retrieveEDWPolicyTermResponse" type="tns:retrieveEDWPolicyTermResponse" />
+  <xs:element name="searchAndRetrieveLatestEDWPolicyTerm" type="tns:searchAndRetrieveLatestEDWPolicyTerm" />
+  <xs:element name="searchAndRetrieveLatestEDWPolicyTermResponse" type="tns:searchAndRetrieveLatestEDWPolicyTermResponse" />
+  <xs:element name="searchEDW" type="tns:searchEDW" />
+  <xs:element name="searchEDWResponse" type="tns:searchEDWResponse" />
+  <xs:complexType name="animal">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="barnName" type="xs:string" />
+          <xs:element name="birthYear" type="xs:int" />
+          <xs:element minOccurs="0" name="breed" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="foalBirthDate" type="xs:string" />
+          <xs:element minOccurs="0" name="gender" type="tns:referenceType" />
+          <xs:element name="mareInFoal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="primaryUse" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="purchaseDate" type="xs:string" />
+          <xs:element minOccurs="0" name="purchasePrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="secondaryUse" type="tns:referenceType" />
+          <xs:element name="soleOwnerInd" type="xs:boolean" />
+          <xs:element minOccurs="0" name="thouroughbredRegistration" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="riskItem" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="businessEffectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="riskType" type="tns:referenceType" />
+          <xs:element name="scheduleNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="primitive" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="actionType" type="tns:referenceType" />
+      <xs:element minOccurs="0" name="creationDate" type="xs:string" />
+      <xs:element name="ebiNumber" type="xs:long" />
+      <xs:element minOccurs="0" name="ebiText" type="xs:string" />
+      <xs:element name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="lastModificationDate" type="xs:string" />
+      <xs:element name="participationPcnt" type="xs:double" />
+      <xs:element minOccurs="0" name="polTermEbi" type="xs:string" />
+      <xs:element minOccurs="0" name="reinstatementDate" type="xs:string" />
+      <xs:element minOccurs="0" name="srcExtractTs" type="xs:string" />
+      <xs:element minOccurs="0" name="transEffDate" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="referenceType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string" />
+          <xs:element minOccurs="0" name="longDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="shortDescription" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="computerEquipment">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="computerClass" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="computerDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="farmBusiness">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="primaryFarmCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="secondaryFarmCategory" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="machine">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="machineCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="machineDetail" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="machineOtherDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="makeDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="model" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="serialNumber" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="yearBuilt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="structure">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="desc" type="xs:string" />
+          <xs:element minOccurs="0" name="yearBuilt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="watercraftEngine">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="builtYear" type="xs:string" />
+          <xs:element name="horsePower" type="xs:long" />
+          <xs:element minOccurs="0" name="manufacturerName" type="xs:string" />
+          <xs:element minOccurs="0" name="modelName" type="xs:string" />
+          <xs:element minOccurs="0" name="powerCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="watercraftBoat">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element name="boatLength" type="xs:long" />
+          <xs:element minOccurs="0" name="boatName" type="xs:string" />
+          <xs:element name="costNew" type="xs:double" />
+          <xs:element minOccurs="0" name="fuelTankMaterial" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="hullCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="hullCategoryOtherDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="hullDesign" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="hullDesignOtherDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="hullMaterial" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="hullSerialNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="manufacturerName" type="xs:string" />
+          <xs:element minOccurs="0" name="maximumSpeed" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="modelName" type="xs:string" />
+          <xs:element minOccurs="0" name="modelYear" type="xs:string" />
+          <xs:element name="presentValue" type="xs:double" />
+          <xs:element minOccurs="0" name="purchaseDate" type="xs:string" />
+          <xs:element minOccurs="0" name="registrationNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="waterNavigated" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="watercraftTrailer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="builtYear" type="xs:string" />
+          <xs:element minOccurs="0" name="manufacturerName" type="xs:string" />
+          <xs:element minOccurs="0" name="modelName" type="xs:string" />
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+          <xs:element name="trailerLength" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="management">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:party">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element name="number" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="party" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dbaName" type="xs:string" />
+          <xs:element minOccurs="0" name="driverLicenseFipsUsAlphaCd" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="driverLicenseNumberCd" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="formerName" type="xs:string" />
+          <xs:element minOccurs="0" name="fullName" type="xs:string" />
+          <xs:element minOccurs="0" name="industryTypeCd" type="xs:string" />
+          <xs:element minOccurs="0" name="industryTypeDesc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="internetAddresses" nillable="true" type="tns:internetAddress" />
+          <xs:element minOccurs="0" name="legalCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="locations" nillable="true" type="tns:location" />
+          <xs:element minOccurs="0" name="naics" type="tns:referenceType" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="partyRelationships" nillable="true" type="tns:partyRelationship" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="phoneNumbers" nillable="true" type="tns:phone" />
+          <xs:element minOccurs="0" name="role" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="subType" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="systemCatgCd" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="taxCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="taxId" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="internetAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address" type="xs:string" />
+          <xs:element name="primary" type="xs:boolean" />
+          <xs:element minOccurs="0" name="type" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="location">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address" type="tns:address" />
+          <xs:element minOccurs="0" name="locationType" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="primPlaceInd" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="riskLocationType" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="address">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoryCode" type="xs:string" />
+          <xs:element minOccurs="0" name="city" type="xs:string" />
+          <xs:element minOccurs="0" name="continent" type="xs:string" />
+          <xs:element minOccurs="0" name="country" type="xs:string" />
+          <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+          <xs:element minOccurs="0" name="county" type="xs:string" />
+          <xs:element minOccurs="0" name="countyCode" type="xs:string" />
+          <xs:element minOccurs="0" name="latitude" type="xs:string" />
+          <xs:element minOccurs="0" name="longitude" type="xs:string" />
+          <xs:element minOccurs="0" name="postalCode" type="xs:string" />
+          <xs:element name="primPlaceInd" type="xs:boolean" />
+          <xs:element minOccurs="0" name="state" type="xs:string" />
+          <xs:element minOccurs="0" name="stateCode" type="xs:string" />
+          <xs:element minOccurs="0" name="streetAddress1" type="xs:string" />
+          <xs:element minOccurs="0" name="streetAddress2" type="xs:string" />
+          <xs:element minOccurs="0" name="streetAddress3" type="xs:string" />
+          <xs:element minOccurs="0" name="streetAddress4" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="partyRelationship">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:perOrgMgmt">
+        <xs:sequence>
+          <xs:element name="parentPartyId" type="xs:long" />
+          <xs:element minOccurs="0" name="parentRole" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="relationshipCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="sourceProcessTS" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="perOrgMgmt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:party">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="management" type="tns:management" />
+          <xs:element minOccurs="0" name="organization" type="tns:organization" />
+          <xs:element minOccurs="0" name="person" type="tns:person" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="organization">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:party">
+        <xs:sequence>
+          <xs:element name="admitted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ambCode" type="xs:string" />
+          <xs:element minOccurs="0" name="code" type="xs:string" />
+          <xs:element minOccurs="0" name="isoCode" type="xs:string" />
+          <xs:element minOccurs="0" name="legalType" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="naicCode" type="xs:string" />
+          <xs:element minOccurs="0" name="naicGroupCode" type="xs:string" />
+          <xs:element minOccurs="0" name="nationalProducerCode" type="xs:string" />
+          <xs:element minOccurs="0" name="orgName" type="xs:string" />
+          <xs:element minOccurs="0" name="shortName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="person">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:party">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="birthDate" type="xs:string" />
+          <xs:element minOccurs="0" name="ethnicity" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="gender" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="lastName" type="xs:string" />
+          <xs:element minOccurs="0" name="maritalStatus" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="middleName" type="xs:string" />
+          <xs:element minOccurs="0" name="nationalProducerCode" type="xs:string" />
+          <xs:element minOccurs="0" name="ssn" type="xs:string" />
+          <xs:element minOccurs="0" name="suffix" type="xs:string" />
+          <xs:element minOccurs="0" name="titlePrefix" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="phone">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+          <xs:element name="primary" type="xs:boolean" />
+          <xs:element minOccurs="0" name="type" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="vehicle">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element name="grossVehicleWeight" type="xs:long" />
+          <xs:element minOccurs="0" name="newCost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="statedValue" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vehicleCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="vehicleMake" type="xs:string" />
+          <xs:element minOccurs="0" name="vehicleModel" type="xs:string" />
+          <xs:element minOccurs="0" name="vehicleYear" type="xs:string" />
+          <xs:element minOccurs="0" name="vin" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="farmPersonalPropertyNotOtherwiseCovered">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fppOtherDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="nocCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="nocCategoryEbiNo" type="xs:string" />
+          <xs:element minOccurs="0" name="nocCategoryEbiTxt" type="xs:string" />
+          <xs:element minOccurs="0" name="replacementCostTackInd" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="grain">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="grainCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="grainCategoryEbiNo" type="xs:string" />
+          <xs:element minOccurs="0" name="grainCategoryEbiTxt" type="xs:string" />
+          <xs:element minOccurs="0" name="locationConstruct" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="locationConstructEbiNo" type="xs:string" />
+          <xs:element minOccurs="0" name="locationConstructEbiTxt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hayStrawFodder">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="hsfCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="hsfCategoryEbiNo" type="xs:string" />
+          <xs:element minOccurs="0" name="hsfCategoryEbiTxt" type="xs:string" />
+          <xs:element minOccurs="0" name="hsfOtherDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="indoorOutdoor" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="indoorOutdoorEbiNo" type="xs:string" />
+          <xs:element minOccurs="0" name="indoorOutdoorEbiTxt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="produce">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:riskItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="produceCategory" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="produceCategoryEbiNo" type="xs:string" />
+          <xs:element minOccurs="0" name="produceCategoryEbiTxt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getEquineNamesMap">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="policyTermEbis" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEquineNamesMapResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:equineName" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="equineName">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="equineNames" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="policyTermEbi" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchAndRetrieveLatestEDWPolicyTerm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="policySearchRequest" type="tns:policySearchRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="policySearchRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="animalName" type="xs:string" />
+      <xs:element minOccurs="0" name="barnName" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredCity" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredFullName" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredState" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredTaxId" type="xs:string" />
+      <xs:element minOccurs="0" name="insuredZipCode" type="xs:string" />
+      <xs:element minOccurs="0" name="latestModOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="latestVersionOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="lossDate" type="xs:string" />
+      <xs:element minOccurs="0" name="policyMod" type="xs:string" />
+      <xs:element minOccurs="0" name="policyNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="policySymbol" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchAndRetrieveLatestEDWPolicyTermResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:policyTerm" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="policyTerm">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:policy">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cancelDate" type="xs:string" />
+          <xs:element minOccurs="0" name="customerCode" type="xs:string" />
+          <xs:element minOccurs="0" name="effectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="expirationDate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="forms" nillable="true" type="tns:form" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="locations" nillable="true" type="tns:location" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parties" nillable="true" type="tns:party" />
+          <xs:element minOccurs="0" name="paymentMethod" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="policyStatus" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="policySymbol" type="tns:referenceType" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="risks" nillable="true" type="tns:risk" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="transactions" nillable="true" type="tns:policyTransaction" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policy" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="module" type="xs:string" />
+          <xs:element minOccurs="0" name="policyNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="version" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="form">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element name="coverageId" type="xs:long" />
+          <xs:element minOccurs="0" name="editionDate" type="xs:string" />
+          <xs:element minOccurs="0" name="effectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="expirationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="formId" type="xs:string" />
+          <xs:element minOccurs="0" name="formScheduleNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="formText" type="xs:string" />
+          <xs:element minOccurs="0" name="formTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="longTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="polTermEbiNumber" type="xs:string" />
+          <xs:element name="riskId" type="xs:long" />
+          <xs:element minOccurs="0" name="shortTitle" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="risk">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="coverages" nillable="true" type="tns:coverage" />
+          <xs:element minOccurs="0" name="driverStatus" type="tns:referenceType" />
+          <xs:element name="itemCount" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="items" nillable="true" type="tns:riskItem" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="locations" nillable="true" type="tns:location" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="otherInsurance" nillable="true" type="tns:riskOtherInsurance" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parties" nillable="true" type="tns:party" />
+          <xs:element minOccurs="0" name="policyRiskHistoryEffectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="relationships" nillable="true" type="tns:relationship" />
+          <xs:element minOccurs="0" name="riskDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="riskEndorsementDate" type="xs:string" />
+          <xs:element minOccurs="0" name="riskType" type="tns:referenceType" />
+          <xs:element name="scheduleNumber" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="subRisks" nillable="true" type="tns:risk" />
+          <xs:element name="summaryRiskInd" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="coverage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="basicErpNo" type="xs:string" />
+          <xs:element minOccurs="0" name="basicErpUnitCd" type="xs:string" />
+          <xs:element minOccurs="0" name="bulkCodingInd" type="xs:boolean" />
+          <xs:element name="businessCoverageID" type="xs:long" />
+          <xs:element name="canBookClaim" type="xs:boolean" />
+          <xs:element minOccurs="0" name="childCoverageCode" type="xs:string" />
+          <xs:element minOccurs="0" name="claimsMadeInd" type="xs:boolean" />
+          <xs:element minOccurs="0" name="coverageCategoryCode" type="xs:string" />
+          <xs:element minOccurs="0" name="coverageCode" type="xs:string" />
+          <xs:element minOccurs="0" name="coverageDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="coverageFamilyCd" type="xs:string" />
+          <xs:element name="coverageId" type="xs:long" />
+          <xs:element name="coverageRatingEbiNumber" type="xs:long" />
+          <xs:element minOccurs="0" name="coverageRatingEbiText" type="xs:string" />
+          <xs:element minOccurs="0" name="coverageRetroDate" type="xs:string" />
+          <xs:element minOccurs="0" name="coverageTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="coveredCauseLossCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="deductibles" nillable="true" type="tns:deductible" />
+          <xs:element name="edwTransactionId" type="xs:long" />
+          <xs:element minOccurs="0" name="effectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="excessFollowPrimaryTermInd" type="xs:boolean" />
+          <xs:element minOccurs="0" name="excessLayerNo" type="xs:string" />
+          <xs:element minOccurs="0" name="excludeCountriesTxt" type="xs:string" />
+          <xs:element minOccurs="0" name="expirationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="exposureAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="forms" nillable="true" type="tns:form" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="limits" nillable="true" type="tns:limit" />
+          <xs:element minOccurs="0" name="parentCoverageCode" type="xs:string" />
+          <xs:element minOccurs="0" name="parentCoverageDesc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parentCoverages" nillable="true" type="tns:parentCoverage" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parties" nillable="true" type="tns:party" />
+          <xs:element minOccurs="0" name="primaryInd" type="xs:boolean" />
+          <xs:element minOccurs="0" name="quotaShareParticipationCd" type="xs:string" />
+          <xs:element minOccurs="0" name="quotaShareParticipationDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="rateClassCode" type="xs:string" />
+          <xs:element minOccurs="0" name="rateClassOtherDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="rateClassPrint" type="xs:string" />
+          <xs:element minOccurs="0" name="reinstateAggregateLimitInd" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="reinsuranceContracts" nillable="true" type="tns:reinsuranceContract" />
+          <xs:element minOccurs="0" name="riskCategoryCode" type="tns:referenceType" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="sublimits" nillable="true" type="tns:sublimit" />
+          <xs:element minOccurs="0" name="sublineCode" type="xs:string" />
+          <xs:element minOccurs="0" name="supplementalErpEndDt" type="xs:string" />
+          <xs:element minOccurs="0" name="supplementalErpNo" type="xs:string" />
+          <xs:element minOccurs="0" name="supplementalErpUnitCd" type="xs:string" />
+          <xs:element name="transactionEbiNumber" type="xs:long" />
+          <xs:element minOccurs="0" name="transactionEbiText" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="deductible">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="appliesTo" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="basis" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="categoryCd" type="xs:string" />
+          <xs:element minOccurs="0" name="categoryLongDesc" type="xs:string" />
+          <xs:element name="categoryRefId" type="xs:long" />
+          <xs:element minOccurs="0" name="categoryShortDesc" type="xs:string" />
+          <xs:element name="coverageId" type="xs:long" />
+          <xs:element minOccurs="0" name="deductibleText" type="xs:string" />
+          <xs:element name="duration" type="xs:int" />
+          <xs:element minOccurs="0" name="durationType" type="tns:referenceType" />
+          <xs:element name="edwTransId" type="xs:long" />
+          <xs:element minOccurs="0" name="liabDeductProvisionCd" type="xs:string" />
+          <xs:element minOccurs="0" name="liabDeductProvisionDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="limitType" type="tns:referenceType" />
+          <xs:element name="percentage" type="xs:double" />
+          <xs:element minOccurs="0" name="purposeCd" type="xs:string" />
+          <xs:element minOccurs="0" name="purposeDesc" type="xs:string" />
+          <xs:element name="purposeRefId" type="xs:long" />
+          <xs:element minOccurs="0" name="sourceProcessTS" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="limit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="appliesTo" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="basis" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="category" type="tns:referenceType" />
+          <xs:element name="coinsuranceAmount" type="xs:double" />
+          <xs:element name="coinsurancePercent" type="xs:double" />
+          <xs:element minOccurs="0" name="coverageCode" type="xs:string" />
+          <xs:element name="coverageId" type="xs:long" />
+          <xs:element minOccurs="0" name="duration" type="tns:referenceType" />
+          <xs:element name="edwTransId" type="xs:long" />
+          <xs:element minOccurs="0" name="liabLimitProvisionCd" type="xs:string" />
+          <xs:element minOccurs="0" name="liabLimitProvisionDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="limitAmount" type="xs:decimal" />
+          <xs:element name="limitDuration" type="xs:long" />
+          <xs:element name="limitPercent" type="xs:double" />
+          <xs:element minOccurs="0" name="limitPurposeText" type="xs:string" />
+          <xs:element minOccurs="0" name="limitText" type="xs:string" />
+          <xs:element minOccurs="0" name="sourceProcessTS" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="valuation" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="parentCoverage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="childCoverageCode" type="xs:string" />
+          <xs:element minOccurs="0" name="parentCoverageCode" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reinsuranceContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cededCommissionAmount" type="xs:decimal" />
+          <xs:element name="cededCommissionPercentage" type="xs:double" />
+          <xs:element minOccurs="0" name="cededTermPremiumAmount" type="xs:decimal" />
+          <xs:element name="cedingParticipationPercentage" type="xs:double" />
+          <xs:element minOccurs="0" name="contractDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="contractName" type="xs:string" />
+          <xs:element minOccurs="0" name="contractNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="contractType" type="tns:referenceType" />
+          <xs:element name="ecoPercentage" type="xs:double" />
+          <xs:element name="ecoWithin" type="xs:boolean" />
+          <xs:element minOccurs="0" name="effectiveDate" type="xs:string" />
+          <xs:element name="excessOfPolicyLimits" type="xs:boolean" />
+          <xs:element name="excessOfPolicyLimitsPercentage" type="xs:double" />
+          <xs:element minOccurs="0" name="expirationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="laeBasis" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="layerLimitAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="limits" nillable="true" type="tns:reinsuranceContractLimit" />
+          <xs:element minOccurs="0" name="participationAmount" type="xs:decimal" />
+          <xs:element name="participationPercentage" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parties" nillable="true" type="tns:party" />
+          <xs:element minOccurs="0" name="reinsuranceFormatCode" type="xs:string" />
+          <xs:element minOccurs="0" name="reinsuranceFormatDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="reinsuranceLimitDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="reinsuranceType" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="retentionAmount" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reinsuranceContractLimit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoryCode" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="limitAmount" type="xs:decimal" />
+          <xs:element name="limitPercent" type="xs:double" />
+          <xs:element minOccurs="0" name="purCode" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sublimit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:limit">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="coverageEffectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="coverageExpirationDate" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="riskOtherInsurance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="otherInsParties" nillable="true" type="tns:party" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="otherInsuranceCoverages" nillable="true" type="tns:coverage" />
+          <xs:element minOccurs="0" name="otherInsuranceType" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="policyEffectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="policyExpirationdate" type="xs:string" />
+          <xs:element minOccurs="0" name="policyType" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="relationship">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element name="childRiskId" type="xs:long" />
+          <xs:element minOccurs="0" name="childRiskType" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="relationshipType" type="tns:referenceType" />
+          <xs:element name="riskId" type="xs:long" />
+          <xs:element minOccurs="0" name="riskType" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policyTransaction">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cancelEvidence" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="cancelNonRenewOtherDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="cancelNonRenewReason" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="cancelType" type="tns:referenceType" />
+          <xs:element name="csrUserAccount" type="xs:long" />
+          <xs:element minOccurs="0" name="endorseBillingOption" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="endorseSpreadOption" type="tns:referenceType" />
+          <xs:element name="submissionId" type="xs:long" />
+          <xs:element minOccurs="0" name="transactionEffectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="transactionEntryDate" type="xs:string" />
+          <xs:element minOccurs="0" name="transactionReason" type="tns:referenceType" />
+          <xs:element minOccurs="0" name="transactionType" type="tns:referenceType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GenericPolicySearchAndRetrievalException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkDependencies">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="checkDependenciesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CommonUtilException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ping">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="pingResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchEDW">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="policySearchRequest" type="tns:policySearchRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchEDWResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:policySearchResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="policySearchResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="results" nillable="true" type="tns:policySearchResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="policySearchResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:primitive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cancellationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="effectiveDate" type="xs:string" />
+          <xs:element minOccurs="0" name="expirationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="insuredAddress" type="tns:address" />
+          <xs:element minOccurs="0" name="insuredFullName" type="xs:string" />
+          <xs:element minOccurs="0" name="mgmtCode" type="xs:string" />
+          <xs:element minOccurs="0" name="policyModule" type="xs:string" />
+          <xs:element minOccurs="0" name="policyNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="policyStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="policyStatusCode" type="xs:string" />
+          <xs:element minOccurs="0" name="policySymbol" type="xs:string" />
+          <xs:element minOccurs="0" name="policyVersion" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getVersion">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refreshCprProperties">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="refreshCprPropertiesResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getEquineLookupValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EquineLookupType" type="tns:equineLookupType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEquineLookupValuesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:referenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="logLevel" type="xs:string" />
+      <xs:element minOccurs="0" name="loggerName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevelResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="retrieveEDWPolicyTerm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="polTermEbi" type="xs:string" />
+      <xs:element minOccurs="0" name="lossType" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retrieveEDWPolicyTermResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:policyTerm" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findPolicyEquineNames">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="policyNumberList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="partialHorseName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findPolicyEquineNamesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:policySearchEquineNameResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="policySearchEquineNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="equineNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="policyNumber" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="equineLookupType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BREED" />
+      <xs:enumeration value="SEX" />
+      <xs:enumeration value="USE" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

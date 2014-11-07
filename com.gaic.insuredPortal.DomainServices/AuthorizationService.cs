@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using com.gaic.insuredPortal.Core.Domain;
-using com.gaic.insuredPortal.Core.Domain.domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
 using com.gaic.insuredPortal.Core.Domain.interfaces.service;
+using com.gaic.insuredPortal.Core.Domain.models;
 using log4net;
 
 namespace com.gaic.insuredPortal.DomainServices
@@ -13,37 +13,39 @@ namespace com.gaic.insuredPortal.DomainServices
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IHttpContextStrategyProvider _contextStrategyProvider;
         private readonly ILdapProvider _ldapProvider;
+        private readonly IPermissionProvider _permissionProvider;
         private readonly ISingleSignonProvider _signonProvider;
 
         public AuthorizationService(IHttpContextStrategyProvider contextStrategyProvider,
-            ISingleSignonProvider signonProvider, ILdapProvider ldapProvider)
+            ISingleSignonProvider signonProvider, ILdapProvider ldapProvider, IPermissionProvider permissionProvider)
         {
             _contextStrategyProvider = contextStrategyProvider;
             _signonProvider = signonProvider;
             _ldapProvider = ldapProvider;
+            _permissionProvider = permissionProvider;
         }
 
-        public User GetAuthorizedUser()
+        public UserModel GetAuthorizedUser()
         {
             //return new User(){UserId = "taccount1"};
 
-            User authorizedUser = _contextStrategyProvider.GetUser(false);
+            UserModel authorizedUser = _contextStrategyProvider.GetUser(false);
             if (authorizedUser == null)
             {
                 _log.DebugFormat("_contextStrategyProvider.GetUser(false) returned null");
                 return null;
             }
-            //if (HasStoredPermissions(authorizedUser) && HasStoredIPAddress(authorizedUser)) return authorizedUser;
+            if (HasStoredPermissions(authorizedUser) /*&& HasStoredIPAddress(authorizedUser)*/) return authorizedUser;
 
             //_log.DebugFormat("Apply permissions and ip address");
-            //ApplyPermissions(authorizedUser);
+            ApplyPermissions(authorizedUser);
             //ApplyClientIpAddress(authorizedUser);
             return authorizedUser;
         }
 
-        public void StoreAuthorizedUser(User user)
+        public void StoreAuthorizedUser(UserModel userModel)
         {
-            _contextStrategyProvider.StoreAuthorizedUser(user);
+            _contextStrategyProvider.StoreAuthorizedUser(userModel);
             //Save in DB
             //_userProvider.SaveUser(user);
         }
@@ -54,28 +56,28 @@ namespace com.gaic.insuredPortal.DomainServices
         //    return user != null;
         //}
 
-        public User AuthorizeUser(bool checkSiteMinderOnly)
+        public UserModel AuthorizeUser(bool checkSiteMinderOnly)
         {
             //siteminder user attempted first, then cached local user is retrieved
-            User authorizedUser = _contextStrategyProvider.GetUser(checkSiteMinderOnly);
-            if (checkSiteMinderOnly && authorizedUser != null)
+            UserModel authorizedUserModel = _contextStrategyProvider.GetUser(checkSiteMinderOnly);
+            if (checkSiteMinderOnly && authorizedUserModel != null)
             {
                 //ApplyPermissions(authorizedUser);
-                return authorizedUser;
+                return authorizedUserModel;
             }
 
             //this is a case where a user is logged in and the server session is still active, 
             //but the user opens a new tab or browser and logs in as another user OR the user
             //closes all browsers but comes back in a few minutes later while teh session on
             //the server is still active and logs in as another user. 
-            if (authorizedUser != null && authorizedUser.UserId != _contextStrategyProvider.GetUserName())
+            if (authorizedUserModel != null && authorizedUserModel.UserId != _contextStrategyProvider.GetUserName())
             {
-                authorizedUser = _contextStrategyProvider.ClearUser();
+                authorizedUserModel = _contextStrategyProvider.ClearUser();
             }
 
             //if we are here, that means siteminder is not enabled and the local user 
             //isn't found probably just logging in or logging in as another user
-            if (authorizedUser != null) return authorizedUser;
+            if (authorizedUserModel != null) return authorizedUserModel;
 
             string userId = _contextStrategyProvider.GetUserName();
             if (String.IsNullOrEmpty(userId)) return null; // can't do anything without a userid, can't help you
@@ -112,10 +114,10 @@ namespace com.gaic.insuredPortal.DomainServices
             return _signonProvider.GetSingleSignonToken(userName, pwd);
         }
 
-        private User RetrieveStoreAuthorizedUser(string userId, string token)
+        private UserModel RetrieveStoreAuthorizedUser(string userId, string token)
         {
             //retrieve user details from ldap using token
-            User authorizedUser = GetUserFromLdap(userId, token);
+            UserModel authorizedUserModel = GetUserFromLdap(userId, token);
 
             //if (authorizedUser != null)
             //{
@@ -123,18 +125,38 @@ namespace com.gaic.insuredPortal.DomainServices
             //}
 
             //store authorized user
-            StoreAuthorizedUser(authorizedUser);
-            return authorizedUser;
+            StoreAuthorizedUser(authorizedUserModel);
+            return authorizedUserModel;
         }
 
-        public User GetUserFromLdap(string userId, string token)
+        public UserModel GetUserFromLdap(string userId, string token)
         {
             Ensure.ArgumentNotNullOrEmpty(userId, "UserId");
             Ensure.ArgumentNotNullOrEmpty(token, "Token");
 
-            User user = _ldapProvider.GetPerson(userId, token);
-            //if (user != null) user.Permission = _permissionProvider.GetUserPermissionSet(user.Roles);
+            UserModel user = _ldapProvider.GetPerson(userId, token);
+            if (user != null) user.Permission = _permissionProvider.GetUserPermissionSet(user.Roles);
             return user;
+        }
+
+        private void ApplyPermissions(UserModel authorizedUser)
+        {
+            if (authorizedUser == null) return;
+            if (HasStoredPermissions(authorizedUser)) return;
+
+            var groups = _contextStrategyProvider.GetUserGroups();
+            var roles = RoleItemModel.MapToRoles(groups);
+            authorizedUser.Roles = roles;
+            authorizedUser.Permission = _permissionProvider.GetUserPermissionSet(roles);
+
+            _contextStrategyProvider.ApplyPermissions(authorizedUser.Permission);
+        }
+
+
+        private bool HasStoredPermissions(UserModel authorizedUser)
+        {
+            if (authorizedUser.Permission == null) authorizedUser.Permission = _contextStrategyProvider.GetPermissions();
+            return authorizedUser.Permission != null;
         }
     }
 }

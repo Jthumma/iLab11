@@ -15,6 +15,9 @@ namespace com.gaic.insuredPortal.Core.Domain.models
 
         public int Mod { get; set; }
         public int Version { get; set; }
-        public string EffDate { get; set; }
+        public string EffectiveDate { get; set; }
+        public string ExpirationDate { get; set; }
+        public string Status { get; set; }
+        public AgentModel Agent { get; set; }
     }
 }

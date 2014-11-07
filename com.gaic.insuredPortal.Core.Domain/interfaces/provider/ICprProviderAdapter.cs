@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using com.gaic.insuredPortal.Core.Domain.models;
 
 namespace com.gaic.insuredPortal.Core.Domain.interfaces.provider
 {
@@ -8,6 +9,6 @@ namespace com.gaic.insuredPortal.Core.Domain.interfaces.provider
         bool PropertyExists(string propertyName);
         string GetEnvLevel();
         void RefreshCpr();
-        List<LookupListItem> GetCprList();
+        List<ListItemModel> GetCprList();
     }
 }
