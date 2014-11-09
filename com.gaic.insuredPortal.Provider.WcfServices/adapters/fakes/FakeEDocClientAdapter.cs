@@ -6,6 +6,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
 {
     public class FakeEDocClientAdapter : IEDocClientAdapter
     {
+        public bool Ping(string token)
+        {
+            return true;
+        }
+
         public List<PolicyModel> GetPolicies()
         {
             var list = new List<PolicyModel>

@@ -6,6 +6,7 @@ using com.gaic.insuredPortal.Core.Domain.models;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService;
+using Utility.WCFSiteMinderSecurity;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
 {
@@ -18,6 +19,13 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
         {
             _ecmServiceSoapClient = new ECMServiceSoapClient(bindingAdapter.Binding,
                 endpointAddressAdapter.EndpointAddress);
+        }
+
+        public bool Ping(string token)
+        {
+            SecureSoapContext.AttachSecurityToken(_ecmServiceSoapClient.InnerChannel, token);
+            var version = _ecmServiceSoapClient.GetVersion();
+            return !String.IsNullOrEmpty(version);
         }
 
         public void Dispose()

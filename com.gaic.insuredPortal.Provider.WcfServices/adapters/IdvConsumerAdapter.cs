@@ -2,6 +2,7 @@
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.IdvConsumerService;
+using Utility.WCFSiteMinderSecurity;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
 {
@@ -55,8 +56,15 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             // free native resources
         }
 
+        public void Authenticate(string vid, string password, string token)
+        {
+            SecureSoapContext.AttachSecurityToken(_idvConsumerServiceClient.InnerChannel, token);
+            _idvConsumerServiceClient.authenticate(vid, password);
+        }
+
         public bool Ping(string token)
         {
+            SecureSoapContext.AttachSecurityToken(_idvConsumerServiceClient.InnerChannel, token);
             var value = _idvConsumerServiceClient.ping();
             return value > 0;
         }

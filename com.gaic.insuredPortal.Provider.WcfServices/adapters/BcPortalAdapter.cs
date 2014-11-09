@@ -2,6 +2,7 @@
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.BcPortalService;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
+using Utility.WCFSiteMinderSecurity;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
 {
@@ -14,6 +15,13 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
         {
             _agentPortalBillingServicesClient = new AgentPortalBillingServicesClient(bindingAdapter.Binding,
                 endpointAddressAdapter.EndpointAddress);
+        }
+
+        public bool Ping(string token)
+        {
+            SecureSoapContext.AttachSecurityToken(_agentPortalBillingServicesClient.InnerChannel, token);
+            var version = _agentPortalBillingServicesClient.getVersion();
+            return !String.IsNullOrEmpty(version);
         }
 
         public void Dispose()

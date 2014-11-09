@@ -11,5 +11,10 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
         {
             _edwPsarAdapter = edwPsarAdapter;
         }
+
+        public bool Ping(string token)
+        {
+            return _edwPsarAdapter.Ping(token);
+        }
     }
 }

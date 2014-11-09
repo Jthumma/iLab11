@@ -102,11 +102,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ClaimsMobileService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\eDocMtomService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -194,10 +189,6 @@
     </None>
     <None Include="Service References\ClaimsEcmService\com.gaic.insuredPortal.Provider.WcfServices.ClaimsEcmService.MergeDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ClaimsMobileService\ClaimCenterAPIService.wsdl" />
-    <None Include="Service References\ClaimsMobileService\wsdlfile.xsd">
-      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\eDocMtomService\com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService.AddCustomerDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -449,7 +440,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BcPortalService\" />
     <WCFMetadataStorage Include="Service References\ClaimsEcmService\" />
-    <WCFMetadataStorage Include="Service References\ClaimsMobileService\" />
     <WCFMetadataStorage Include="Service References\eDocMtomService\" />
     <WCFMetadataStorage Include="Service References\EdwPsarService\" />
     <WCFMetadataStorage Include="Service References\FdwInquiryService\" />
@@ -559,18 +549,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\EdwPsarService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ClaimsMobileService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ClaimsMobileService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ClaimsMobileService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

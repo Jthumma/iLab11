@@ -11,5 +11,10 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
         {
             _bcPortalAdapter = bcPortalAdapter;
         }
+
+        public bool Ping(string token)
+        {
+            return _bcPortalAdapter.Ping(token);
+        }
     }
 }

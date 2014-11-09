@@ -2,5 +2,6 @@
 {
     public interface IEdwPsarProvider
     {
+        bool Ping(string token);
     }
 }

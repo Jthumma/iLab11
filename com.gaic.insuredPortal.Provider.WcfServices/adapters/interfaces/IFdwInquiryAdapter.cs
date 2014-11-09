@@ -2,5 +2,6 @@
 {
     public interface IFdwInquiryAdapter
     {
+        bool Ping(string token);
     }
 }

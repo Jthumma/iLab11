@@ -1,6 +1,7 @@
 ﻿using System;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
 using com.gaic.insuredPortal.Provider.Cpr;
+using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 
@@ -10,8 +11,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
     public class IntgTestBaseWcfServicesProvider : IDisposable
     {
         private readonly IKernel _kernel;
-        protected ILdapProvider _ldapProvider;
+        protected IBcPortalProvider _bcPortalProvider;
+        protected IEDocProvider _eDocProvider;
+        protected IEdwPsarProvider _edwPsarProvider;
         protected IIdvConsumerProvider _idvConsumerProvider;
+        protected ILdapProvider _ldapProvider;
         protected ISingleSignonProvider _singleSignonProvider;
         protected string _token;
 
@@ -33,6 +37,10 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
         {
             _singleSignonProvider = _kernel.Get<ISingleSignonProvider>();
             _ldapProvider = _kernel.Get<ILdapProvider>();
+            _bcPortalProvider = _kernel.Get<IBcPortalProvider>();
+            _eDocProvider = _kernel.Get<IEDocProvider>();
+            _edwPsarProvider = _kernel.Get<IEdwPsarProvider>();
+            _idvConsumerProvider = _kernel.Get<IIdvConsumerProvider>();
 
             _token = _singleSignonProvider.GetSingleSignonToken("taccountfis1", "Winter1");
         }

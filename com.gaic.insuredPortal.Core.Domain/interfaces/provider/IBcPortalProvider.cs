@@ -2,5 +2,6 @@
 {
     public interface IBcPortalProvider
     {
+        bool Ping(string token);
     }
 }

@@ -2,6 +2,7 @@
 {
     public interface IIdvConsumerAdapter
     {
+        void Authenticate(string vid, string password, string token);
         bool Ping(string token);
     }
 }

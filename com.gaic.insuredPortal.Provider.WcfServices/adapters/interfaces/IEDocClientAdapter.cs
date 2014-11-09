@@ -5,6 +5,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces
 {
     public interface IEDocClientAdapter
     {
+        bool Ping(string token);
         List<PolicyModel> GetPolicies();
     }
 }
