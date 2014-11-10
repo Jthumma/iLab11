@@ -8,7 +8,25 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
     {
         public UserModel GetPerson(string userId, string token)
         {
-            return new UserModel {UserId = userId, Token = token, FirstName = "Test", LastName = "Account"};
+            if (userId == "jtrucker")
+            {
+                return new UserModel {UserId = userId, Token = token, FirstName = "Joe", LastName = "Trucker"};
+            }
+            if (userId == "bjones")
+            {
+                return new UserModel {UserId = userId, Token = token, FirstName = "Bob", LastName = "Jones"};
+            }
+            if (userId == "jcorporate")
+            {
+                return new UserModel {UserId = userId, Token = token, FirstName = "Jane", LastName = "Corporate"};
+            }
+            if (userId == "aandy")
+            {
+                return new UserModel {UserId = userId, Token = token, FirstName = "Andy", LastName = "Agent"};
+            }
+            return userId == "bbetty"
+                ? new UserModel {UserId = userId, Token = token, FirstName = "Betty", LastName = "Back Office"}
+                : new UserModel {UserId = userId, Token = token, FirstName = "Test", LastName = "Account"};
         }
 
         public bool Ping(string token)

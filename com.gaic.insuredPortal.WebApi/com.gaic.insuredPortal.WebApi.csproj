@@ -205,6 +205,7 @@
     <Content Include="app\config.route.js" />
     <Content Include="app\dashboard\dashboard.html" />
     <Content Include="app\dashboard\dashboard.js" />
+    <Content Include="app\layout\topnav.js" />
     <Content Include="app\layout\shell.html" />
     <Content Include="app\layout\shell.js" />
     <Content Include="app\layout\sidebar.html" />
@@ -213,6 +214,7 @@
     <Content Include="app\layout\widgetheader.html" />
     <Content Include="app\policy\policy.html" />
     <Content Include="app\policy\policy.js" />
+    <Content Include="app\services\authenticationDataService.js" />
     <Content Include="app\services\policyDataService.js" />
     <Content Include="app\services\dashboardDataService.js" />
     <Content Include="app\services\datacontext.js" />

@@ -49,9 +49,21 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
             //return RedirectToAction("Index", "Flex");
         }
 
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login", "Authentication");
+        }
+
         public ActionResult Register()
         {
             return View();
         }
+
+
+        public ActionResult GetAuthorizedUser()
+        {
+            return Json(_authorizationService.GetAuthorizedUser(), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

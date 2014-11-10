@@ -1,3 +1,4 @@
+using System;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
@@ -6,7 +7,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
     {
         public string Login(string userid, string password)
         {
-            return "TOEKN";
+            return String.Format("TOEKNfor{0}", userid);
         }
 
         public void ClearToken()
