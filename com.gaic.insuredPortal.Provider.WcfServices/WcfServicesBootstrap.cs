@@ -6,6 +6,7 @@ using com.gaic.insuredPortal.Provider.WcfServices.bindings;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.providers;
 using com.gaic.insuredPortal.Provider.WcfServices.providers.permissions;
+using Ninject;
 using Ninject.Modules;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices
@@ -14,12 +15,21 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
     {
         public override void Load()
         {
+            var cprProvider = Kernel.Get<ICprProvider>();
+
             //PROVIDERS
             RegisterProviders();
 
             //ADAPTERS
-            RegisterAdapters();
-            //RegisterFakeAdapters();
+            const string useFakeServicesKey = "serviceAdapters.useFakes";
+            bool useFakeServices = cprProvider.PropertyExists(useFakeServicesKey) &&
+                                   bool.Parse(cprProvider.GetProperty(useFakeServicesKey));
+
+            if (useFakeServices)
+                RegisterFakeAdapters();
+            else
+                RegisterAdapters();
+
 
             //BINDINGS
             RegisterBindings();

@@ -5,6 +5,6 @@ namespace com.gaic.insuredPortal.Core.Domain.interfaces.service
 {
     public interface IPolicyService
     {
-        List<PolicyModel> GetPolicies();
+        List<PolicyModel> GetPolicies(string policyNumber, string token);
     }
 }

@@ -11,7 +11,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
             return true;
         }
 
-        public List<PolicyModel> GetPolicies()
+        public List<PolicyModel> GetPolicies(string policyNumber, string token)
         {
             var list = new List<PolicyModel>
             {

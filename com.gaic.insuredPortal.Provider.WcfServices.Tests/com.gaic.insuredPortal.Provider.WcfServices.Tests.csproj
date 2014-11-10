@@ -73,6 +73,7 @@
     <Compile Include="IntgTestBaseWcfServicesProvider.cs" />
     <Compile Include="PingServiceProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WcfeDocProviderTests\SearchDocumentsTests.cs" />
     <Compile Include="WcfIdvConsumerProviderTests\AuthenticateTests.cs" />
     <Compile Include="WcfLdapProviderTests\GetPersonTests.cs" />
   </ItemGroup>

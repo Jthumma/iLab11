@@ -3,12 +3,13 @@ using com.gaic.insuredPortal.Core.Domain.interfaces.service;
 
 namespace com.gaic.insuredPortal.WebApi.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         private readonly IClaimsService _claimsService;
         private readonly IPolicyService _policyService;
 
-        public DashboardController(IPolicyService policyService, IClaimsService claimsService)
+        public DashboardController(IPolicyService policyService, IClaimsService claimsService,
+            IAuthorizationService authorizationService) : base(authorizationService)
         {
             _policyService = policyService;
             _claimsService = claimsService;
@@ -16,7 +17,7 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
 
         public ActionResult GetPolicies()
         {
-            return Json(_policyService.GetPolicies(), JsonRequestBehavior.AllowGet);
+            return Json(_policyService.GetPolicies("0000000", LoggedInUser.Token), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetClaims()

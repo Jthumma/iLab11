@@ -6,6 +6,6 @@ namespace com.gaic.insuredPortal.Core.Domain.interfaces.provider
     public interface IEDocProvider
     {
         bool Ping(string token);
-        List<PolicyModel> GetPolicies();
+        List<PolicyModel> GetPolicies(string policyNumber, string token);
     }
 }
