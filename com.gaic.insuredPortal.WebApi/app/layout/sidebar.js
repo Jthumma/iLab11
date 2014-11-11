@@ -3,13 +3,13 @@
     
     var controllerId = 'sidebar';
     angular.module('app').controller(controllerId,
-        ['$route', 'config', 'routes', sidebar]);
+        ['$route', 'config', 'routes', 'common', 'authenticationDataService', sidebar]);
 
-    function sidebar($route, config, routes) {
+    function sidebar($route, config, routes, common, authenticationDataService) {
         var vm = this;
 
         vm.isCurrent = isCurrent;
-
+        vm.User = '';
         activate();
 
         function activate() { getNavRoutes(); }
@@ -20,6 +20,10 @@
             }).sort(function(r1, r2) {
                 return r1.config.settings.nav - r2.config.settings.nav;
             });
+
+            var promises = [getAuthenticatedUser()];
+            common.activateController(promises, controllerId);
+
         }
         
         function isCurrent(route) {
@@ -28,6 +32,12 @@
             }
             var menuName = route.config.title;
             return $route.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
+        }
+
+        function getAuthenticatedUser() {
+            return authenticationDataService.getAuthenticatedUser().then(function (data) {
+                return vm.User = data;
+            });
         }
     };
 })();

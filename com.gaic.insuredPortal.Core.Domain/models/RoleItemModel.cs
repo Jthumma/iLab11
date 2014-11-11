@@ -5,16 +5,16 @@ namespace com.gaic.insuredPortal.Core.Domain.models
 {
     public class RoleItemModel : ListItemModel
     {
-        public static readonly string RolePrefix = "Static.Global.WF.FISDT.Role.";
+        public static readonly string RolePrefix = "Static.Global.WF.InsuredPortal.Role.";
 
-        public static readonly RoleItemModel PolicyAdmin = new RoleItemModel("PolicyAdmin", RolePrefix + "PolicyAdmin");
-        public static readonly RoleItemModel PolicyView = new RoleItemModel("PolicyView", RolePrefix + "PolicyView");
-        public static readonly RoleItemModel EarningsAdmin = new RoleItemModel("EarningsAdmin", RolePrefix + "EarningsAdmin");
-        public static readonly RoleItemModel FinancialAdmin = new RoleItemModel("FinancialAdmin", RolePrefix + "FinancialAdmin");
-        public static readonly RoleItemModel ProducerAdmin = new RoleItemModel("ProducerAdmin", RolePrefix + "ProducerAdmin");
-        public static readonly RoleItemModel ITAnalyst = new RoleItemModel("ITAnalyst", RolePrefix + "ITAnalyst");
+        public static readonly RoleItemModel Agent = new RoleItemModel("Agent", RolePrefix + "Agent");
+        public static readonly RoleItemModel Insured = new RoleItemModel("Insured", RolePrefix + "Insured");
+        public static readonly RoleItemModel OwnerCorporate = new RoleItemModel("OwnerCorporate", RolePrefix + "OwnerCorporate");
+        public static readonly RoleItemModel TeamIndy = new RoleItemModel("TeamIndy", RolePrefix + "TeamIndy");
+        public static readonly RoleItemModel MotorCarrier = new RoleItemModel("MotorCarrier", RolePrefix + "MotorCarrier");
+        public static readonly RoleItemModel GaicEmployee = new RoleItemModel("GaicEmployee", RolePrefix + "GaicEmployee");
+        public static readonly RoleItemModel BackOffice = new RoleItemModel("BackOffice", RolePrefix + "BackOffice");
         public static readonly RoleItemModel ViewAll = new RoleItemModel("ViewAll", RolePrefix + "View");
-        public static readonly RoleItemModel PolicyNumberAdmin = new RoleItemModel("PolicyNumberAdmin", RolePrefix + "PolNumMngnt");
 
         public RoleItemModel(string code, string description) : base(code, description)
         {

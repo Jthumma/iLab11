@@ -6,6 +6,7 @@ using com.gaic.insuredPortal.Provider.WcfServices.bindings;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.providers;
 using com.gaic.insuredPortal.Provider.WcfServices.providers.permissions;
+using com.gaic.insuredPortal.Provider.WcfServices.providers.permissions.roleAdapters;
 using Ninject;
 using Ninject.Modules;
 
@@ -117,8 +118,14 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
 
         private void RegisterPermissions()
         {
-            Bind<IRolePermissionAdapter>().To<PolicyAdminRolePermissionAdapter>();
-            Bind<IRolePermissionAdapter>().To<PolicyViewRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<BackOfficeRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<AgentRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<InsuredRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<MotorCarrierRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<OwnerCorporateRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<ViewAllRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<GaicEmployeeRolePermissionAdapter>();
+
         }
     }
 }

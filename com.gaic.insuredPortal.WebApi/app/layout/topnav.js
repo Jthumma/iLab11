@@ -1,21 +1,20 @@
 ﻿(function () {
     'use strict';
-    var controllerId = 'claims';
-    angular.module('app').controller(controllerId, ['common', 'authenticationDataService', claims]);
+    var controllerId = 'topnav';
+    angular.module('app').controller(controllerId, ['common','authenticationDataService', topnav]);
 
-    function claims(common, authenticationDataService) {
+    function topnav(common, authenticationDataService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
         var vm = this;
+        vm.title = 'Top Nav';
         vm.User = '';
-        vm.title = 'Claims';
 
         activate();
 
         function activate() {
-            common.activateController([getAuthenticatedUser()], controllerId)
-                .then(function () { log('Activated Claims View'); });
+            common.activateController([getAuthenticatedUser()], controllerId);
         }
 
         function getAuthenticatedUser() {

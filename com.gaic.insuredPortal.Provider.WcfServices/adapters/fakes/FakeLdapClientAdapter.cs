@@ -10,23 +10,76 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
         {
             if (userId == "jtrucker")
             {
-                return new UserModel {UserId = userId, Token = token, FirstName = "Joe", LastName = "Trucker"};
+                return new UserModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    FirstName = "Joe",
+                    LastName = "Trucker",
+                    Roles = new List<RoleItemModel> {RoleItemModel.Insured}
+                };
             }
             if (userId == "bjones")
             {
-                return new UserModel {UserId = userId, Token = token, FirstName = "Bob", LastName = "Jones"};
+                return new UserModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    FirstName = "Bob",
+                    LastName = "Jones",
+                    Roles = new List<RoleItemModel> {RoleItemModel.GaicEmployee}
+                };
             }
             if (userId == "jcorporate")
             {
-                return new UserModel {UserId = userId, Token = token, FirstName = "Jane", LastName = "Corporate"};
+                return new UserModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    FirstName = "Jane",
+                    LastName = "Corporate",
+                    Roles = new List<RoleItemModel> {RoleItemModel.OwnerCorporate}
+                };
+            }
+            if (userId == "tindy")
+            {
+                return new UserModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    FirstName = "Team",
+                    LastName = "Indy",
+                    Roles = new List<RoleItemModel> { RoleItemModel.TeamIndy }
+                };
             }
             if (userId == "aandy")
             {
-                return new UserModel {UserId = userId, Token = token, FirstName = "Andy", LastName = "Agent"};
+                return new UserModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    FirstName = "Andy",
+                    LastName = "Agent",
+                    Roles = new List<RoleItemModel> {RoleItemModel.Agent}
+                };
             }
             return userId == "bbetty"
-                ? new UserModel {UserId = userId, Token = token, FirstName = "Betty", LastName = "Back Office"}
-                : new UserModel {UserId = userId, Token = token, FirstName = "Test", LastName = "Account"};
+                ? new UserModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    FirstName = "Betty",
+                    LastName = "Back Office",
+                    Roles = new List<RoleItemModel> {RoleItemModel.BackOffice}
+                }
+                : new UserModel
+                {
+                    UserId = userId,
+                    Token = token,
+                    FirstName = "Test",
+                    LastName = "Account",
+                    Roles = new List<RoleItemModel> {RoleItemModel.ViewAll}
+                };
         }
 
         public bool Ping(string token)

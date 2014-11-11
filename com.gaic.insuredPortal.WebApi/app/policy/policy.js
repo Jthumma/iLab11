@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'policy';
-    angular.module('app').controller(controllerId, ['common', 'policyDataService', policy]);
+    angular.module('app').controller(controllerId, ['common', 'policyDataService', 'authenticationDataService', policy]);
 
-    function policy(common, policyDataService) {
+    function policy(common, policyDataService, authenticationDataService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
@@ -15,14 +15,21 @@
         vm.messageCount = 0;
         vm.agentInfo = '';
         vm.policies = [];
+        vm.User = '';
         vm.title = 'Policy';
 
         activate();
 
         function activate() {
-            var promises = [getPolicies(), getAgentInfo()];
+            var promises = [getAuthenticatedUser(), getPolicies(), getAgentInfo()];
             common.activateController(promises, controllerId)
                 .then(function () { log('Activated Policy View'); });
+        }
+
+        function getAuthenticatedUser() {
+            return authenticationDataService.getAuthenticatedUser().then(function (data) {
+                return vm.User = data;
+            });
         }
 
         function getPolicies() {

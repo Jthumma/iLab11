@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'dashboard';
-    angular.module('app').controller(controllerId, ['common', 'datacontext', 'dashboardDataService', dashboard]);
+    angular.module('app').controller(controllerId, ['common', 'datacontext', 'dashboardDataService', 'authenticationDataService', dashboard]);
 
-    function dashboard(common, datacontext, dashboardDataService) {
+    function dashboard(common, datacontext, dashboardDataService, authenticationDataService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
@@ -15,14 +15,21 @@
         vm.messageCount = 0;
         vm.policies = [];
         vm.claims = [];
+        vm.User = '';
         vm.title = 'Dashboard';
 
         activate();
 
         function activate() {
-            var promises = [getMessageCount(), getPolicies(), getClaims()];
+            var promises = [getAuthenticatedUser(), getMessageCount(), getPolicies(), getClaims()];
             common.activateController(promises, controllerId)
                 .then(function () { log('Activated Dashboard View'); });
+        }
+
+        function getAuthenticatedUser() {
+            return authenticationDataService.getAuthenticatedUser().then(function (data) {
+                return vm.User = data;
+            });
         }
 
         function getMessageCount() {

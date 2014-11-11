@@ -62,7 +62,8 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
 
         public ActionResult GetAuthorizedUser()
         {
-            return Json(_authorizationService.GetAuthorizedUser(), JsonRequestBehavior.AllowGet);
+            var user = _authorizationService.GetAuthorizedUser();
+            return Json(user, JsonRequestBehavior.AllowGet);
         }
 
     }

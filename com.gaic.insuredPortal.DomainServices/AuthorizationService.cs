@@ -35,7 +35,10 @@ namespace com.gaic.insuredPortal.DomainServices
                 _log.DebugFormat("_contextStrategyProvider.GetUser(false) returned null");
                 return null;
             }
-            if (HasStoredPermissions(authorizedUser) /*&& HasStoredIPAddress(authorizedUser)*/) return authorizedUser;
+            if (HasStoredPermissions(authorizedUser) /*&& HasStoredIPAddress(authorizedUser)*/)
+            {
+                return authorizedUser;
+            }
 
             //_log.DebugFormat("Apply permissions and ip address");
             ApplyPermissions(authorizedUser);
@@ -59,25 +62,25 @@ namespace com.gaic.insuredPortal.DomainServices
         public UserModel AuthorizeUser(bool checkSiteMinderOnly)
         {
             //siteminder user attempted first, then cached local user is retrieved
-            UserModel authorizedUserModel = _contextStrategyProvider.GetUser(checkSiteMinderOnly);
-            if (checkSiteMinderOnly && authorizedUserModel != null)
+            UserModel user = _contextStrategyProvider.GetUser(checkSiteMinderOnly);
+            if (checkSiteMinderOnly && user != null)
             {
                 //ApplyPermissions(authorizedUser);
-                return authorizedUserModel;
+                return user;
             }
 
             //this is a case where a user is logged in and the server session is still active, 
             //but the user opens a new tab or browser and logs in as another user OR the user
             //closes all browsers but comes back in a few minutes later while teh session on
             //the server is still active and logs in as another user. 
-            if (authorizedUserModel != null && authorizedUserModel.UserId != _contextStrategyProvider.GetUserName())
+            if (user != null && user.UserId != _contextStrategyProvider.GetUserName())
             {
-                authorizedUserModel = _contextStrategyProvider.ClearUser();
+                user = _contextStrategyProvider.ClearUser();
             }
 
             //if we are here, that means siteminder is not enabled and the local user 
             //isn't found probably just logging in or logging in as another user
-            if (authorizedUserModel != null) return authorizedUserModel;
+            if (user != null) return user;
 
             string userId = _contextStrategyProvider.GetUserName();
             if (String.IsNullOrEmpty(userId)) return null; // can't do anything without a userid, can't help you
