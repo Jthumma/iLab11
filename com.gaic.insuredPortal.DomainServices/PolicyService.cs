@@ -25,6 +25,7 @@ namespace com.gaic.insuredPortal.DomainServices
         {
 
             //return _fdwInquiryProvider.GetPolicyInfo();
+            return null;
         }
 
     }

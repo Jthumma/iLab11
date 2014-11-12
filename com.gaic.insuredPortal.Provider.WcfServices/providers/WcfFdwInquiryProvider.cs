@@ -16,6 +16,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
         public PolicyModel GetPolicyInfo()
         {
             //return _fdwInquiryAdapter.GetPolicyInfo();
+            return null;
         }
 
     }
