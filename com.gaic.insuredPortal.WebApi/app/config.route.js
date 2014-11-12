@@ -42,7 +42,7 @@
             //    }
             //}
             , {
-                url: '/policy',
+                url: '/policy/:policyNumber',
                 config: {
                     title: 'policy',
                     templateUrl: 'app/policy/policy.html',
@@ -53,7 +53,7 @@
                 }
             }
             , {
-                url: '/claims',
+                url: '/claims/:claimNumber',
                 config: {
                     title: 'claims',
                     templateUrl: 'app/claims/claims.html',
@@ -64,13 +64,24 @@
                 }
             }
             , {
-                url: '/billing',
+                url: '/billing/:billNumber',
                 config: {
                     title: 'billing',
                     templateUrl: 'app/billing/billing.html',
                     settings: {
                         nav: 4,
                         content: '<i class="fa fa-pencil"></i> Billing'
+                    }
+                }
+            }
+            , {
+                url: '/reports',
+                config: {
+                    title: 'reports',
+                    templateUrl: 'app/reports/reports.html',
+                    settings: {
+                        nav: 5,
+                        content: '<i class="fa fa-file-pdf-o"></i> Reports'
                     }
                 }
             }

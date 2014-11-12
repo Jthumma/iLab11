@@ -8,7 +8,6 @@ namespace com.gaic.insuredPortal.Core.Domain.models
         public string AgencyName { get; set; }
         public AddressModel Address { get; set; }
         public string AgentCode { get; set; }
-
-        //public List<PolicyModel> Policies { get; set; }
+        public ContactModel Contact { get; set; }
     }
 }

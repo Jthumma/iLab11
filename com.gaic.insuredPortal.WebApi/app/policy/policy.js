@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'policy';
-    angular.module('app').controller(controllerId, ['common', 'policyDataService', 'authenticationDataService', policy]);
+    angular.module('app').controller(controllerId, ['common', '$routeParams', 'policyDataService', 'authenticationDataService', policy]);
 
-    function policy(common, policyDataService, authenticationDataService) {
+    function policy(common, $routeParams, policyDataService, authenticationDataService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
@@ -12,11 +12,12 @@
         //    title: 'Agent information',
         //    description: 'Agent Andy - Agency Name, 123 Main St, Coloroado Springs, CO 56234'
         //};
+        vm.policyNumber = $routeParams.policyNumber == ':policyNumber' ? '' : $routeParams.policyNumber;
         vm.messageCount = 0;
         vm.agentInfo = '';
         vm.policies = [];
         vm.User = '';
-        vm.title = 'Policies';
+        vm.title = vm.policyNumber == '' ? 'Policies' : 'Policy';
 
         activate();
 

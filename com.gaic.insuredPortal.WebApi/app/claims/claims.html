@@ -1,10 +1,42 @@
 ﻿<section class="mainbar" data-ng-controller="claims as vm">
     <section class="matter">
         <div class="container">
+            <div class="row col-md-12">
+                <ul class="today-datas">
+                    <li class="bgreen">
+                        <a href="/#/">
+                            <div class="pull-left"><i class="fa fa-dashboard"></i></div>
+                            <div class="datas-text pull-right">Dashboard</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="bviolet">
+                        <a href="/#/policy/:policyNumber">
+                            <div class="pull-left"><i class="fa fa-lock"></i></div>
+                            <div class="datas-text pull-right">Policy</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="bred">
+                        <a href="/#/billing/:billNumber">
+                            <div class="pull-left"><i class="fa fa-pencil"></i></div>
+                            <div class="datas-text pull-right">Billing</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="borange">
+                        <a href="/#/reports">
+                            <div class="pull-left"><i class="fa fa-file-pdf-o"></i></div>
+                            <div class="datas-text pull-right">Reports</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wblue">
-                        <div data-cc-widget-header title="{{vm.title}}"></div>
+                        <div data-cc-widget-header title="{{vm.title}} {{vm.claimNumber}}"></div>
                         <div class="widget-content text-left text-info">
                             <table id="unseen" class="table table-condensed table-striped table-responsive" data-ng-show="vm.claims.length>0">
                                 <thead>
@@ -20,7 +52,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr data-ng-repeat="c in vm.claims">
+                                    <tr data-ng-repeat="c in vm.claims | filter:vm.claimNumber">
                                         <td>{{c.ClaimNumber}}</td>
                                         <td>{{c.LossDesc}}</td>
                                         <td id="status">{{c.Status}}</td>
@@ -45,3 +77,4 @@
         </div>
     </section>
 </section>
+

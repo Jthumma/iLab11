@@ -1,16 +1,17 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'claims';
-    angular.module('app').controller(controllerId, ['common', 'authenticationDataService', 'claimsDataService', claims]);
+    angular.module('app').controller(controllerId, ['common', '$routeParams', 'authenticationDataService', 'claimsDataService', claims]);
 
-    function claims(common, authenticationDataService, claimsDataService) {
+    function claims(common,$routeParams, authenticationDataService, claimsDataService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
         var vm = this;
         vm.User = '';
+        vm.claimNumber = $routeParams.claimNumber == ':claimNumber' ? '' : $routeParams.claimNumber;
         vm.claims = [];
-        vm.title = 'Claims History';
+        vm.title = vm.claimNumber == '' ? 'Claims History' : 'Claim Detail for';
 
         activate();
 

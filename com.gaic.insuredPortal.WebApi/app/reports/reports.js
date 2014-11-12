@@ -1,23 +1,22 @@
 ﻿(function () {
     'use strict';
-    var controllerId = 'billing';
-    angular.module('app').controller(controllerId, ['common','$routeParams','authenticationDataService', billing]);
+    var controllerId = 'reports';
+    angular.module('app').controller(controllerId, ['common', 'authenticationDataService', reports]);
 
-    function billing(common, $routeParams, authenticationDataService) {
+    function reports(common, authenticationDataService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
         var vm = this;
         vm.User = '';
-        vm.billNumber = $routeParams.billNumber == ':billNumber' ? '' : $routeParams.billNumber;
-        vm.bills = [];
-        vm.title = 'Billing';
+        
+        vm.title = 'Reports';
 
         activate();
 
         function activate() {
             common.activateController([getAuthenticatedUser()], controllerId)
-                .then(function () { log('Activated Billing View'); });
+                .then(function () { log('Activated Reports View'); });
         }
 
         function getAuthenticatedUser() {
@@ -26,5 +25,6 @@
             });
         }
 
+        
     }
 })();

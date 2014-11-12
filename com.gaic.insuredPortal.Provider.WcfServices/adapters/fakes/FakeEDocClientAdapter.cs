@@ -24,8 +24,9 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Number = "2462102",
                     Mod = 0,
                     Version = 0,
+                    Status = "Active",
                     EffectiveDate = "11/01/2013",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -53,7 +54,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel {Phone = "5131234567", Email = "brandsins@agency.com"}
                         }
                 });
                 policies.Add(new PolicyModel
@@ -64,7 +66,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Mod = 0,
                     Version = 0,
                     EffectiveDate = "07/15/2014",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
+                    Status = "New Business",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -92,7 +95,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
             }
@@ -105,8 +109,9 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Number = "2462104",
                     Mod = 0,
                     Version = 0,
+                    Status = "Cancelled",
                     EffectiveDate = "11/01/2013",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -134,7 +139,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
                 policies.Add(new PolicyModel
@@ -145,7 +151,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Mod = 0,
                     Version = 0,
                     EffectiveDate = "07/23/2014",
-                    ExpirationDate = "",
+                    ExpirationDate = "10/31/2014",
+                    Status = "Expired",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -174,7 +181,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
             }
@@ -187,8 +195,9 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Number = "2462103",
                     Mod = 0,
                     Version = 0,
+                    Status = "Active",
                     EffectiveDate = "11/01/2013",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -216,7 +225,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
                 policies.Add(new PolicyModel
@@ -227,7 +237,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Mod = 0,
                     Version = 0,
                     EffectiveDate = "07/15/2014",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuos",
+                    Status = "Active",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -255,7 +266,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
             }
@@ -268,8 +280,9 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Number = "3129482",
                     Mod = 0,
                     Version = 0,
+                    Status = "Renewal",
                     EffectiveDate = "07/23/2014",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -298,7 +311,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
                 policies.Add(new PolicyModel
@@ -309,7 +323,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Mod = 0,
                     Version = 0,
                     EffectiveDate = "11/01/2013",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
+                    Status = "Active",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -337,7 +352,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
                 policies.Add(new PolicyModel
@@ -348,7 +364,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Mod = 0,
                     Version = 0,
                     EffectiveDate = "07/15/2014",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
+                    Status = "Renewal",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -376,7 +393,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
                 policies.Add(new PolicyModel
@@ -387,7 +405,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Mod = 0,
                     Version = 0,
                     EffectiveDate = "11/01/2013",
-                    ExpirationDate = "",
+                    ExpirationDate = "12/31/2014",
+                    Status = "Expired",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -415,7 +434,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
                 policies.Add(new PolicyModel
@@ -426,7 +446,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Mod = 0,
                     Version = 0,
                     EffectiveDate = "11/01/2013",
-                    ExpirationDate = "",
+                    ExpirationDate = "Continuous",
+                    Status = "Active",
                     PolicyHolderName = "OO of Team Indy Transport Services LLC",
                     MasterPolicyNumber = "GTP 2407608 00",
                     Insured =
@@ -454,7 +475,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "West Chester",
                                     State = "OH",
                                     Zip = "45069"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "5131234567", Email = "brandsins@agency.com" }
                         }
                 });
             }
@@ -469,6 +491,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Version = 1,
                     EffectiveDate = "04/29/2012",
                     ExpirationDate = "04/29/2013",
+                    Status = "Active",
                     Insured =
                         new InsuredModel
                         {
@@ -494,7 +517,8 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                                     City = "Statesville",
                                     State = "NC",
                                     Zip = "28687"
-                                }
+                                },
+                            Contact = new ContactModel { Phone = "8567891235", Fax = "8567896987", Email = "bbtwebb@insurance.com" }
                         }
                 });
             }

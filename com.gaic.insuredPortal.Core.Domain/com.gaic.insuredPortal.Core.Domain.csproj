@@ -73,6 +73,7 @@
     <Compile Include="interfaces\service\IAuthorizationService.cs" />
     <Compile Include="interfaces\service\IClaimsService.cs" />
     <Compile Include="interfaces\service\IPolicyService.cs" />
+    <Compile Include="models\ContactModel.cs" />
     <Compile Include="models\InsuredModel.cs" />
     <Compile Include="models\ListItemModel.cs" />
     <Compile Include="models\MessageCategory.cs" />

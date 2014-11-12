@@ -22,7 +22,7 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
 
         public ActionResult GetAgentInfo()
         {
-            return Json(_agentService.GetAgentInfo(), JsonRequestBehavior.AllowGet);
+            return Json(_agentService.GetAgentInfo(LoggedInUser), JsonRequestBehavior.AllowGet);
         }
     }
 }

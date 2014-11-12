@@ -1,29 +1,51 @@
 ﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
     <section class="matter">
         <div class="container">
+            <div class="row col-md-12">
+                <ul class="today-datas">
+                    
+                    <li class="bviolet">
+                        <a href="/#/policy/:policyNumber">
+                            <div class="pull-left"><i class="fa fa-lock"></i></div>
+                            <div class="datas-text pull-right">Policy</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="bblue">
+                        <a href="/#/claims/:claimNumber">
+                            <div class="pull-left"><i class="fa fa-file-text-o"></i></div>
+                            <div class="datas-text pull-right">Claims</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="bred">
+                        <a href="/#/billing/:billNumber">
+                            <div class="pull-left"><i class="fa fa-pencil"></i></div>
+                            <div class="datas-text pull-right">Billing</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="borange">
+                        <a href="/#/reports">
+                            <div class="pull-left"><i class="fa fa-file-pdf-o"></i></div>
+                            <div class="datas-text pull-right">Reports</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="row" data-ng-show="vm.User.Permission.ShowNotifications">
                 <div class="col-md-12">
                     <ul class="today-datas col-md-3">
-                        <!--<li class="blightblue">
-                                <div class="pull-left"><i class="fa fa-plane"></i></div>
-                                <div class="datas-text pull-right">
-                                    <span class="bold">May 18 - 19, 2015</span> Castle Resort, Neverland
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>-->
 
                         <li class="borange">
                             <div class="pull-left"><i class="fa fa-envelope"></i></div>
                             <div class="datas-text pull-right">
-                                <!--<span class="bold">{{vm.messageCount}}</span> changes-->
                                 {{vm.notifications.length}} changes
-                               
                             </div>
-                            
                             <div class="clearfix"></div>
-
                         </li>
-
                     </ul>
                     <ul>
                         <li data-ng-repeat="n in vm.notifications">
@@ -32,14 +54,11 @@
                     </ul>
                 </div>
             </div>
-            <div>
-               
-            </div>
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wviolet">
-                        <div data-cc-widget-header title="Policies" class="fa fa-ambulance"
+                        <div data-cc-widget-header title="Active Policies" class="fa fa-ambulance"
                              allow-collapse="true"></div>
                         <div class="widget-content text-left text-info" data-ng-show="vm.policies.length>0">
                             <table id="dashboardPolicy" class="table table-condensed table-striped">
@@ -54,7 +73,7 @@
                                 </thead>
                                 <tbody>
                                     <tr data-ng-repeat="p in vm.policies">
-                                        <td><a href="" data-ng-click="">{{p.Symbol}}</a></td>
+                                        <td><a href="#/policy/{{p.Number}}">{{p.Symbol}}</a></td>
                                         <td>{{p.Status}}</td>
                                         <td id="effDate">{{p.EffectiveDate}}</td>
                                         <td id="expDate">{{p.ExpirationDate}}</td>
@@ -67,24 +86,12 @@
                             <h3>No policies found</h3>
                         </div>
                         <div class="widget-foot">
-                            <div class="clearfix"><a href="/app/policy/policy.html"> more...</a></div>
+                            <div class="clearfix"><a href="#/policy/:policyNumber"> more...</a></div>
                         </div>
                     </div>
                 </div>
-                <!--<div class="col-md-6">
-                    <div class="widget wgreen">
-                        <div data-cc-widget-header title="{{vm.news.title}}"
-                             allow-collapse="true"></div>
-                        <div class="widget-content text-center text-info">
-                            <small>{{vm.news.description}}</small>
-                        </div>
-                        <div class="widget-foot">
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
-            
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="widget wblue">
@@ -100,7 +107,7 @@
                                 </thead>
                                 <tbody>
                                     <tr data-ng-repeat="p in vm.claims">
-                                        <td><a href="">{{p.ClaimNumber}}</a></td>
+                                        <td><a href="#/claims/{{p.ClaimNumber}}">{{p.ClaimNumber}}</a></td>
                                         <td>{{p.LossDesc}}</td>
                                     </tr>
                                 </tbody>
@@ -110,7 +117,7 @@
                             <h3>No open claims</h3>
                         </div>
                         <div class="widget-foot">
-                            <div class="clearfix"><a href="/app/claims/claims.html"> more...</a></div>
+                            <div class="clearfix"><a href="#/claims/:claimNumber"> more...</a></div>
                         </div>
                     </div>
                 </div>
@@ -118,29 +125,29 @@
                     <div class="widget wred">
                         <div data-cc-widget-header title="Billing"
                              allow-collapse="true"></div>
-                        <div class="widget-content text-left text-info">
-                            <div class="widget-content text-left text-info" data-ng-show="vm.bills.length>0">
-                                <table class="table table-condensed table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Number</th>
-                                            <th>Loss</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr data-ng-repeat="p in vm.claims">
-                                            <td><a href="">{{p.ClaimNumber}}</a></td>
-                                            <td>{{p.LossDesc}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="widget-content text-center text-info" data-ng-show="vm.bills.length==0">
-                                <h3>No payment due</h3>
-                            </div>
+
+                        <div class="widget-content text-left text-info" data-ng-show="vm.bills.length>0">
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Number</th>
+                                        <th>Loss</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="p in vm.bills">
+                                        <td><a href="">{{p.ClaimNumber}}</a></td>
+                                        <td>{{p.LossDesc}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <div class="widget-content text-center text-info" data-ng-show="vm.bills.length==0">
+                            <h3>No payment due</h3>
+                        </div>
+
                         <div class="widget-foot">
-                            <div class="clearfix"><a href="/app/billing/billing.html"> more...</a></div>
+                            <div class="clearfix"><a href="#/billing/:billNumber"> more...</a></div>
                         </div>
                     </div>
                 </div>
