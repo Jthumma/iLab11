@@ -14,9 +14,14 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
             _eDocClientAdapter = eDocClientAdapter;
         }
 
-        public List<PolicyModel> GetPolicies()
+        public bool Ping(string token)
         {
-            return _eDocClientAdapter.GetPolicies();
+            return _eDocClientAdapter.Ping(token);
+        }
+
+        public List<PolicyModel> GetPolicies(string policyNumber, UserModel user)
+        {
+            return _eDocClientAdapter.GetPolicies(policyNumber, user);
         }
     }
 }

@@ -1,11 +1,56 @@
 ﻿<section class="mainbar" data-ng-controller="billing as vm">
     <section class="matter">
         <div class="container">
+            <div class="row col-md-12">
+                <ul class="today-datas">
+                    <li class="bgreen">
+                        <a href="/#/">
+                            <div class="pull-left"><i class="fa fa-dashboard"></i></div>
+                            <div class="datas-text pull-right">Dashboard</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="bviolet">
+                        <a href="/#/policy/:policyNumber">
+                            <div class="pull-left"><i class="fa fa-lock"></i></div>
+                            <div class="datas-text pull-right">Policy</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="bblue">
+                        <a href="/#/claims/:claimNumber">
+                            <div class="pull-left"><i class="fa fa-file-text-o"></i></div>
+                            <div class="datas-text pull-right">Claims</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="borange">
+                        <a href="/#/reports">
+                            <div class="pull-left"><i class="fa fa-file-pdf-o"></i></div>
+                            <div class="datas-text pull-right">Reports</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="row">
                 <div class="widget wred">
                     <div data-cc-widget-header title="{{vm.title}}"></div>
-                    <div class="widget-content user">
-                        <h3>TODO: Implement Your Features</h3>
+                    <div class="widget-content text-left text-info">
+                        <table id="unseen" class="table table-condensed table-striped table-responsive" data-ng-show="vm.bills.length>0">
+                            <thead>
+                                <tr>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="c in vm.bills | filter:vm.billNumber"></tr>
+                            </tbody>
+                        </table>
+
+                        <h3 data-ng-show="vm.bills.length==0">No billing history found</h3>
+
                     </div>
                     <div class="widget-foot">
                         <div class="clearfix"></div>

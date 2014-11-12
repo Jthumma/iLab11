@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://idv.services.gaic.com/" targetNamespace="http://idv.services.gaic.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AuthenticationException" type="tns:AuthenticationException" />
+  <xs:element name="CommonUtilException" type="tns:CommonUtilException" />
+  <xs:element name="IdvServiceException" type="tns:IdvServiceException" />
+  <xs:element name="InputValidationException" type="tns:InputValidationException" />
+  <xs:element name="InvalidPasswordException" type="tns:InvalidPasswordException" />
+  <xs:element name="authenticate" type="tns:authenticate" />
+  <xs:element name="authenticateResponse" type="tns:authenticateResponse" />
+  <xs:element name="changeLogLevel" type="tns:changeLogLevel" />
+  <xs:element name="changeLogLevelResponse" type="tns:changeLogLevelResponse" />
+  <xs:element name="changePassword" type="tns:changePassword" />
+  <xs:element name="changePasswordResponse" type="tns:changePasswordResponse" />
+  <xs:element name="checkDependencies" type="tns:checkDependencies" />
+  <xs:element name="checkDependenciesResponse" type="tns:checkDependenciesResponse" />
+  <xs:element name="createUser" type="tns:createUser" />
+  <xs:element name="createUserResponse" type="tns:createUserResponse" />
+  <xs:element name="deleteUser" type="tns:deleteUser" />
+  <xs:element name="deleteUserResponse" type="tns:deleteUserResponse" />
+  <xs:element name="describePasswordPolicy" type="tns:describePasswordPolicy" />
+  <xs:element name="describePasswordPolicyResponse" type="tns:describePasswordPolicyResponse" />
+  <xs:element name="generatePassword" type="tns:generatePassword" />
+  <xs:element name="generatePasswordResponse" type="tns:generatePasswordResponse" />
+  <xs:element name="getChallengesForSetup" type="tns:getChallengesForSetup" />
+  <xs:element name="getChallengesForSetupResponse" type="tns:getChallengesForSetupResponse" />
+  <xs:element name="getRandomChallenges" type="tns:getRandomChallenges" />
+  <xs:element name="getRandomChallengesResponse" type="tns:getRandomChallengesResponse" />
+  <xs:element name="getUserByDn" type="tns:getUserByDn" />
+  <xs:element name="getUserByDnResponse" type="tns:getUserByDnResponse" />
+  <xs:element name="getUserByHid" type="tns:getUserByHid" />
+  <xs:element name="getUserByHidResponse" type="tns:getUserByHidResponse" />
+  <xs:element name="getUserByVid" type="tns:getUserByVid" />
+  <xs:element name="getUserByVidResponse" type="tns:getUserByVidResponse" />
+  <xs:element name="getVersion" type="tns:getVersion" />
+  <xs:element name="getVersionResponse" type="tns:getVersionResponse" />
+  <xs:element name="ping" type="tns:ping" />
+  <xs:element name="pingResponse" type="tns:pingResponse" />
+  <xs:element name="refreshCprProperties" type="tns:refreshCprProperties" />
+  <xs:element name="refreshCprPropertiesResponse" type="tns:refreshCprPropertiesResponse" />
+  <xs:element name="resetPassword" type="tns:resetPassword" />
+  <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse" />
+  <xs:element name="saveChallengeResponses" type="tns:saveChallengeResponses" />
+  <xs:element name="saveChallengeResponsesResponse" type="tns:saveChallengeResponsesResponse" />
+  <xs:element name="search" type="tns:search" />
+  <xs:element name="searchResponse" type="tns:searchResponse" />
+  <xs:element name="updateUser" type="tns:updateUser" />
+  <xs:element name="updateUserResponse" type="tns:updateUserResponse" />
+  <xs:element name="userHasSetupResponses" type="tns:userHasSetupResponses" />
+  <xs:element name="userHasSetupResponsesResponse" type="tns:userHasSetupResponsesResponse" />
+  <xs:element name="validateChallegeResponses" type="tns:validateChallegeResponses" />
+  <xs:element name="validateChallegeResponsesResponse" type="tns:validateChallegeResponsesResponse" />
+  <xs:complexType name="resetPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+      <xs:element minOccurs="0" name="idmDisabledState" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resetPasswordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvalidPasswordException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="policyDescription" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdvServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateChallegeResponses">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="responses" type="tns:challenge" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="challenge">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="question" type="xs:string" />
+      <xs:element minOccurs="0" name="answer" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateChallegeResponsesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="saveChallengeResponses">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="responses" type="tns:challenge" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="saveChallengeResponsesResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="checkDependencies">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="checkDependenciesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CommonUtilException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ping">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="pingResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVersion">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserByHid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hid" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attrsToReturn" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserByHidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="values" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userHasSetupResponses">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userHasSetupResponsesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeLogLevelResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getChallengesForSetup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getChallengesForSetupResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:challenge" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="search">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="searchBase" type="xs:string" />
+      <xs:element minOccurs="0" name="filter" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attrsToReturn" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResults" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchResults">
+    <xs:sequence>
+      <xs:element name="count" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="results" nillable="true" type="tns:searchResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dummy" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attribute" nillable="true" type="tns:attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="describePasswordPolicy">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="describePasswordPolicyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generatePassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generatePasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserByDn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dn" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attrsToReturn" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserByDnResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getRandomChallenges">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getRandomChallengesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:challenge" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authenticate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authenticateResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="AuthenticationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refreshCprProperties">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="refreshCprPropertiesResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="createUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="tns:attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InputValidationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changePassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+      <xs:element minOccurs="0" name="currentPassword" type="xs:string" />
+      <xs:element minOccurs="0" name="newPassword" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changePasswordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserByVid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attrsToReturn" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserByVidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="tns:attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateUserResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="deleteUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vid" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteUserResponse">
+    <xs:sequence />
+  </xs:complexType>
+</xs:schema>

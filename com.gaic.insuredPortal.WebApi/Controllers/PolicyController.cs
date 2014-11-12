@@ -3,12 +3,13 @@ using com.gaic.insuredPortal.Core.Domain.interfaces.service;
 
 namespace com.gaic.insuredPortal.WebApi.Controllers
 {
-    public class PolicyController : Controller
+    public class PolicyController : BaseController
     {
         private readonly IAgentService _agentService;
         private readonly IPolicyService _policyService;
 
-        public PolicyController(IPolicyService policyService, IAgentService agentService)
+        public PolicyController(IPolicyService policyService, IAgentService agentService,
+            IAuthorizationService authorizationService) : base(authorizationService)
         {
             _policyService = policyService;
             _agentService = agentService;
@@ -16,12 +17,12 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
 
         public ActionResult GetPolicies()
         {
-            return Json(_policyService.GetPolicies(), JsonRequestBehavior.AllowGet);
+            return Json(_policyService.GetPolicies("0000000", LoggedInUser), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetAgentInfo()
         {
-            return Json(_agentService.GetAgentInfo(), JsonRequestBehavior.AllowGet);
+            return Json(_agentService.GetAgentInfo(LoggedInUser), JsonRequestBehavior.AllowGet);
         }
     }
 }

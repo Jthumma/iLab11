@@ -55,6 +55,7 @@
     <Compile Include="AuthorizationService.cs" />
     <Compile Include="DomainServicesBootstrap.cs" />
     <Compile Include="ClaimsService.cs" />
+    <Compile Include="NotificationService.cs" />
     <Compile Include="PolicyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

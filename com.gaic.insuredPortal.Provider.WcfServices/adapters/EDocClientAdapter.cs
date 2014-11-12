@@ -6,6 +6,7 @@ using com.gaic.insuredPortal.Core.Domain.models;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.eDocMtomService;
+using Utility.WCFSiteMinderSecurity;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
 {
@@ -20,15 +21,23 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
                 endpointAddressAdapter.EndpointAddress);
         }
 
+        public bool Ping(string token)
+        {
+            SecureSoapContext.AttachSecurityToken(_ecmServiceSoapClient.InnerChannel, token);
+            var version = _ecmServiceSoapClient.GetVersion();
+            return !String.IsNullOrEmpty(version);
+        }
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        public List<PolicyModel> GetPolicies()
+        public List<PolicyModel> GetPolicies(string policyNumber, UserModel user)
         {
-            Document[] documents = _ecmServiceSoapClient.SearchPolicyDocuments("");
+            SecureSoapContext.AttachSecurityToken(_ecmServiceSoapClient.InnerChannel, user.Token);
+            Document[] documents = _ecmServiceSoapClient.SearchPolicyDocuments(String.Format("PolicyNumber='{0}'", policyNumber));
 
             return Mapper.Map<List<Document>, List<PolicyModel>>(documents.ToList());
         }

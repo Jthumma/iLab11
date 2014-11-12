@@ -1,38 +1,98 @@
 ﻿<section class="mainbar" data-ng-controller="policy as vm">
     <section class="matter">
         <div class="container">
-            <div class="row">
-                
-                    <div class="widget wviolet">
-                        <div data-cc-widget-header title="{{vm.title}}"></div>
-                        <div class="widget-content user">
-                            <div class="col-md-9">
-                                <h3>TODO: Implement Your Features</h3>
-                            </div>
-                            
-                            
-                            <div class="col-md-3">
-                                <div class="widget worange">
-                                    <div data-cc-widget-header title="{{vm.agentInfo.Name}}" subtitle="{{vm.agentInfo.AgencyName}}"
-                                         allow-collapse="false"></div>
-                                    <div class="widget-content text-center text-info">
-                                        <small>{{vm.agentInfo.Address.Display}}</small>
-                                    </div>
-                                    <!--<div class="widget-foot">
-                                        <div class="clearfix"></div>
-                                    </div>-->
-                                </div>
-                            </div>
+            <div class="row col-md-12">
+                <ul class="today-datas">
+                    <li class="bgreen">
+                        <a href="/#/">
+                            <div class="pull-left"><i class="fa fa-dashboard"></i></div>
+                            <div class="datas-text pull-right">Dashboard</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                    <li class="bblue">
+                        <a href="/#/claims/:claimNumber">
+                            <div class="pull-left"><i class="fa fa-file-text-o"></i></div>
+                            <div class="datas-text pull-right">Claims</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
 
+                    <li class="bred">
+                        <a href="/#/billing/:billNumber">
+                            <div class="pull-left"><i class="fa fa-pencil"></i></div>
+                            <div class="datas-text pull-right">Billing</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+
+                    <li class="borange">
+                        <a href="/#/reports">
+                            <div class="pull-left"><i class="fa fa-file-pdf-o"></i></div>
+                            <div class="datas-text pull-right">Reports</div>
+                            <!--<div class="clearfix"></div>-->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="widget wviolet">
+                        <div data-cc-widget-header title="{{vm.title}} {{vm.policyNumber}}"></div>
+                        <div class="widget-content user">
+
+                            <table id="policyTable" class="table table-condensed table-striped" data-ng-show="vm.policies.length>0">
+                                <thead>
+                                    <tr>
+                                        <th>Policy</th>
+                                        <th>Status</th>
+                                        <th id="effDate">Effective Date</th>
+                                        <th id="expDate">Expiration Date</th>
+                                        <th id="insuredName">Insured</th>
+                                        <th id="insuredAddress">Insured Address</th>
+                                        <th id="pholderName">Policy Holder</th>
+                                        <th id="masterPolicy">Master Policy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="p in vm.policies | filter:vm.policyNumber">
+                                        <td><a href="" data-ng-click="">{{p.Symbol}}</a></td>
+                                        <td>{{p.Status}}</td>
+                                        <td id="effDate">{{p.EffectiveDate}}</td>
+                                        <td id="expDate">{{p.ExpirationDate}}</td>
+                                        <td id="insuredName">{{p.Insured.Name}}</td>
+                                        <td id="insuredAddress">{{p.Insured.Address.Display}}</td>
+                                        <td id="pholderName">{{p.PolicyHolderName}}</td>
+                                        <td id="masterPolicy">{{p.MasterPolicyNumber}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h3 data-ng-show="vm.policies.length==0">No policy history found</h3>
 
                         </div>
                         <div class="widget-foot">
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                
-                
 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget wlightblue">
+                        <div data-cc-widget-header title="{{vm.agentInfo.AgentCode}} - {{vm.agentInfo.AgencyName}}" subtitle="{{vm.agentInfo.Name}}"
+                             allow-collapse="false"></div>
+                        <div class="widget-content text-left text-info">
+                            <p><h5>{{vm.agentInfo.Address.Display}}</h5></p>
+                            <small class="fa fa-phone">  {{vm.agentInfo.Contact.Phone}}</small>
+                            <small class="fa fa-envelope">  {{vm.agentInfo.Contact.Email}}</small>
+                        </div>
+                        <!--<div class="widget-foot">
+                                <div class="clearfix"></div>
+                            </div>-->
+                    </div>
+                </div>
             </div>
         </div>
     </section>

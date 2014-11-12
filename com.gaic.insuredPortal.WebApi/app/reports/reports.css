@@ -1,0 +1,60 @@
+﻿@media only screen and (max-width: 768px) {
+    #closedate, tr td:nth-child(8) {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    #reportdate, tr td:nth-child(5) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #adjuster, tr td:nth-child(6) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #claimant, tr td:nth-child(7) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #closedate, tr td:nth-child(8) {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #status, tr td:nth-child(3) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #lossdate, tr td:nth-child(4) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #reportdate, tr td:nth-child(5) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #adjuster, tr td:nth-child(6) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #claimant, tr td:nth-child(7) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #closedate, tr td:nth-child(8) {
+        display: none;
+        visibility: hidden;
+    }
+}

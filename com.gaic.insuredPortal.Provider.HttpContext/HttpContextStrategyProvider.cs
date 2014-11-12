@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using com.gaic.insuredPortal.Core.Domain.domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
+using com.gaic.insuredPortal.Core.Domain.models;
 
 namespace com.gaic.insuredPortal.Provider.HttpContext
 {
@@ -27,19 +27,18 @@ namespace com.gaic.insuredPortal.Provider.HttpContext
             }
         }
 
-
-        public User GetUser(bool checkSiteMinderOnly)
+        public UserModel GetUser(bool checkSiteMinderOnly)
         {
             if (checkSiteMinderOnly) return _contextAdapters[ContextType.SiteMinder].GetUser();
 
-            User user = CurrentContext.GetUser();
-            return user;
+            UserModel userModel = CurrentContext.GetUser();
+            return userModel;
         }
 
-        public User ClearUser()
+        public UserModel ClearUser()
         {
-            User user = CurrentContext.ClearUser();
-            return user;
+            UserModel userModel = CurrentContext.ClearUser();
+            return userModel;
         }
 
         public string GetUserName()
@@ -65,9 +64,9 @@ namespace com.gaic.insuredPortal.Provider.HttpContext
             CurrentContext.StoreToken(token);
         }
 
-        public void StoreAuthorizedUser(User user)
+        public void StoreAuthorizedUser(UserModel userModel)
         {
-            CurrentContext.StoreAuthorizedUser(user);
+            CurrentContext.StoreAuthorizedUser(userModel);
         }
 
         public string GetHttpSessionId()
@@ -86,6 +85,16 @@ namespace com.gaic.insuredPortal.Provider.HttpContext
         {
             List<string> groups = CurrentContext.GetUserGroups();
             return groups;
+        }
+
+        public void ApplyPermissions(PermissionModel permission)
+        {
+            CurrentContext.ApplyPermissions(permission);
+        }
+
+        public PermissionModel GetPermissions()
+        {
+            return CurrentContext.GetPermissions();
         }
 
         private void IdentifyContextToUse()

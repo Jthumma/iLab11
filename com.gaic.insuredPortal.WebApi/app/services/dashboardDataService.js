@@ -10,12 +10,17 @@
         var service = {
             getClaims: getClaims,
             getPolicies: getPolicies,
-            getMessageCount: getMessageCount
+            getNotifications: getNotifications
             
         };
         return service;
 
-        function getMessageCount() { return $q.when(3); }
+        function getNotifications() {
+            var deferred = $q.defer();
+
+            $http.get('/dashboard/GetNotifications').success(deferred.resolve).error(deferred.reject);
+            return deferred.promise;
+        }
 
         function getPolicies() {
             //var people = [

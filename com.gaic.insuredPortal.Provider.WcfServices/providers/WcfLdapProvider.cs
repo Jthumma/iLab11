@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using com.gaic.insuredPortal.Core.Domain;
-using com.gaic.insuredPortal.Core.Domain.domain;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
+using com.gaic.insuredPortal.Core.Domain.models;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices.providers
@@ -15,7 +15,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
             _ldapClientAdapter = ldapClientAdapter;
         }
 
-        public virtual User GetPerson(string userId, string token)
+        public virtual UserModel GetPerson(string userId, string token)
         {
             Ensure.ArgumentNotNullOrEmpty(userId, "UserId");
             Ensure.ArgumentNotNullOrEmpty(token, "Token");
@@ -23,7 +23,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
             return _ldapClientAdapter.GetPerson(userId, token);
         }
 
-        public List<User> GetPersonsInRole(string roleNameWithPrefix, string token)
+        public List<UserModel> GetPersonsInRole(string roleNameWithPrefix, string token)
         {
             Ensure.ArgumentNotNullOrEmpty(roleNameWithPrefix, "RoleName");
             Ensure.ArgumentNotNullOrEmpty(token, "Token");

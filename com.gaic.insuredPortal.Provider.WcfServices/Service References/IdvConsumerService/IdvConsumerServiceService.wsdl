@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/wsdl/jms/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://idv.services.gaic.com/" xmlns:ns0="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns3="http://www.w3.org/2006/05/addressing/wsdl" name="IdvConsumerServiceService" targetNamespace="http://idv.services.gaic.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:UsingPolicy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" wsdl:Required="true" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SecurityHeader MustManifestEncryption="true" MustPrepend="true" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SecurityTokens" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>sp:X509v3</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="refreshCprProperties_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="changeLogLevel_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ping_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="checkDependencies_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getVersion_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getUserByDn_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="changePassword_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="resetPassword_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getUserByHid_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getUserByVid_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="updateUser_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="deleteUser_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="generatePassword_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="createUser_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="authenticate_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="search_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="describePasswordPolicy_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="validateChallegeResponses_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getRandomChallenges_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="saveChallengeResponses_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getChallengesForSetup_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="userHasSetupResponses_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="./wsdlfile.asvc?keyid=0a32e049-14n3tbq7od-63dd" namespace="http://idv.services.gaic.com/" />
+    </xsd:schema>
+  </types>
+  <message name="InvalidPasswordException">
+    <part name="fault" element="tns:InvalidPasswordException" />
+  </message>
+  <message name="checkDependencies">
+    <part name="parameters" element="tns:checkDependencies" />
+  </message>
+  <message name="getChallengesForSetupResponse">
+    <part name="parameters" element="tns:getChallengesForSetupResponse" />
+  </message>
+  <message name="resetPassword">
+    <part name="parameters" element="tns:resetPassword" />
+  </message>
+  <message name="userHasSetupResponses">
+    <part name="parameters" element="tns:userHasSetupResponses" />
+  </message>
+  <message name="getVersion">
+    <part name="parameters" element="tns:getVersion" />
+  </message>
+  <message name="authenticate">
+    <part name="parameters" element="tns:authenticate" />
+  </message>
+  <message name="deleteUserResponse">
+    <part name="parameters" element="tns:deleteUserResponse" />
+  </message>
+  <message name="AuthenticationException">
+    <part name="fault" element="tns:AuthenticationException" />
+  </message>
+  <message name="generatePassword">
+    <part name="parameters" element="tns:generatePassword" />
+  </message>
+  <message name="refreshCprPropertiesResponse">
+    <part name="parameters" element="tns:refreshCprPropertiesResponse" />
+  </message>
+  <message name="searchResponse">
+    <part name="parameters" element="tns:searchResponse" />
+  </message>
+  <message name="validateChallegeResponsesResponse">
+    <part name="parameters" element="tns:validateChallegeResponsesResponse" />
+  </message>
+  <message name="IdvServiceException">
+    <part name="fault" element="tns:IdvServiceException" />
+  </message>
+  <message name="getUserByHid">
+    <part name="parameters" element="tns:getUserByHid" />
+  </message>
+  <message name="pingResponse">
+    <part name="parameters" element="tns:pingResponse" />
+  </message>
+  <message name="updateUserResponse">
+    <part name="parameters" element="tns:updateUserResponse" />
+  </message>
+  <message name="getUserByDn">
+    <part name="parameters" element="tns:getUserByDn" />
+  </message>
+  <message name="generatePasswordResponse">
+    <part name="parameters" element="tns:generatePasswordResponse" />
+  </message>
+  <message name="getUserByHidResponse">
+    <part name="parameters" element="tns:getUserByHidResponse" />
+  </message>
+  <message name="getUserByVid">
+    <part name="parameters" element="tns:getUserByVid" />
+  </message>
+  <message name="authenticateResponse">
+    <part name="parameters" element="tns:authenticateResponse" />
+  </message>
+  <message name="userHasSetupResponsesResponse">
+    <part name="parameters" element="tns:userHasSetupResponsesResponse" />
+  </message>
+  <message name="saveChallengeResponsesResponse">
+    <part name="parameters" element="tns:saveChallengeResponsesResponse" />
+  </message>
+  <message name="createUserResponse">
+    <part name="parameters" element="tns:createUserResponse" />
+  </message>
+  <message name="getRandomChallengesResponse">
+    <part name="parameters" element="tns:getRandomChallengesResponse" />
+  </message>
+  <message name="getVersionResponse">
+    <part name="parameters" element="tns:getVersionResponse" />
+  </message>
+  <message name="getRandomChallenges">
+    <part name="parameters" element="tns:getRandomChallenges" />
+  </message>
+  <message name="describePasswordPolicyResponse">
+    <part name="parameters" element="tns:describePasswordPolicyResponse" />
+  </message>
+  <message name="getUserByVidResponse">
+    <part name="parameters" element="tns:getUserByVidResponse" />
+  </message>
+  <message name="search">
+    <part name="parameters" element="tns:search" />
+  </message>
+  <message name="saveChallengeResponses">
+    <part name="parameters" element="tns:saveChallengeResponses" />
+  </message>
+  <message name="validateChallegeResponses">
+    <part name="parameters" element="tns:validateChallegeResponses" />
+  </message>
+  <message name="resetPasswordResponse">
+    <part name="parameters" element="tns:resetPasswordResponse" />
+  </message>
+  <message name="ping">
+    <part name="parameters" element="tns:ping" />
+  </message>
+  <message name="InputValidationException">
+    <part name="fault" element="tns:InputValidationException" />
+  </message>
+  <message name="checkDependenciesResponse">
+    <part name="parameters" element="tns:checkDependenciesResponse" />
+  </message>
+  <message name="describePasswordPolicy">
+    <part name="parameters" element="tns:describePasswordPolicy" />
+  </message>
+  <message name="getChallengesForSetup">
+    <part name="parameters" element="tns:getChallengesForSetup" />
+  </message>
+  <message name="changeLogLevelResponse">
+    <part name="parameters" element="tns:changeLogLevelResponse" />
+  </message>
+  <message name="createUser">
+    <part name="parameters" element="tns:createUser" />
+  </message>
+  <message name="CommonUtilException">
+    <part name="fault" element="tns:CommonUtilException" />
+  </message>
+  <message name="refreshCprProperties">
+    <part name="parameters" element="tns:refreshCprProperties" />
+  </message>
+  <message name="getUserByDnResponse">
+    <part name="parameters" element="tns:getUserByDnResponse" />
+  </message>
+  <message name="changeLogLevel">
+    <part name="parameters" element="tns:changeLogLevel" />
+  </message>
+  <message name="changePasswordResponse">
+    <part name="parameters" element="tns:changePasswordResponse" />
+  </message>
+  <message name="deleteUser">
+    <part name="parameters" element="tns:deleteUser" />
+  </message>
+  <message name="updateUser">
+    <part name="parameters" element="tns:updateUser" />
+  </message>
+  <message name="changePassword">
+    <part name="parameters" element="tns:changePassword" />
+  </message>
+  <portType name="IdvConsumerService">
+    <operation name="userHasSetupResponses">
+      <input message="tns:userHasSetupResponses" />
+      <output message="tns:userHasSetupResponsesResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="getChallengesForSetup">
+      <input message="tns:getChallengesForSetup" />
+      <output message="tns:getChallengesForSetupResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="saveChallengeResponses">
+      <input message="tns:saveChallengeResponses" />
+      <output message="tns:saveChallengeResponsesResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="getRandomChallenges">
+      <input message="tns:getRandomChallenges" />
+      <output message="tns:getRandomChallengesResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="validateChallegeResponses">
+      <input message="tns:validateChallegeResponses" />
+      <output message="tns:validateChallegeResponsesResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="describePasswordPolicy">
+      <input message="tns:describePasswordPolicy" />
+      <output message="tns:describePasswordPolicyResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="search">
+      <input message="tns:search" />
+      <output message="tns:searchResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="authenticate">
+      <input message="tns:authenticate" />
+      <output message="tns:authenticateResponse" />
+      <fault name="AuthenticationException" message="tns:AuthenticationException" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="createUser">
+      <input message="tns:createUser" />
+      <output message="tns:createUserResponse" />
+      <fault name="InvalidPasswordException" message="tns:InvalidPasswordException" />
+      <fault name="InputValidationException" message="tns:InputValidationException" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="generatePassword">
+      <input message="tns:generatePassword" />
+      <output message="tns:generatePasswordResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="deleteUser">
+      <input message="tns:deleteUser" />
+      <output message="tns:deleteUserResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="updateUser">
+      <input message="tns:updateUser" />
+      <output message="tns:updateUserResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="getUserByVid">
+      <input message="tns:getUserByVid" />
+      <output message="tns:getUserByVidResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="getUserByHid">
+      <input message="tns:getUserByHid" />
+      <output message="tns:getUserByHidResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="resetPassword">
+      <input message="tns:resetPassword" />
+      <output message="tns:resetPasswordResponse" />
+      <fault name="InvalidPasswordException" message="tns:InvalidPasswordException" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="changePassword">
+      <input message="tns:changePassword" />
+      <output message="tns:changePasswordResponse" />
+      <fault name="InvalidPasswordException" message="tns:InvalidPasswordException" />
+      <fault name="AuthenticationException" message="tns:AuthenticationException" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="getUserByDn">
+      <input message="tns:getUserByDn" />
+      <output message="tns:getUserByDnResponse" />
+      <fault name="IdvServiceException" message="tns:IdvServiceException" />
+    </operation>
+    <operation name="getVersion">
+      <input message="tns:getVersion" />
+      <output message="tns:getVersionResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="checkDependencies">
+      <input message="tns:checkDependencies" />
+      <output message="tns:checkDependenciesResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="ping">
+      <input message="tns:ping" />
+      <output message="tns:pingResponse" />
+    </operation>
+    <operation name="changeLogLevel">
+      <input message="tns:changeLogLevel" />
+      <output message="tns:changeLogLevelResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+    <operation name="refreshCprProperties">
+      <input message="tns:refreshCprProperties" />
+      <output message="tns:refreshCprPropertiesResponse" />
+      <fault name="CommonUtilException" message="tns:CommonUtilException" />
+    </operation>
+  </portType>
+  <binding name="IdvConsumerServicePortBinding" type="tns:IdvConsumerService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="userHasSetupResponses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#userHasSetupResponses_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getChallengesForSetup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getChallengesForSetup_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="saveChallengeResponses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#saveChallengeResponses_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getRandomChallenges">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getRandomChallenges_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="validateChallegeResponses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#validateChallegeResponses_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="describePasswordPolicy">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#describePasswordPolicy_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="search">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#search_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="authenticate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#authenticate_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="AuthenticationException">
+        <soap:fault use="literal" name="AuthenticationException" namespace="" />
+      </fault>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createUser">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#createUser_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidPasswordException">
+        <soap:fault use="literal" name="InvalidPasswordException" namespace="" />
+      </fault>
+      <fault name="InputValidationException">
+        <soap:fault use="literal" name="InputValidationException" namespace="" />
+      </fault>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="generatePassword">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#generatePassword_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteUser">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#deleteUser_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="updateUser">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#updateUser_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserByVid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getUserByVid_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserByHid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getUserByHid_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="resetPassword">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#resetPassword_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidPasswordException">
+        <soap:fault use="literal" name="InvalidPasswordException" namespace="" />
+      </fault>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="changePassword">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#changePassword_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidPasswordException">
+        <soap:fault use="literal" name="InvalidPasswordException" namespace="" />
+      </fault>
+      <fault name="AuthenticationException">
+        <soap:fault use="literal" name="AuthenticationException" namespace="" />
+      </fault>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserByDn">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getUserByDn_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="IdvServiceException">
+        <soap:fault use="literal" name="IdvServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getVersion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getVersion_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="checkDependencies">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#checkDependencies_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="ping">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ping_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="changeLogLevel">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#changeLogLevel_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="refreshCprProperties">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#refreshCprProperties_input_policy" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CommonUtilException">
+        <soap:fault use="literal" name="CommonUtilException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="IdvConsumerServiceService">
+    <port name="IdvConsumerServicePort" binding="tns:IdvConsumerServicePortBinding">
+      <soap:address location="https://sstdev.td.afg:1024/sst/idv.consumer_1" />
+    </port>
+  </service>
+</definitions>

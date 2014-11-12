@@ -5,6 +5,6 @@ namespace com.gaic.insuredPortal.Core.Domain.interfaces.service
 {
     public interface IClaimsService
     {
-        List<ClaimsModel> GetClaims();
+        List<ClaimsModel> GetClaims(UserModel user);
     }
 }
