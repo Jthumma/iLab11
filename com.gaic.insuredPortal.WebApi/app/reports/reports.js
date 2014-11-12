@@ -15,8 +15,8 @@
         activate();
 
         function activate() {
-            common.activateController([getAuthenticatedUser()], controllerId)
-                .then(function () { log('Activated Reports View'); });
+            common.activateController([getAuthenticatedUser()], controllerId);
+            //.then(function () { log('Activated Reports View'); });
         }
 
         function getAuthenticatedUser() {

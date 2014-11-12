@@ -16,8 +16,8 @@
         activate();
 
         function activate() {
-            common.activateController([getAuthenticatedUser()], controllerId)
-                .then(function () { log('Activated Billing View'); });
+            common.activateController([getAuthenticatedUser()], controllerId);
+                //.then(function () { log('Activated Billing View'); });
         }
 
         function getAuthenticatedUser() {

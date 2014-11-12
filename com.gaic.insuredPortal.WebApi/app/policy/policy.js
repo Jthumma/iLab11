@@ -23,8 +23,8 @@
 
         function activate() {
             var promises = [getAuthenticatedUser(), getPolicies(), getAgentInfo()];
-            common.activateController(promises, controllerId)
-                .then(function () { log('Activated Policy View'); });
+            common.activateController(promises, controllerId);
+                //.then(function () { log('Activated Policy View'); });
         }
 
         function getAuthenticatedUser() {

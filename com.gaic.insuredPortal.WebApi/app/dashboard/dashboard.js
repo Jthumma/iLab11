@@ -20,8 +20,8 @@
 
         function activate() {
             var promises = [getAuthenticatedUser(), getNotifications(), getPolicies(), getClaims()];
-            common.activateController(promises, controllerId)
-                .then(function () { log('Activated Dashboard View'); });
+            common.activateController(promises, controllerId);
+                //.then(function () { log('Activated Dashboard View'); });
         }
 
         function getAuthenticatedUser() {

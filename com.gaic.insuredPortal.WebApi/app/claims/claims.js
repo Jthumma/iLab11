@@ -16,8 +16,8 @@
         activate();
 
         function activate() {
-            common.activateController([getAuthenticatedUser(), getClaims()], controllerId)
-                .then(function () { log('Activated Claims View'); });
+            common.activateController([getAuthenticatedUser(), getClaims()], controllerId);
+            //.then(function () { log('Activated Claims View'); });
         }
 
         function getAuthenticatedUser() {
