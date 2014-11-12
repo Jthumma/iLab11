@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="interfaces\provider\ContextType.cs" />
+    <Compile Include="interfaces\provider\IFdwInquiryProvider.cs" />
     <Compile Include="interfaces\provider\IHttpContextAdapter.cs" />
     <Compile Include="interfaces\provider\IHttpContextStrategyProvider.cs" />
     <Compile Include="models\AddressModel.cs" />

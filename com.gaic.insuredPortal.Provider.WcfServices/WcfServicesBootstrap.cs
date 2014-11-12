@@ -32,6 +32,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<ISingleSignonProvider>().To<WcfSingleSignonProvider>();
             Bind<ILdapProvider>().To<WcfLdapProvider>();
             Bind<IEDocProvider>().To<WcfEDocProvider>();
+            Bind<IFdwInquiryProvider>().To<WcfFdwInquiryProvider>();
         }
 
         private void RegisterAdapters()
@@ -39,6 +40,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<ISsoLoginPortClientAdapter>().To<SsoLoginPortClientAdapter>().InSingletonScope();
             Bind<ILdapClientAdapter>().To<LdapClientAdapter>().InSingletonScope();
             Bind<IEDocClientAdapter>().To<EDocClientAdapter>().InSingletonScope();
+            Bind<IFdwInquiryAdapter>().To<FdwInquiryAdapter>().InSingletonScope();
         }
 
         private void RegisterFakeAdapters()
@@ -46,6 +48,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<ISsoLoginPortClientAdapter>().To<FakeSsoLoginPortClientAdapter>().InSingletonScope();
             Bind<ILdapClientAdapter>().To<FakeLdapClientAdapter>().InSingletonScope();
             Bind<IEDocClientAdapter>().To<FakeEDocClientAdapter>().InSingletonScope();
+            Bind<IFdwInquiryAdapter>().To<FakeFdwInquiryAdapter>().InSingletonScope();
         }
 
         private void RegisterBindings()

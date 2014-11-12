@@ -74,6 +74,7 @@
     <Compile Include="bindings\interfaces\IWcfEndpointAddressAdapter.cs" />
     <Compile Include="bindings\interfaces\IWcfHttpBindingAdapter.cs" />
     <Compile Include="providers\WcfEDocProvider.cs" />
+    <Compile Include="providers\WcfFdwInquiryProvider.cs" />
     <Compile Include="providers\WcfLdapProvider.cs" />
     <Compile Include="providers\WcfSingleSignonProvider.cs" />
     <Compile Include="Service References\ClaimsEcmService\Reference.cs">
