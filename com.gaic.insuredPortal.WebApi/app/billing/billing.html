@@ -4,8 +4,22 @@
             <div class="row">
                 <div class="widget wred">
                     <div data-cc-widget-header title="{{vm.title}}"></div>
-                    <div class="widget-content user">
-                        <h3>TODO: Implement Your Features</h3>
+                    <div class="widget-content text-left text-info">
+                        <table id="unseen" class="table table-condensed table-striped table-responsive" data-ng-show="vm.bills.length>0">
+                            <thead>
+                                <tr>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="c in vm.bills">
+                                
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 data-ng-show="vm.bills.length==0">No billing history found</h3>
+
                     </div>
                     <div class="widget-foot">
                         <div class="clearfix"></div>

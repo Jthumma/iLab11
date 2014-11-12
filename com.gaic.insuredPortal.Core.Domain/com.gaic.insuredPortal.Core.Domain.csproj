@@ -58,6 +58,7 @@
     <Compile Include="interfaces\provider\IHttpContextStrategyProvider.cs" />
     <Compile Include="interfaces\provider\IIdvConsumerProvider.cs" />
     <Compile Include="interfaces\provider\IPermissionProvider.cs" />
+    <Compile Include="interfaces\service\INotificationService.cs" />
     <Compile Include="models\AddressModel.cs" />
     <Compile Include="models\AgentModel.cs" />
     <Compile Include="models\ClaimsModel.cs" />
@@ -72,7 +73,10 @@
     <Compile Include="interfaces\service\IAuthorizationService.cs" />
     <Compile Include="interfaces\service\IClaimsService.cs" />
     <Compile Include="interfaces\service\IPolicyService.cs" />
+    <Compile Include="models\InsuredModel.cs" />
     <Compile Include="models\ListItemModel.cs" />
+    <Compile Include="models\MessageCategory.cs" />
+    <Compile Include="models\NotificationModel.cs" />
     <Compile Include="models\RoleItemModel.cs" />
     <Compile Include="models\PermissionModel.cs" />
     <Compile Include="models\PolicyModel.cs" />

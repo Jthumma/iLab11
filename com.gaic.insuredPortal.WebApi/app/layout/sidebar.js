@@ -21,8 +21,8 @@
                 return r1.config.settings.nav - r2.config.settings.nav;
             });
 
-            var promises = [getAuthenticatedUser()];
-            common.activateController(promises, controllerId);
+            //var promises = [getAuthenticatedUser()];
+            //common.activateController(promises, controllerId);
 
         }
         
@@ -34,10 +34,10 @@
             return $route.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
         }
 
-        function getAuthenticatedUser() {
-            return authenticationDataService.getAuthenticatedUser().then(function (data) {
-                return vm.User = data;
-            });
-        }
+        //function getAuthenticatedUser() {
+        //    return authenticationDataService.getAuthenticatedUser().then(function (data) {
+        //        return vm.User = data;
+        //    });
+        //}
     };
 })();

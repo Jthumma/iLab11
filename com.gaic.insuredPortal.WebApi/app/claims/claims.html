@@ -2,13 +2,43 @@
     <section class="matter">
         <div class="container">
             <div class="row">
-                <div class="widget wblue">
-                    <div data-cc-widget-header title="{{vm.title}}"></div>
-                    <div class="widget-content user">
-                        <h3>TODO: Implement Your Features</h3>
-                    </div>
-                    <div class="widget-foot">
-                        <div class="clearfix"></div>
+                <div class="col-md-12">
+                    <div class="widget wblue">
+                        <div data-cc-widget-header title="{{vm.title}}"></div>
+                        <div class="widget-content text-left text-info">
+                            <table id="unseen" class="table table-condensed table-striped table-responsive" data-ng-show="vm.claims.length>0">
+                                <thead>
+                                    <tr>
+                                        <th>Number</th>
+                                        <th>Loss</th>
+                                        <th id="status">Status</th>
+                                        <th id="lossdate">Loss Date</th>
+                                        <th id="reportdate">Report Date</th>
+                                        <th id="adjuster">Adjuster</th>
+                                        <th id="claimant">Claimant</th>
+                                        <th id="closedate">Close Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="c in vm.claims">
+                                        <td>{{c.ClaimNumber}}</td>
+                                        <td>{{c.LossDesc}}</td>
+                                        <td id="status">{{c.Status}}</td>
+                                        <td id="lossdate">{{c.LossDate}}</td>
+                                        <td id="reportdate">{{c.ReportDate}}</td>
+                                        <td id="adjuster">{{c.Adjuster}}</td>
+                                        <td id="claimant">{{c.Claimant}}</td>
+                                        <td id="closedate">{{c.CloseDate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h3 data-ng-show="vm.claims.length==0">No claim history found</h3>
+
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
             </div>

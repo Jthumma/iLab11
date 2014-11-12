@@ -1,0 +1,54 @@
+﻿@media only screen and (max-width: 768px) {
+    #masterPolicy, tr td:nth-child(8) {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    #insuredName, tr td:nth-child(5) {
+        display: none;
+        visibility: hidden;
+    }
+    #insuredAddress, tr td:nth-child(6) {
+        display: none;
+        visibility: hidden;
+    }
+    #pholderName, tr td:nth-child(7) {
+        display: none;
+        visibility: hidden;
+    }
+    #masterPolicy, tr td:nth-child(8) {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    
+    #effDate, tr td:nth-child(3) {
+        display: none;
+        visibility: hidden;
+    }
+    #expDate, tr td:nth-child(4) {
+        display: none;
+        visibility: hidden;
+    }
+
+    #insuredName, tr td:nth-child(5) {
+        display: none;
+        visibility: hidden;
+    }
+    #insuredAddress, tr td:nth-child(6) {
+        display: none;
+        visibility: hidden;
+    }
+    #pholderName, tr td:nth-child(7) {
+        display: none;
+        visibility: hidden;
+    }
+    #masterPolicy, tr td:nth-child(8) {
+        display: none;
+        visibility: hidden;
+    }
+}

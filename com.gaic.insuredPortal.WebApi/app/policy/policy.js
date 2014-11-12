@@ -16,7 +16,7 @@
         vm.agentInfo = '';
         vm.policies = [];
         vm.User = '';
-        vm.title = 'Policy';
+        vm.title = 'Policies';
 
         activate();
 

@@ -19,5 +19,15 @@ namespace com.gaic.insuredPortal.Core.Domain.models
         public string ExpirationDate { get; set; }
         public string Status { get; set; }
         public AgentModel Agent { get; set; }
+        public InsuredModel Insured { get; set; }
+
+        public bool IsSubPolicy
+        {
+            get { return !String.IsNullOrEmpty(MasterPolicyNumber); }
+        }
+
+        //public PolicyModel MasterPolicy { get; set; }
+        public string PolicyHolderName { get; set; }
+        public string MasterPolicyNumber { get; set; }
     }
 }

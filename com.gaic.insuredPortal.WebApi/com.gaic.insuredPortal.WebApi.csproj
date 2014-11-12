@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ClaimsController.cs" />
     <Compile Include="Controllers\PolicyController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -189,8 +190,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\billing\billing.css" />
     <Content Include="app\billing\billing.html" />
     <Content Include="app\billing\billing.js" />
+    <Content Include="app\claims\claims.css" />
     <Content Include="app\claims\claims.html" />
     <Content Include="app\claims\claims.js" />
     <Content Include="app\admin\admin.html" />
@@ -203,6 +206,7 @@
     <Content Include="app\config.exceptionHandler.js" />
     <Content Include="app\config.js" />
     <Content Include="app\config.route.js" />
+    <Content Include="app\dashboard\dashboard.css" />
     <Content Include="app\dashboard\dashboard.html" />
     <Content Include="app\dashboard\dashboard.js" />
     <Content Include="app\layout\topnav.js" />
@@ -212,9 +216,11 @@
     <Content Include="app\layout\sidebar.js" />
     <Content Include="app\layout\topnav.html" />
     <Content Include="app\layout\widgetheader.html" />
+    <Content Include="app\policy\policy.css" />
     <Content Include="app\policy\policy.html" />
     <Content Include="app\policy\policy.js" />
     <Content Include="app\services\authenticationDataService.js" />
+    <Content Include="app\services\claimsDataService.js" />
     <Content Include="app\services\policyDataService.js" />
     <Content Include="app\services\dashboardDataService.js" />
     <Content Include="app\services\datacontext.js" />

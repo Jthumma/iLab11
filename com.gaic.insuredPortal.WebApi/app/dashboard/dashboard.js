@@ -1,27 +1,25 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'dashboard';
-    angular.module('app').controller(controllerId, ['common', 'datacontext', 'dashboardDataService', 'authenticationDataService', dashboard]);
+    angular.module('app').controller(controllerId, ['common', 'dashboardDataService', 'authenticationDataService', dashboard]);
 
-    function dashboard(common, datacontext, dashboardDataService, authenticationDataService) {
+    function dashboard(common, dashboardDataService, authenticationDataService) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
         var vm = this;
-        //vm.news = {
-        //    title: 'Agent information',
-        //    description: 'Agent Andy - Agency Name, 123 Main St, Coloroado Springs, CO 56234'
-        //};
-        vm.messageCount = 0;
+
+        vm.notifications = [];
         vm.policies = [];
         vm.claims = [];
+        vm.bills = [];
         vm.User = '';
         vm.title = 'Dashboard';
 
         activate();
 
         function activate() {
-            var promises = [getAuthenticatedUser(), getMessageCount(), getPolicies(), getClaims()];
+            var promises = [getAuthenticatedUser(), getNotifications(), getPolicies(), getClaims()];
             common.activateController(promises, controllerId)
                 .then(function () { log('Activated Dashboard View'); });
         }
@@ -32,9 +30,9 @@
             });
         }
 
-        function getMessageCount() {
-            return datacontext.getMessageCount().then(function (data) {
-                return vm.messageCount = data;
+        function getNotifications() {
+            return dashboardDataService.getNotifications().then(function (data) {
+                return vm.notifications = data;
             });
         }
 

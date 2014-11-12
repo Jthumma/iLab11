@@ -14,9 +14,9 @@ namespace com.gaic.insuredPortal.DomainServices
             _eDocProvider = eDocProvider;
         }
 
-        public List<PolicyModel> GetPolicies(string policyNumber, string token)
+        public List<PolicyModel> GetPolicies(string policyNumber, UserModel user)
         {
-            return _eDocProvider.GetPolicies(policyNumber, token);
+            return _eDocProvider.GetPolicies(policyNumber, user);
         }
     }
 }

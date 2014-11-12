@@ -24,7 +24,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
                 .ForMember(d => d.Symbol, opt => opt.Ignore())
                 .ForMember(d => d.Version, opt => opt.Ignore())
                 .ForMember(d => d.Status, opt => opt.Ignore())
-                .ForMember(d => d.Agent, opt => opt.Ignore());
+                .ForMember(d => d.Agent, opt => opt.Ignore())
+                .ForMember(d => d.Insured, opt => opt.Ignore())
+                .ForMember(d => d.IsSubPolicy, opt => opt.Ignore())
+                .ForMember(d => d.MasterPolicyNumber, opt => opt.Ignore())
+                .ForMember(d => d.PolicyHolderName, opt => opt.Ignore());
         }
     }
 }

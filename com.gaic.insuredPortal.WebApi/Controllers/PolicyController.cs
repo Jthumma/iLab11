@@ -17,7 +17,7 @@ namespace com.gaic.insuredPortal.WebApi.Controllers
 
         public ActionResult GetPolicies()
         {
-            return Json(_policyService.GetPolicies("0000000", LoggedInUser.Token), JsonRequestBehavior.AllowGet);
+            return Json(_policyService.GetPolicies("0000000", LoggedInUser), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetAgentInfo()

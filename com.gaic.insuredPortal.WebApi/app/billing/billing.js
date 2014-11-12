@@ -9,6 +9,7 @@
 
         var vm = this;
         vm.User = '';
+        vm.bills = [];
         vm.title = 'Billing';
 
         activate();

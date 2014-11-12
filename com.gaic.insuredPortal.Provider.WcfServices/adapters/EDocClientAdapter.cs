@@ -34,9 +34,9 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             GC.SuppressFinalize(this);
         }
 
-        public List<PolicyModel> GetPolicies(string policyNumber, string token)
+        public List<PolicyModel> GetPolicies(string policyNumber, UserModel user)
         {
-            SecureSoapContext.AttachSecurityToken(_ecmServiceSoapClient.InnerChannel, token);
+            SecureSoapContext.AttachSecurityToken(_ecmServiceSoapClient.InnerChannel, user.Token);
             Document[] documents = _ecmServiceSoapClient.SearchPolicyDocuments(String.Format("PolicyNumber='{0}'", policyNumber));
 
             return Mapper.Map<List<Document>, List<PolicyModel>>(documents.ToList());

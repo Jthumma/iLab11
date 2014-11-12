@@ -16,6 +16,7 @@ namespace com.gaic.insuredPortal.DomainServices
             Bind<IPolicyService>().To<PolicyService>();
             Bind<IAgentService>().To<AgentService>();
             Bind<IClaimsService>().To<ClaimsService>();
+            Bind<INotificationService>().To<NotificationService>();
         }
     }
 }
