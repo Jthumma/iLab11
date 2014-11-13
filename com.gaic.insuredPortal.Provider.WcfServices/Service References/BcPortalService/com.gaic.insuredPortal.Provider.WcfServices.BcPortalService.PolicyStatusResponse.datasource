@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="PolicyStatusResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>com.gaic.insuredPortal.Provider.WcfServices.BcPortalService.PolicyStatusResponse</TypeInfo>
+   <TypeInfo>com.gaic.insuredPortal.Provider.WcfServices.BcPortalService.PolicyStatusResponse, Service References.BcPortalService.Reference.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

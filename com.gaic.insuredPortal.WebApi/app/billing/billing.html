@@ -33,30 +33,38 @@
                     </li>
                 </ul>
             </div>
-
             <div class="row">
-                <div class="widget wred">
-                    <div data-cc-widget-header title="{{vm.title}}"></div>
-                    <div class="widget-content text-left text-info">
-                        <table id="unseen" class="table table-condensed table-striped table-responsive" data-ng-show="vm.bills.length>0">
-                            <thead>
-                                <tr>
-                                
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr data-ng-repeat="c in vm.bills | filter:vm.billNumber"></tr>
-                            </tbody>
-                        </table>
+                <div class="col-md-12">
+                    <div class="widget wred">
+                        <div data-cc-widget-header title="{{vm.title}} {{vm.billNumber}}" icon="fa fa-pencil"></div>
+                        <div class="widget-content text-left text-info">
+                            <table id="billGrid" class="table table-condensed table-striped table-responsive" data-ng-show="vm.bills.length>0">
+                                <thead>
+                                    <tr>
+                                        <th>Number</th>
+                                        <th>Loss</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="c in vm.bills | filter:vm.billNumber">
+                                        <td>{{c.ClaimNumber}}</td>
+                                        <td>{{c.LossDesc}}</td>
 
-                        <h3 data-ng-show="vm.bills.length==0">No billing history found</h3>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                    </div>
-                    <div class="widget-foot">
-                        <div class="clearfix"></div>
+                            <h3 data-ng-show="vm.bills.length==0">No billing history found</h3>
+
+                        </div>
+                        <div class="widget-foot" data-ng-show="vm.bills.length>0">
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </section>
+

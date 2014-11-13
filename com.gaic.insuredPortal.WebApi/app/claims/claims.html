@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wblue">
-                        <div data-cc-widget-header title="{{vm.title}} {{vm.claimNumber}}"></div>
+                        <div data-cc-widget-header title="{{vm.title}} {{vm.claimNumber}}" icon="fa fa-lock"></div>
                         <div class="widget-content text-left text-info">
                             <table id="unseen" class="table table-condensed table-striped table-responsive" data-ng-show="vm.claims.length>0">
                                 <thead>
@@ -68,8 +68,10 @@
                             <h3 data-ng-show="vm.claims.length==0">No claim history found</h3>
 
                         </div>
-                        <div class="widget-foot">
-                            <div class="clearfix"></div>
+                        <div class="widget-foot" data-ng-show="vm.claims.length>0">
+                            <div class="clearfix">
+                                <a href="#/reportclaim" class="text-right text-info pull-right"><i class="fa fa-file-o"></i> Report a claim</a>
+                            </div>
                         </div>
                     </div>
                 </div>

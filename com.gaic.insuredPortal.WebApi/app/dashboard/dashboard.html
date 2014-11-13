@@ -58,8 +58,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wviolet">
-                        <div data-cc-widget-header title="Active Policies" class="fa fa-ambulance"
-                             allow-collapse="true"></div>
+                        <div data-cc-widget-header title="Active Policies"
+                             allow-collapse="true" subtitle="{{vm.policies.length}}" icon="fa fa-lock"></div>
                         <div class="widget-content text-left text-info" data-ng-show="vm.policies.length>0">
                             <table id="dashboardPolicy" class="table table-condensed table-striped">
                                 <thead>
@@ -85,7 +85,7 @@
                         <div class="widget-content text-center text-info" data-ng-show="vm.policies.length==0">
                             <h3>No active policies found</h3>
                         </div>
-                        <div class="widget-foot">
+                        <div class="widget-foot" data-ng-show="vm.policies.length>0">
                             <div class="clearfix"><a href="#/policy/:policyNumber"> more...</a></div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                 <div class="col-md-6">
                     <div class="widget wblue">
                         <div data-cc-widget-header title="Open Claims"
-                             allow-collapse="true"></div>
+                             allow-collapse="true" icon="fa fa-file-text-o"></div>
                         <div class="widget-content text-left text-info" data-ng-show="vm.claims.length>0">
                             <table class="table table-condensed table-striped">
                                 <thead>
@@ -117,14 +117,17 @@
                             <h3>No open claims</h3>
                         </div>
                         <div class="widget-foot">
-                            <div class="clearfix"><a href="#/claims/:claimNumber"> more...</a></div>
+                            <div class="clearfix">
+                                <a href="#/claims/:claimNumber" data-ng-show="vm.claims.length>0"> more...</a>
+                                 <a href="#/reportclaim" class="text-right text-info pull-right"><i class="fa fa-file-o"></i> Report a claim</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="widget wred">
                         <div data-cc-widget-header title="Billing"
-                             allow-collapse="true"></div>
+                             allow-collapse="true" icon="fa fa-pencil"></div>
 
                         <div class="widget-content text-left text-info" data-ng-show="vm.bills.length>0">
                             <table class="table table-condensed table-striped">
@@ -146,7 +149,7 @@
                             <h3>No payment due</h3>
                         </div>
 
-                        <div class="widget-foot">
+                        <div class="widget-foot" data-ng-show="vm.bills.length>0">
                             <div class="clearfix"><a href="#/billing/:billNumber"> more...</a></div>
                         </div>
                     </div>

@@ -188,6 +188,7 @@
                 'title': '@',
                 'subtitle': '@',
                 'rightText': '@',
+                'icon': '@',
                 'allowCollapse': '@'
             },
             templateUrl: '/app/layout/widgetheader.html',

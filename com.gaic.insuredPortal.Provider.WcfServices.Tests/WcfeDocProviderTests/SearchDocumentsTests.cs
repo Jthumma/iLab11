@@ -11,7 +11,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests.WcfeDocProviderTests
         [TestMethod]
         public void SearchDocuments_Valid_PolicyNumber_Should_ReturnPolicies()
         {
-            List<PolicyModel> policies = _eDocProvider.GetPolicies("0000000", null);
+            List<PolicyModel> policies = _eDocProvider.GetPolicies("6113963", _user);
             policies.Should().NotBeNullOrEmpty();
         }
     }

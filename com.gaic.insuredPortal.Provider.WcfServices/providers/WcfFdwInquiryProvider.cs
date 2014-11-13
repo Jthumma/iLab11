@@ -19,5 +19,9 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
             return null;
         }
 
+        public bool Ping(string token)
+        {
+            return _fdwInquiryAdapter.Ping(token);
+        }
     }
 }

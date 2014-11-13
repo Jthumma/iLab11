@@ -193,6 +193,7 @@
     <Content Include="app\billing\billing.css" />
     <Content Include="app\billing\billing.html" />
     <Content Include="app\billing\billing.js" />
+    <Content Include="app\claims\reportclaim.html" />
     <Content Include="app\reports\reports.css" />
     <Content Include="app\reports\reports.html" />
     <Content Include="app\reports\reports.js" />
@@ -239,6 +240,7 @@
     <Content Include="Content\ie10mobile.css" />
     <Content Include="Content\images\AngularJS-small.png" />
     <Content Include="Content\images\breezelogo.png" />
+    <Content Include="Content\images\gaiclogo.png" />
     <Content Include="Content\images\icon.png" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\toastr.css">

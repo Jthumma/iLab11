@@ -38,7 +38,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="widget wviolet">
-                        <div data-cc-widget-header title="{{vm.title}} {{vm.policyNumber}}"></div>
+                        <div data-cc-widget-header title="{{vm.title}} {{vm.policyNumber}}" icon="fa fa-lock"></div>
                         <div class="widget-content user">
 
                             <table id="policyTable" class="table table-condensed table-striped" data-ng-show="vm.policies.length>0">
@@ -71,7 +71,7 @@
                             <h3 data-ng-show="vm.policies.length==0">No policy history found</h3>
 
                         </div>
-                        <div class="widget-foot">
+                        <div class="widget-foot" data-ng-show="vm.policies.length>0">
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -81,16 +81,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget wlightblue">
-                        <div data-cc-widget-header title="{{vm.agentInfo.AgentCode}} - {{vm.agentInfo.AgencyName}}" subtitle="{{vm.agentInfo.Name}}"
-                             allow-collapse="false"></div>
+                        <div data-cc-widget-header title="{{vm.agentInfo.AgentCode}} - {{vm.agentInfo.AgencyName}}" right-text="{{vm.agentInfo.Name}}"
+                             allow-collapse="false" icon="fa fa-male"></div>
                         <div class="widget-content text-left text-info">
                             <p><h5>{{vm.agentInfo.Address.Display}}</h5></p>
                             <small class="fa fa-phone">  {{vm.agentInfo.Contact.Phone}}</small>
                             <small class="fa fa-envelope">  {{vm.agentInfo.Contact.Email}}</small>
                         </div>
-                        <!--<div class="widget-foot">
-                                <div class="clearfix"></div>
-                            </div>-->
+                        <div class="widget-foot" data-ng-show="false">
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
             </div>

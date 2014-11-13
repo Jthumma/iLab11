@@ -13,12 +13,12 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
             status.Should().BeTrue();
         }
 
-        [TestMethod]
-        public void Ping_bcPortal_Service()
-        {
-            var status = _bcPortalProvider.Ping(_token);
-            status.Should().BeTrue();
-        }
+        //[TestMethod]
+        //public void Ping_bcPortal_Service()
+        //{
+        //    var status = _bcPortalProvider.Ping(_token);
+        //    status.Should().BeTrue();
+        //}
 
         [TestMethod]
         public void Ping_eDoc_Service()

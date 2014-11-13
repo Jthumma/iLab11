@@ -64,6 +64,17 @@
                 }
             }
             , {
+                url: '/reportclaim',
+                config: {
+                    title: 'claims',
+                    templateUrl: 'app/claims/reportclaim.html',
+                    settings: {
+                        nav: 3,
+                        content: '<i class="fa fa-file-text-o"></i> Report Claim'
+                    }
+                }
+            }
+            , {
                 url: '/billing/:billNumber',
                 config: {
                     title: 'billing',

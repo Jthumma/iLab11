@@ -203,12 +203,12 @@ small {
 }
 
 .navbar .navbar-brand {
-    background: url(/content/images/icon.png) no-repeat left center !important;
-    margin: 0 1em;
+    background: url(/content/images/gaiclogo.png) no-repeat left center !important;
+    margin: 0 em;
 }
 
 .navbar .brand-title {
-    margin-left: 2em;
+    margin-left: 4em;
     color: #FFFFFF;
 }
 

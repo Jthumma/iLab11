@@ -1,5 +1,6 @@
 ﻿using System;
 using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
+using com.gaic.insuredPortal.Core.Domain.models;
 using com.gaic.insuredPortal.Provider.Cpr;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,6 +19,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
         protected ILdapProvider _ldapProvider;
         protected ISingleSignonProvider _singleSignonProvider;
         protected string _token;
+        protected UserModel _user;
 
         public IntgTestBaseWcfServicesProvider()
         {
@@ -43,6 +45,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
             _idvConsumerProvider = _kernel.Get<IIdvConsumerProvider>();
 
             _token = _singleSignonProvider.GetSingleSignonToken("taccountfis1", "Winter1");
+            _user = _ldapProvider.GetPerson("taccountfis1", _token);
         }
 
         [TestCleanup]

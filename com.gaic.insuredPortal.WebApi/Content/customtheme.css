@@ -896,6 +896,12 @@ form {
                 color: #888;
             }
 
+            .widget .widget-head .widget-icons-left i {
+            font-size: 18px;
+            margin: 0 8px;
+        }
+
+        
     .widget .widget-content {
         border-left: 1px solid #ddd;
         border-right: 1px solid #ddd;
@@ -909,6 +915,10 @@ form {
         padding: 8px 15px;
         font-size: 13px;
         color: #555;
+    }
+     .widget .widget-foot .text-right{
+        font-size: 14px;
+        font-weight: bold;
     }
 
     /* Widget colors */

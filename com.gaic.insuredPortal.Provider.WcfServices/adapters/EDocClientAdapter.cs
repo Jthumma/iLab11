@@ -39,6 +39,12 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             SecureSoapContext.AttachSecurityToken(_ecmServiceSoapClient.InnerChannel, user.Token);
             Document[] documents = _ecmServiceSoapClient.SearchPolicyDocuments(String.Format("PolicyNumber='{0}'", policyNumber));
 
+
+            //var sections = _ecmServiceSoapClient.GetAllDocumentSections();
+            //var sections1 = _ecmServiceSoapClient.GetDocCategory();
+            //var sections2 = _ecmServiceSoapClient.Get;
+            //var sections3 = _ecmServiceSoapClient.GetAllDocumentSections();
+
             return Mapper.Map<List<Document>, List<PolicyModel>>(documents.ToList());
         }
 
