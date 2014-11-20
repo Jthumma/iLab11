@@ -1,6 +1,7 @@
 ﻿using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes;
+using com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes.eDoc;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings;
 using com.gaic.insuredPortal.Provider.WcfServices.bindings.interfaces;
@@ -52,6 +53,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IEdwPsarProvider>().To<WcfEdwPsarProvider>();
             Bind<IPermissionProvider>().To<PermissionProvider>();
             Bind<IFdwInquiryProvider>().To<WcfFdwInquiryProvider>();
+            Bind<IProducerProvider>().To<WcfProducerProvider>();
         }
 
         private void RegisterAdapters()
@@ -63,6 +65,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IBcPortalAdapter>().To<BcPortalAdapter>().InSingletonScope();
             Bind<IEdwPsarAdapter>().To<EdwPsarAdapter>().InSingletonScope();
             Bind<IFdwInquiryAdapter>().To<FdwInquiryAdapter>().InSingletonScope();
+            Bind<IProducerClientAdapter>().To<ProducerClientAdapter>().InSingletonScope();
         }
 
         private void RegisterFakeAdapters()
@@ -74,6 +77,32 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IBcPortalAdapter>().To<FakeBcPortalAdapter>().InSingletonScope();
             Bind<IEdwPsarAdapter>().To<FakeEdwPsarAdapter>().InSingletonScope();
             Bind<IFdwInquiryAdapter>().To<FakeFdwInquiryAdapter>().InSingletonScope();
+            Bind<IProducerClientAdapter>().To<FakeProducerClientAdapter>().InSingletonScope();
+
+            //eDOC FAKE Policies
+            Bind<IRoleFakeEDocClientAdapter>().To<AgentRoleFakeEDocClientAdapter>();
+            Bind<IBuAgentFakeEDocClientAdapter>().To<AgentStatCompFakeEDocClientAdapter>();
+            Bind<IBuAgentFakeEDocClientAdapter>().To<AgentTruckingFakeEDocClientAdapter>();
+
+            Bind<IRoleFakeEDocClientAdapter>().To<BackOfficeRoleFakeEDocClientAdapter>();
+            Bind<IBuBackOfficeFakeEDocClientAdapter>().To<BackOfficeStatCompFakeEDocClientAdapter>();
+            Bind<IBuBackOfficeFakeEDocClientAdapter>().To<BackOfficeTruckingFakeEDocClientAdapter>();
+
+            Bind<IRoleFakeEDocClientAdapter>().To<GaicEmployeeRoleFakeEDocClientAdapter>();
+            Bind<IBuGaicEmployeeFakeEDocClientAdapter>().To<GaicStatCompFakeEDocClientAdapter>();
+            Bind<IBuGaicEmployeeFakeEDocClientAdapter>().To<GaicEmployeeTruckingFakeEDocClientAdapter>();
+
+            Bind<IRoleFakeEDocClientAdapter>().To<InsuredRoleFakeEDocClientAdapter>();
+            Bind<IBuInsuredFakeEDocClientAdapter>().To<InsuredStatCompFakeEDocClientAdapter>();
+            Bind<IBuInsuredFakeEDocClientAdapter>().To<InsuredTruckingFakeEDocClientAdapter>();
+
+            Bind<IRoleFakeEDocClientAdapter>().To<MotorCarrierRoleFakeEDocClientAdapter>();
+            Bind<IBuMotorCarrierFakeEDocClientAdapter>().To<MotorCarrierStatCompFakeEDocClientAdapter>();
+            Bind<IBuMotorCarrierFakeEDocClientAdapter>().To<MotorCarrierTruckingFakeEDocClientAdapter>();
+
+            Bind<IRoleFakeEDocClientAdapter>().To<OwnerCorporateRoleFakeEDocClientAdapter>();
+            Bind<IBuOwnerCorporateFakeEDocClientAdapter>().To<OwnerCorporateStatCompFakeEDocClientAdapter>();
+            Bind<IBuOwnerCorporateFakeEDocClientAdapter>().To<OwnerCorporateTruckingFakeEDocClientAdapter>();
         }
 
         private void RegisterBindings()
@@ -117,6 +146,17 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
                 .WhenInjectedInto<IEdwPsarAdapter>()
                 .WithConstructorArgument("cprKey", "service.edwPsar.url");
+
+            //FDW INQUIRY
+            Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
+                .WhenInjectedInto<IFdwInquiryAdapter>()
+                .WithConstructorArgument("cprKey", "service.fdwInquiry.url");
+
+            //PRODUCER
+            Bind<IWcfEndpointAddressAdapter>().To<WcfEndpointAddressAdapter>()
+                .WhenInjectedInto<IProducerClientAdapter>()
+                .WithConstructorArgument("cprKey", "service.producer.url");
+
         }
 
         private void RegisterPermissions()
@@ -126,8 +166,9 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
             Bind<IRolePermissionAdapter>().To<InsuredRolePermissionAdapter>();
             Bind<IRolePermissionAdapter>().To<MotorCarrierRolePermissionAdapter>();
             Bind<IRolePermissionAdapter>().To<OwnerCorporateRolePermissionAdapter>();
-            Bind<IRolePermissionAdapter>().To<ViewAllRolePermissionAdapter>();
+            //Bind<IRolePermissionAdapter>().To<ViewAllRolePermissionAdapter>();
             Bind<IRolePermissionAdapter>().To<GaicEmployeeRolePermissionAdapter>();
+            Bind<IRolePermissionAdapter>().To<NoAccessRolePermissionAdapter>();
 
         }
     }

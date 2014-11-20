@@ -13,4 +13,5 @@
   <property name="com.gaic.insuredPortal.service.bcPortal.url" value="https://sstdev.td.afg:1024/sst/bc.portal_1?wsdl" level="Local" encrypted="false" />
   <property name="com.gaic.insuredPortal.service.idvConsumer.url" value="https://sstdev.td.afg:1024/sst/idv.consumer_1?wsdl" level="Local" encrypted="false" />
   <property name="com.gaic.insuredPortal.service.edwPsar.url" value="https://sstdev.td.afg:1024/sst/edw.psar_8?wsdl" level="Local" encrypted="false" />
+  <property name="com.gaic.insuredPortal.service.producer.url" value="https://sstdev.td.afg:1024/sst/producer_1?wsdl" level="Local" encrypted="false" />
 </properties>

@@ -496,7 +496,7 @@ a {
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 480px) {
     .today-datas li {
         padding: 1em .5em;
         line-height: 1em;

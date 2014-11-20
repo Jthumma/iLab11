@@ -1,0 +1,1321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:ns2="http://schemas.xmlsoap.org/wsdl/jms/" xmlns:ns0="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s0="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" xmlns:ns3="http://www.w3.org/2006/05/addressing/wsdl" name="ProducerWebServiceDefinitions" targetNamespace="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:UsingPolicy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" wsdl:Required="true" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" />
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SecurityHeader MustManifestEncryption="true" MustPrepend="true" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="SecurityTokens" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+      <wsp:All>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:SiteMinderSSOSecurityToken</sp:TokenType>
+        </sp:SecurityToken>
+        <sp:SecurityToken xmlns:_ns1="http://www.actional.com" xmlns:sp="http://schemas.xmlsoap.org/ws/2002/12/secext">
+          <sp:TokenType>_ns1:HTTPUsernamePassword</sp:TokenType>
+        </sp:SecurityToken>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducerDetails_4_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducerDetails_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducerDetails_2_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getBUname_1_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getClaimsProcessingDetails_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getBUname_2_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getBillingContacts_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getClaimsProcessingDetails_1_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducerDetails_1_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducers_4_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducerAppointmentInfo_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducers_3_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducers_1_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducers_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getHierarchy_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducers_2_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducerDetails_3_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="getProducerDetails_5_input_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:PolicyReference URI="#SecurityTokens" />
+  </wsp:Policy>
+  <types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:com.gaic.systeminterfaces.webservices.classes" />
+      <xs:complexType name="ArrayOfHierarchyResponseDTO_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="HierarchyResponseDTO" nillable="true" type="java:HierarchyResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfHierarchyResponseDTO_literal" type="clas:ArrayOfHierarchyResponseDTO_literal" />
+      <xs:complexType name="ArrayOfProducerResponseDTO_1_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerResponseDTO_1" nillable="true" type="java:ProducerResponseDTO_1" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerResponseDTO_1_literal" type="clas:ArrayOfProducerResponseDTO_1_literal" />
+      <xs:complexType name="ArrayOfBillingContactsResponseDTO_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="BillingContactsResponseDTO" nillable="true" type="java:BillingContactsResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfBillingContactsResponseDTO_literal" type="clas:ArrayOfBillingContactsResponseDTO_literal" />
+      <xs:complexType name="ArrayOfProducerDetailsResponseDTO_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerDetailsResponseDTO" nillable="true" type="java:ProducerDetailsResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerDetailsResponseDTO_literal" type="clas:ArrayOfProducerDetailsResponseDTO_literal" />
+      <xs:complexType name="ArrayOfProducerResponseDTO_4_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerResponseDTO_4" nillable="true" type="java:ProducerResponseDTO_4" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerResponseDTO_4_literal" type="clas:ArrayOfProducerResponseDTO_4_literal" />
+      <xs:complexType name="ArrayOfProducerDetailsResponseDTO_2_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerDetailsResponseDTO_2" nillable="true" type="java:ProducerDetailsResponseDTO_2" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerDetailsResponseDTO_2_literal" type="clas:ArrayOfProducerDetailsResponseDTO_2_literal" />
+      <xs:complexType name="ArrayOfProducerResponseDTO_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerResponseDTO" nillable="true" type="java:ProducerResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerResponseDTO_literal" type="clas:ArrayOfProducerResponseDTO_literal" />
+      <xs:complexType name="ArrayOfProducerDetailsResponseDTO_5_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerDetailsResponseDTO_5" nillable="true" type="java:ProducerDetailsResponseDTO_5" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerDetailsResponseDTO_5_literal" type="clas:ArrayOfProducerDetailsResponseDTO_5_literal" />
+      <xs:complexType name="ArrayOfProducerResponseDTO_2_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerResponseDTO_2" nillable="true" type="java:ProducerResponseDTO_2" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerResponseDTO_2_literal" type="clas:ArrayOfProducerResponseDTO_2_literal" />
+      <xs:complexType name="ArrayOfBUProducerCodeResponseDTO_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="BUProducerCodeResponseDTO" nillable="true" type="java:BUProducerCodeResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfBUProducerCodeResponseDTO_literal" type="clas:ArrayOfBUProducerCodeResponseDTO_literal" />
+      <xs:complexType name="ArrayOfProducerDetailsResponseDTO_4_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerDetailsResponseDTO_4" nillable="true" type="java:ProducerDetailsResponseDTO_4" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerDetailsResponseDTO_4_literal" type="clas:ArrayOfProducerDetailsResponseDTO_4_literal" />
+      <xs:complexType name="ArrayOfBUProducerCodeResponseDTO_1_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="BUProducerCodeResponseDTO_1" nillable="true" type="java:BUProducerCodeResponseDTO_1" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfBUProducerCodeResponseDTO_1_literal" type="clas:ArrayOfBUProducerCodeResponseDTO_1_literal" />
+      <xs:complexType name="ArrayOfProducerDetailsResponseDTO_3_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerDetailsResponseDTO_3" nillable="true" type="java:ProducerDetailsResponseDTO_3" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerDetailsResponseDTO_3_literal" type="clas:ArrayOfProducerDetailsResponseDTO_3_literal" />
+      <xs:complexType name="ArrayOfProducerResponseDTO_3_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerResponseDTO_3" nillable="true" type="java:ProducerResponseDTO_3" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerResponseDTO_3_literal" type="clas:ArrayOfProducerResponseDTO_3_literal" />
+      <xs:complexType name="ArrayOfProducerDetailsResponseDTO_1_literal">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerDetailsResponseDTO_1" nillable="true" type="java:ProducerDetailsResponseDTO_1" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayOfProducerDetailsResponseDTO_1_literal" type="clas:ArrayOfProducerDetailsResponseDTO_1_literal" />
+      <xs:element name="getProducerDetails_5">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerDetailsRequestDTO_5Input" type="java:ProducerDetailsRequestDTO_5" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_5Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerDetailsResponseDTO_5Output" type="clas:ArrayOfProducerDetailsResponseDTO_5_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_3">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerDetailsRequestDTO_3Input" type="java:ProducerDetailsRequestDTO_3" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_3Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerDetailsResponseDTO_3Output" type="clas:ArrayOfProducerDetailsResponseDTO_3_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_2">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTO_2Input" type="java:ProducerRequestDTO_2" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_2Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerResponseDTO_2Output" type="clas:ArrayOfProducerResponseDTO_2_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getHierarchy">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="HierarchyRequestDTOInput" type="java:HierarchyRequestDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getHierarchyResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayHierarchyResponseDTOOutput" type="clas:ArrayOfHierarchyResponseDTO_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTOInput" type="java:ProducerRequestDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerResponseDTOOutput" type="clas:ArrayOfProducerResponseDTO_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTO_1Input" type="java:ProducerRequestDTO_1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_1Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerResponseDTO_1Output" type="clas:ArrayOfProducerResponseDTO_1_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_3">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTO_3Input" type="java:ProducerRequestDTO_3" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_3Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerResponseDTO_3Output" type="clas:ArrayOfProducerResponseDTO_3_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerAppointmentInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="AppointmentValidationRequestDTOInput" type="java:AppointmentValidationRequestDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerAppointmentInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="AppointmentValidationResponseDTOOutput" type="java:AppointmentValidationResponseDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_4">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTO_4Input" type="java:ProducerRequestDTO_4" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducers_4Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerResponseDTO_4Output" type="clas:ArrayOfProducerResponseDTO_4_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTO_1Input" type="java:ProducerRequestDTO_1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_1Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerDetailsResponseDTO_1Output" type="clas:ArrayOfProducerDetailsResponseDTO_1_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClaimsProcessingDetails_1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ClaimsProcessingDetailRequestDTOInput_1" type="java:ClaimsProcessingDetailRequestDTO_1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClaimsProcessingDetails_1Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ClaimsProcessingDetailResponseDTOOutput_1" type="java:ClaimsProcessingDetailResponseDTO_1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBillingContacts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="BillingContactsRequestDTOInput" type="java:BillingContactsRequestDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBillingContactsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayBillingContactsResponseDTOOutput" type="clas:ArrayOfBillingContactsResponseDTO_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBUname_2">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="BUProducerCodeRequestDTOInput_1" type="java:BUProducerCodeRequestDTO_1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBUname_2Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayBUProducerCodeResponseDTO_1Output" type="clas:ArrayOfBUProducerCodeResponseDTO_1_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClaimsProcessingDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ClaimsProcessingDetailRequestDTOInput" type="java:ClaimsProcessingDetailRequestDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClaimsProcessingDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ClaimsProcessingDetailResponseDTOOutput" type="java:ClaimsProcessingDetailResponseDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBUname_1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="BUProducerCodeRequestDTOInput" type="java:BUProducerCodeRequestDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBUname_1Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayBUProducerCodeResponseDTOOutput" type="clas:ArrayOfBUProducerCodeResponseDTO_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_2">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTO_2Input" type="java:ProducerRequestDTO_2" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_2Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerDetailsResponseDTO_2Output" type="clas:ArrayOfProducerDetailsResponseDTO_2_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerRequestDTOInput" type="java:ProducerRequestDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerDetailsResponseDTOOutput" type="clas:ArrayOfProducerDetailsResponseDTO_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_4">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" name="ProducerDetailsRequestDTO_4Input" type="java:ProducerDetailsRequestDTO_4" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProducerDetails_4Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:clas="http://gaic.com/wsdl/com/gaic/systeminterfaces/webservices/classes" name="ArrayProducerDetailsResponseDTO_4Output" type="clas:ArrayOfProducerDetailsResponseDTO_4_literal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:com.gaic.systeminterfaces.webservices.utility" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:com.gaic.systeminterfaces.webservices.classes" />
+      <xs:complexType name="ProducerNumberDTO_4">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerNumberDTO_3" />
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:com.gaic.systeminterfaces.webservices.classes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="HierarchyRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BusinessUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProfitCenterNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ClaimsProcessingDetailRequestDTO_1">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ClaimsProcessingDetailRequestDTO" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ClaimsProcessingDetailRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BusinessUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Hid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProfitCenter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ClaimsProcessingDetailResponseDTO_1">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AlaeIncludedIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="FundedDeductibleIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LossPaymentCopiesIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ExpensePaymentCopiesIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyClaimsDistributionPreferences" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyAdjustmentProgramIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyAdjustmentProgramAuthorityAmount" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="GaiCheckNumberRange" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyClaimsDistributionPreferencesEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyClaimsDistributionPreferencesFax" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsRequestDTO_4">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerDetailsRequestDTO_3" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsRequestDTO_3">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BusinessUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerRequestDTO_3">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerRequestDTO_2" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerRequestDTO_2">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerRequestDTO_1" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerRequestDTO_1">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerRequestDTO">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="AgencyLocationCountryName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="AgencyState" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BusinessUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AgencyCity" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyPhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyState" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyZipCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerNumberDTO" nillable="true" type="java:ProducerNumberDTO" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="Underwriters" nillable="true" type="java:UnderwriterDetailDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerNumberDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AgencyFieldName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyTerritoryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Program" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyProfitCenterCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyProfitCenterName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UnderwriterDetailDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="UnderwriterFirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="UnderwriterId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="UnderwriterLastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="UnderwriterMI" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerResponseDTO_3">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerResponseDTO_2">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ProducerNumberDTO_3" nillable="true" type="java:ProducerNumberDTO_3" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerResponseDTO_2">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerResponseDTO_1">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ProducerNumberDTO_2" nillable="true" type="java:ProducerNumberDTO_2" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerResponseDTO_1">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerResponseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="AgencyDBA" nillable="true" type="java:AgencyDBADTO" />
+              <xs:element minOccurs="1" name="AgencyLocationCountryCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="AgencyLocationCountryName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="AgencyLocationStateCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ProducerNumberDTO_1" nillable="true" type="java:ProducerNumberDTO_1" />
+              <xs:element minOccurs="1" name="ResponseMessage" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AgencyDBADTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AgencyDBAname" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerNumberDTO_1">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerNumberDTO">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="ProducerCodeClosedDate" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="ProducerCodeStatus" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerNumberDTO_2">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerNumberDTO_1">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="FieldDescription" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="FieldNumber" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan1Description" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan1Number" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan2Description" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan2Number" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="TerritoryDescription" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="TerritoryNumber" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerNumberDTO_3">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerNumberDTO_2">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="PreferredAddress1" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredAddress2" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredCity" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredCountryCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredCountryName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredStateCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredStateName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredZipCode" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="HierarchyResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ResponseMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProfitCenterInformation" nillable="true" type="java:ProfitCenterInformationDTO" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="PlanOneInformation" nillable="true" type="java:PlanOneInformationDTO" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="PlanTwoInformation" nillable="true" type="java:PlanTwoInformationDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProfitCenterInformationDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ProfitCenterDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProfitCenterNumber" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="TerritoryInformation" nillable="true" type="java:TerritoryInformationDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TerritoryInformationDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="TerritoryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="TerritoryNumber" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="FieldInformation" nillable="true" type="java:FieldInformationDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FieldInformationDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="FieldName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="FieldNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PlanOneInformationDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="PlanOneDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="PlanOneNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PlanTwoInformationDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="PlanTwoDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="PlanTwoNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsResponseDTO_5">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerDetailsResponseDTO_4">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ProducerCodeDetailsResponseDTO_5" nillable="true" type="java:ProducerCodeDetailsResponseDTO_5" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsResponseDTO_4">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerDetailsResponseDTO_3">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="AgencyEmail" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="AgentCopy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="EmailbyAgencyPolicy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="EmailNotification" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="InsuredCopy" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsResponseDTO_3">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerDetailsResponseDTO_2">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="PreferredAddress1" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredAddress2" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredCity" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredCountryCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredCountryName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredStateCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredStateName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="PreferredZipCode" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsResponseDTO_2">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerDetailsResponseDTO_1">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="FieldDescription" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="FieldNumber" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan1Description" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan1Number" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan2Description" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Plan2Number" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="TerritoryDescription" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="TerritoryNumber" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsResponseDTO_1">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerDetailsResponseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="ProducerCodeCloseDate" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="AgencyLocationCountryName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="AgencyLocationStateCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ShippingAddresses_1" nillable="true" type="java:AddressDTO_1" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsResponseDTO">
+        <xs:sequence>
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ShippingAddresses" nillable="true" type="java:AddressDTO" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="Contacts" nillable="true" type="java:ContactDTO" />
+          <xs:element minOccurs="1" name="AddressLine1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AddressLine2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyFaxNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyLocationCity" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyLocationCountryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyLocationState" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyLocationZipCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyPrimaryNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyTollFreeNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyWebsite" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="BusinessUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Field" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCodeStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProfitCenterName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Program" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Territory" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerCodeDetailsResponseDTO" nillable="true" type="java:ProducerCodeDetailsResponseDTO" />
+          <xs:element minOccurs="1" name="AgencyProfitCenterCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AddressDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AddressLine1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AddressLine2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="CountryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="State" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ZipCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ContactDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Cell" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ContactAction" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ContactId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Title" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Fax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="MiddleInitial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Salutation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ContactType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerCodeDetailsResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="AgencyDBA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="Underwriters" nillable="true" type="java:UnderwriterDetailDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AddressDTO_1">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:AddressDTO">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="CountryName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="StateName" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerCodeDetailsResponseDTO_5">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerCodeDetailsResponseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="ProducerCodeDescCustomer" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProducerRequestDTO_4">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerRequestDTO_3">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="ProfitCenter" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Territory" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" name="Field" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BUProducerCodeRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProducerCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ClaimsProcessingDetailResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="AgencyAdjustmentProgramAuthorityAmount" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyAdjustmentProgramIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="AgencyClaimsDistributionPreferences" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ClaimsContacts" nillable="true" type="java:ClaimsContactDTO" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ClaimsHandlingOffices" nillable="true" type="java:AddressDTO" />
+          <xs:element minOccurs="1" name="ExpensePaymentCopiesIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="FundedDeductibleIndicator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="GaiCheckNumberRange" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LossPaymentCopiesIndicator" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ClaimsContactDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Cell" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ContactId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Title" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Fax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="MiddleInitial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Salutation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ContactType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AppointmentValidationResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Company" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LicenseType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="StateAppointments" nillable="true" type="java:StateAppointmentDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StateAppointmentDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="IsAppointed" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="State" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BillingContactsResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="EmailAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="MasterBillingNumberDTO" nillable="true" type="java:MasterBillingNumberDTO" />
+          <xs:element minOccurs="1" name="ResponseMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MasterBillingNumberDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BillingAgencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="BillingCity" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="BillingState" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Billingaddressline1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="MasterbillingNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="BillingRelationshipStatus" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BUProducerCodeRequestDTO_1">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProducerCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerResponseDTO_4">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerResponseDTO_3">
+            <xs:sequence>
+              <xs:element xmlns:java1="java:com.gaic.systeminterfaces.webservices.utility" minOccurs="0" maxOccurs="unbounded" name="ProducerNumberDTO_4" nillable="true" type="java1:ProducerNumberDTO_4" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AppointmentValidationRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BusinessUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Company" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LicenseType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="States" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerDetailsRequestDTO_5">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerDetailsRequestDTO_3" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BillingContactsRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BillingAgencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="EmailAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BUProducerCodeResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ResponseMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerRelationship" nillable="true" type="java:ProducerRelationshipDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerRelationshipDTO">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="BusinessUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="ProducerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="Status" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BUProducerCodeResponseDTO_1">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ResponseMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" minOccurs="0" maxOccurs="unbounded" name="ProducerRelationship" nillable="true" type="java:ProducerRelationshipDTO_1" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProducerRelationshipDTO_1">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:java="java:com.gaic.systeminterfaces.webservices.classes" base="java:ProducerRelationshipDTO">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="ProducerCodeDescCustomer" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="getProducerDetails_3Response">
+    <part name="parameters" element="s0:getProducerDetails_3Response" />
+  </message>
+  <message name="getProducers_1">
+    <part name="parameters" element="s0:getProducers_1" />
+  </message>
+  <message name="getProducerDetailsResponse">
+    <part name="parameters" element="s0:getProducerDetailsResponse" />
+  </message>
+  <message name="getProducers_2">
+    <part name="parameters" element="s0:getProducers_2" />
+  </message>
+  <message name="getProducers_3">
+    <part name="parameters" element="s0:getProducers_3" />
+  </message>
+  <message name="getHierarchy">
+    <part name="parameters" element="s0:getHierarchy" />
+  </message>
+  <message name="getProducers_1Response">
+    <part name="parameters" element="s0:getProducers_1Response" />
+  </message>
+  <message name="getBillingContacts">
+    <part name="parameters" element="s0:getBillingContacts" />
+  </message>
+  <message name="getBillingContactsResponse">
+    <part name="parameters" element="s0:getBillingContactsResponse" />
+  </message>
+  <message name="getClaimsProcessingDetailsResponse">
+    <part name="parameters" element="s0:getClaimsProcessingDetailsResponse" />
+  </message>
+  <message name="getProducers">
+    <part name="parameters" element="s0:getProducers" />
+  </message>
+  <message name="getProducers_4Response">
+    <part name="parameters" element="s0:getProducers_4Response" />
+  </message>
+  <message name="getProducerDetails_4Response">
+    <part name="parameters" element="s0:getProducerDetails_4Response" />
+  </message>
+  <message name="getBUname_1Response">
+    <part name="parameters" element="s0:getBUname_1Response" />
+  </message>
+  <message name="getClaimsProcessingDetails_1Response">
+    <part name="parameters" element="s0:getClaimsProcessingDetails_1Response" />
+  </message>
+  <message name="getProducerAppointmentInfoResponse">
+    <part name="parameters" element="s0:getProducerAppointmentInfoResponse" />
+  </message>
+  <message name="getProducerAppointmentInfo">
+    <part name="parameters" element="s0:getProducerAppointmentInfo" />
+  </message>
+  <message name="getProducers_3Response">
+    <part name="parameters" element="s0:getProducers_3Response" />
+  </message>
+  <message name="getProducerDetails_1Response">
+    <part name="parameters" element="s0:getProducerDetails_1Response" />
+  </message>
+  <message name="getProducersResponse">
+    <part name="parameters" element="s0:getProducersResponse" />
+  </message>
+  <message name="getHierarchyResponse">
+    <part name="parameters" element="s0:getHierarchyResponse" />
+  </message>
+  <message name="getProducerDetails_5">
+    <part name="parameters" element="s0:getProducerDetails_5" />
+  </message>
+  <message name="getBUname_2">
+    <part name="parameters" element="s0:getBUname_2" />
+  </message>
+  <message name="getBUname_1">
+    <part name="parameters" element="s0:getBUname_1" />
+  </message>
+  <message name="getProducerDetails_5Response">
+    <part name="parameters" element="s0:getProducerDetails_5Response" />
+  </message>
+  <message name="getClaimsProcessingDetails">
+    <part name="parameters" element="s0:getClaimsProcessingDetails" />
+  </message>
+  <message name="getProducerDetails">
+    <part name="parameters" element="s0:getProducerDetails" />
+  </message>
+  <message name="getProducers_2Response">
+    <part name="parameters" element="s0:getProducers_2Response" />
+  </message>
+  <message name="getProducerDetails_2Response">
+    <part name="parameters" element="s0:getProducerDetails_2Response" />
+  </message>
+  <message name="getClaimsProcessingDetails_1">
+    <part name="parameters" element="s0:getClaimsProcessingDetails_1" />
+  </message>
+  <message name="getProducers_4">
+    <part name="parameters" element="s0:getProducers_4" />
+  </message>
+  <message name="getBUname_2Response">
+    <part name="parameters" element="s0:getBUname_2Response" />
+  </message>
+  <message name="getProducerDetails_3">
+    <part name="parameters" element="s0:getProducerDetails_3" />
+  </message>
+  <message name="getProducerDetails_4">
+    <part name="parameters" element="s0:getProducerDetails_4" />
+  </message>
+  <message name="getProducerDetails_1">
+    <part name="parameters" element="s0:getProducerDetails_1" />
+  </message>
+  <message name="getProducerDetails_2">
+    <part name="parameters" element="s0:getProducerDetails_2" />
+  </message>
+  <portType name="ProducerWebServicePortType">
+    <operation name="getProducerDetails_5" parameterOrder="parameters">
+      <input message="s0:getProducerDetails_5" />
+      <output message="s0:getProducerDetails_5Response" />
+    </operation>
+    <operation name="getProducerDetails_3" parameterOrder="parameters">
+      <input message="s0:getProducerDetails_3" />
+      <output message="s0:getProducerDetails_3Response" />
+    </operation>
+    <operation name="getProducers_2" parameterOrder="parameters">
+      <input message="s0:getProducers_2" />
+      <output message="s0:getProducers_2Response" />
+    </operation>
+    <operation name="getHierarchy" parameterOrder="parameters">
+      <input message="s0:getHierarchy" />
+      <output message="s0:getHierarchyResponse" />
+    </operation>
+    <operation name="getProducers" parameterOrder="parameters">
+      <input message="s0:getProducers" />
+      <output message="s0:getProducersResponse" />
+    </operation>
+    <operation name="getProducers_1" parameterOrder="parameters">
+      <input message="s0:getProducers_1" />
+      <output message="s0:getProducers_1Response" />
+    </operation>
+    <operation name="getProducers_3" parameterOrder="parameters">
+      <input message="s0:getProducers_3" />
+      <output message="s0:getProducers_3Response" />
+    </operation>
+    <operation name="getProducerAppointmentInfo" parameterOrder="parameters">
+      <input message="s0:getProducerAppointmentInfo" />
+      <output message="s0:getProducerAppointmentInfoResponse" />
+    </operation>
+    <operation name="getProducers_4" parameterOrder="parameters">
+      <input message="s0:getProducers_4" />
+      <output message="s0:getProducers_4Response" />
+    </operation>
+    <operation name="getProducerDetails_1" parameterOrder="parameters">
+      <input message="s0:getProducerDetails_1" />
+      <output message="s0:getProducerDetails_1Response" />
+    </operation>
+    <operation name="getClaimsProcessingDetails_1" parameterOrder="parameters">
+      <input message="s0:getClaimsProcessingDetails_1" />
+      <output message="s0:getClaimsProcessingDetails_1Response" />
+    </operation>
+    <operation name="getBillingContacts" parameterOrder="parameters">
+      <input message="s0:getBillingContacts" />
+      <output message="s0:getBillingContactsResponse" />
+    </operation>
+    <operation name="getBUname_2" parameterOrder="parameters">
+      <input message="s0:getBUname_2" />
+      <output message="s0:getBUname_2Response" />
+    </operation>
+    <operation name="getClaimsProcessingDetails" parameterOrder="parameters">
+      <input message="s0:getClaimsProcessingDetails" />
+      <output message="s0:getClaimsProcessingDetailsResponse" />
+    </operation>
+    <operation name="getBUname_1" parameterOrder="parameters">
+      <input message="s0:getBUname_1" />
+      <output message="s0:getBUname_1Response" />
+    </operation>
+    <operation name="getProducerDetails_2" parameterOrder="parameters">
+      <input message="s0:getProducerDetails_2" />
+      <output message="s0:getProducerDetails_2Response" />
+    </operation>
+    <operation name="getProducerDetails" parameterOrder="parameters">
+      <input message="s0:getProducerDetails" />
+      <output message="s0:getProducerDetailsResponse" />
+    </operation>
+    <operation name="getProducerDetails_4" parameterOrder="parameters">
+      <input message="s0:getProducerDetails_4" />
+      <output message="s0:getProducerDetails_4Response" />
+    </operation>
+  </portType>
+  <binding name="ProducerWebServiceSoapBinding" type="s0:ProducerWebServicePortType">
+    <s1:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getProducerDetails_5">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducerDetails_5_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducerDetails_3">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducerDetails_3_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducers_2">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducers_2_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getHierarchy">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getHierarchy_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducers">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducers_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducers_1">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducers_1_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducers_3">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducers_3_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducerAppointmentInfo">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducerAppointmentInfo_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducers_4">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducers_4_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducerDetails_1">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducerDetails_1_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getClaimsProcessingDetails_1">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getClaimsProcessingDetails_1_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getBillingContacts">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getBillingContacts_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getBUname_2">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getBUname_2_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getClaimsProcessingDetails">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getClaimsProcessingDetails_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getBUname_1">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getBUname_1_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducerDetails_2">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducerDetails_2_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducerDetails">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducerDetails_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+    <operation name="getProducerDetails_4">
+      <s1:operation soapAction="" style="document" />
+      <input>
+        <s1:body use="literal" parts="parameters" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#getProducerDetails_4_input_policy" />
+      </input>
+      <output>
+        <s1:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ProducerWebService">
+    <port name="ProducerWebServicePort" binding="s0:ProducerWebServiceSoapBinding">
+      <s1:address location="https://sstdev.td.afg:1024/sst/producer_1" />
+    </port>
+  </service>
+</definitions>

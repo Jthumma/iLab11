@@ -58,6 +58,28 @@
   <ItemGroup>
     <Compile Include="adapters\BcPortalAdapter.cs" />
     <Compile Include="adapters\EDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\AgentStatCompFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\BackOfficeStatCompFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\FakePolicies.cs" />
+    <Compile Include="adapters\fakes\eDoc\GaicEmployeeStatCompFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\IBuAgentFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\IBuBackOfficeFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\IBuGaicEmployeeFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\IBuInsuredFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\IBuMotorCarrierFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\InsuredStatCompFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\AgentTruckingFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\BackOfficeTruckingFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\GaicEmployeeTruckingFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\OwnerCorporateStatCompFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\OwnerCorporateTruckingFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\MotorCarrierStatCompFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\MotorCarrierTruckingFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\OwnerCorporateRoleFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\GaicEmployeeRoleFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\MotorCarrierRoleFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\BackOfficeRoleFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\AgentRoleFakeEDocClientAdapter.cs" />
     <Compile Include="adapters\fakes\FakeBcPortalAdapter.cs" />
     <Compile Include="adapters\fakes\FakeEDocClientAdapter.cs" />
     <Compile Include="adapters\fakes\FakeEdwPsarAdapter.cs" />
@@ -65,14 +87,21 @@
     <Compile Include="adapters\fakes\FakeIdvConsumerAdapter.cs" />
     <Compile Include="adapters\fakes\FakeLdapClientAdapter.cs" />
     <Compile Include="adapters\fakes\FakeSsoLoginPortClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\IBuOwnerCorporateFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\InsuredRoleFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\InsuredTruckingFakeEDocClientAdapter.cs" />
+    <Compile Include="adapters\fakes\eDoc\IRoleFakeEDocClientAdapter.cs" />
     <Compile Include="adapters\FdwInquiryAdapter.cs" />
     <Compile Include="adapters\IdvConsumerAdapter.cs" />
+    <Compile Include="adapters\fakes\FakeProducerClientAdapter.cs" />
     <Compile Include="adapters\interfaces\IBcPortalAdapter.cs" />
     <Compile Include="adapters\interfaces\IEDocClientAdapter.cs" />
     <Compile Include="adapters\interfaces\IEdwPsarAdapter.cs" />
     <Compile Include="adapters\interfaces\IFdwInquiryAdapter.cs" />
     <Compile Include="adapters\interfaces\IIdvConsumerAdapter.cs" />
+    <Compile Include="adapters\interfaces\IProducerClientAdapter.cs" />
     <Compile Include="adapters\interfaces\ILdapClientAdapter.cs" />
+    <Compile Include="adapters\ProducerClientAdapter.cs" />
     <Compile Include="adapters\LdapClientAdapter.cs" />
     <Compile Include="bindings\WcfBasicHttpBindingAdapter.cs" />
     <Compile Include="bindings\WcfBasicNoneHttpBindingAdapter.cs" />
@@ -83,7 +112,7 @@
     <Compile Include="bindings\interfaces\IWcfHttpBindingAdapter.cs" />
     <Compile Include="adapters\EdwPsarAdapter.cs" />
     <Compile Include="providers\permissions\roleAdapters\GaicEmployeeRolePermissionAdapter.cs" />
-    <Compile Include="providers\permissions\roleAdapters\ViewAllRolePermissionAdapter.cs" />
+    <Compile Include="providers\permissions\roleAdapters\NoAccessRolePermissionAdapter.cs" />
     <Compile Include="providers\permissions\roleAdapters\OwnerCorporateRolePermissionAdapter.cs" />
     <Compile Include="providers\permissions\roleAdapters\MotorCarrierRolePermissionAdapter.cs" />
     <Compile Include="providers\permissions\roleAdapters\InsuredRolePermissionAdapter.cs" />
@@ -96,6 +125,7 @@
     <Compile Include="providers\WcfEDocProvider.cs" />
     <Compile Include="providers\WcfIdvConsumerProvider.cs" />
     <Compile Include="providers\WcfFdwInquiryProvider.cs" />
+    <Compile Include="providers\WcfProducerProvider.cs" />
     <Compile Include="providers\WcfLdapProvider.cs" />
     <Compile Include="providers\WcfSingleSignonProvider.cs" />
     <Compile Include="Service References\BcPortalService\Reference.cs">
@@ -129,6 +159,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\LdapService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProducerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -435,6 +470,67 @@
     <None Include="Service References\LdapService\wsdlfile.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.AppointmentValidationResponseDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.BillingContactsResponseDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.BUProducerCodeResponseDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.BUProducerCodeResponseDTO_1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ClaimsProcessingDetailResponseDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ClaimsProcessingDetailResponseDTO_1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.getBUname_1Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.getBUname_2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.HierarchyResponseDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerDetailsResponseDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerDetailsResponseDTO_1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerDetailsResponseDTO_2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerDetailsResponseDTO_3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerDetailsResponseDTO_4.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerDetailsResponseDTO_5.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerResponseDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerResponseDTO_1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerResponseDTO_2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerResponseDTO_3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\com.gaic.insuredPortal.Provider.WcfServices.ProducerService.ProducerResponseDTO_4.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProducerService\ProducerWebServiceDefinitions.wsdl" />
     <None Include="Service References\SSOLoginService\com.gaic.insuredPortal.Provider.WcfServices.SSOLoginService.loginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -451,6 +547,7 @@
     <WCFMetadataStorage Include="Service References\FdwInquiryService\" />
     <WCFMetadataStorage Include="Service References\IdvConsumerService\" />
     <WCFMetadataStorage Include="Service References\LdapService\" />
+    <WCFMetadataStorage Include="Service References\ProducerService\" />
     <WCFMetadataStorage Include="Service References\SSOLoginService\" />
   </ItemGroup>
   <ItemGroup>
@@ -555,6 +652,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\EdwPsarService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProducerService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProducerService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProducerService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

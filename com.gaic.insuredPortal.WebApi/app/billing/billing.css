@@ -1,1 +1,15 @@
-﻿
+﻿@media only screen and (max-width: 420px) {
+    
+    #reportNav {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+   
+    #reportNav {
+        display: none;
+        visibility: hidden;
+    }
+}

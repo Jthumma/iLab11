@@ -154,3 +154,10 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/com.gaic.insuredPortal.WebApi.Azure
+/packages/Microsoft.Data.Edm.5.6.0
+/packages/Microsoft.Data.OData.5.6.0
+/packages/Microsoft.Data.Services.Client.5.6.0
+/packages/Microsoft.WindowsAzure.ConfigurationManager.2.0.3
+/packages/System.Spatial.5.6.0
+/packages/WindowsAzure.Storage.3.0.3.0

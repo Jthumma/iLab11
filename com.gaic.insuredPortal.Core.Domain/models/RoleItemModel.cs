@@ -10,11 +10,15 @@ namespace com.gaic.insuredPortal.Core.Domain.models
         public static readonly RoleItemModel Agent = new RoleItemModel("Agent", RolePrefix + "Agent");
         public static readonly RoleItemModel Insured = new RoleItemModel("Insured", RolePrefix + "Insured");
         public static readonly RoleItemModel OwnerCorporate = new RoleItemModel("OwnerCorporate", RolePrefix + "OwnerCorporate");
-        public static readonly RoleItemModel TeamIndy = new RoleItemModel("TeamIndy", RolePrefix + "TeamIndy");
+        //public static readonly RoleItemModel TeamIndy = new RoleItemModel("TeamIndy", RolePrefix + "TeamIndy");
         public static readonly RoleItemModel MotorCarrier = new RoleItemModel("MotorCarrier", RolePrefix + "MotorCarrier");
         public static readonly RoleItemModel GaicEmployee = new RoleItemModel("GaicEmployee", RolePrefix + "GaicEmployee");
         public static readonly RoleItemModel BackOffice = new RoleItemModel("BackOffice", RolePrefix + "BackOffice");
-        public static readonly RoleItemModel ViewAll = new RoleItemModel("ViewAll", RolePrefix + "View");
+        //public static readonly RoleItemModel ViewAll = new RoleItemModel("ViewAll", RolePrefix + "View");
+        public static readonly RoleItemModel NoAccess = new RoleItemModel("NoAccess", RolePrefix + "NoAccess");
+
+        //public static readonly RoleItemModel Trucking = new RoleItemModel("Trucking", RolePrefix + "Trucking");
+        //public static readonly RoleItemModel StrategicComp = new RoleItemModel("StrategicComp", RolePrefix + "StrategicComp");
 
         public RoleItemModel(string code, string description) : base(code, description)
         {

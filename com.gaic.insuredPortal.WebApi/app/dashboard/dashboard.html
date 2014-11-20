@@ -1,55 +1,55 @@
 ﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
     <section class="matter">
         <div class="container">
-            <div class="row col-md-12">
+            <!--<div class="row col-md-12">
                 <ul class="today-datas">
                     
                     <li class="bviolet">
                         <a href="/#/policy/:policyNumber">
                             <div class="pull-left"><i class="fa fa-lock"></i></div>
                             <div class="datas-text pull-right">Policy</div>
-                            <!--<div class="clearfix"></div>-->
+        
                         </a>
                     </li>
                     <li class="bblue">
                         <a href="/#/claims/:claimNumber">
                             <div class="pull-left"><i class="fa fa-file-text-o"></i></div>
                             <div class="datas-text pull-right">Claims</div>
-                            <!--<div class="clearfix"></div>-->
+                            
                         </a>
                     </li>
                     <li class="bred">
                         <a href="/#/billing/:billNumber">
                             <div class="pull-left"><i class="fa fa-pencil"></i></div>
                             <div class="datas-text pull-right">Billing</div>
-                            <!--<div class="clearfix"></div>-->
+                            
                         </a>
                     </li>
-                    <li class="borange">
+                    <li class="borange" id="reportNav" data-ng-hide="vm.User.UserId=='jtrucker'">
                         <a href="/#/reports">
                             <div class="pull-left"><i class="fa fa-file-pdf-o"></i></div>
                             <div class="datas-text pull-right">Reports</div>
-                            <!--<div class="clearfix"></div>-->
+                            
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div>-->
 
             <div class="row" data-ng-show="vm.User.Permission.ShowNotifications">
                 <div class="col-md-12">
                     <ul class="today-datas col-md-3">
 
-                        <li class="borange">
+                        <li class="bgreen">
                             <div class="pull-left"><i class="fa fa-envelope"></i></div>
                             <div class="datas-text pull-right">
-                                {{vm.notifications.length}} changes
+                                <span>{{vm.notifications.length}} changes</span>
                             </div>
                             <div class="clearfix"></div>
                         </li>
                     </ul>
                     <ul>
                         <li data-ng-repeat="n in vm.notifications">
-                            {{n.Message}}
+                            <span>{{n.Message}}</span>
                         </li>
                     </ul>
                 </div>
@@ -119,7 +119,9 @@
                         <div class="widget-foot">
                             <div class="clearfix">
                                 <a href="#/claims/:claimNumber" data-ng-show="vm.claims.length>0"> more...</a>
-                                 <a href="#/reportclaim" class="text-right text-info pull-right"><i class="fa fa-file-o"></i> Report a claim</a>
+                                <a href="#/reportclaim" class="text-right text-info pull-right"><i class="fa fa-file-o"></i> Report a claim</a>
+                                <a class="text-right text-info pull-right">&nbsp;&nbsp;&nbsp;</a>
+                                <a href="#/reports" class="text-right text-info pull-right"><i class="fa fa-file-pdf-o"></i> Loss Runs</a>
                             </div>
                         </div>
                     </div>

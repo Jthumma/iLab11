@@ -40,5 +40,13 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
             var status = _idvConsumerProvider.Ping(_token);
             status.Should().BeTrue();
         }
+
+        [TestMethod]
+        public void Ping_Producer_Service()
+        {
+            var status = _producerProvider.Ping(_token);
+            status.Should().BeTrue();
+        }
+
     }
 }

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessUnits.cs" />
+    <Compile Include="EnumAdapter.cs" />
     <Compile Include="interfaces\provider\ContextType.cs" />
     <Compile Include="interfaces\provider\IBcPortalProvider.cs" />
     <Compile Include="interfaces\provider\IEdwPsarProvider.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="interfaces\provider\IHttpContextStrategyProvider.cs" />
     <Compile Include="interfaces\provider\IIdvConsumerProvider.cs" />
     <Compile Include="interfaces\provider\IPermissionProvider.cs" />
+    <Compile Include="interfaces\provider\IProducerProvider.cs" />
     <Compile Include="interfaces\service\INotificationService.cs" />
     <Compile Include="models\AddressModel.cs" />
     <Compile Include="models\AgentModel.cs" />
