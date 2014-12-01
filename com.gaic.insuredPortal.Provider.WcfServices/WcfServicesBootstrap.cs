@@ -59,7 +59,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices
         private void RegisterAdapters()
         {
             Bind<ISsoLoginPortClientAdapter>().To<SsoLoginPortClientAdapter>().InSingletonScope();
-            Bind<ILdapClientAdapter>().To<LdapClientAdapter>().InSingletonScope();
+            Bind<ILdapClientAdapter>().To<FakeLdapClientAdapter>().InSingletonScope();
             Bind<IEDocClientAdapter>().To<EDocClientAdapter>().InSingletonScope();
             Bind<IIdvConsumerAdapter>().To<IdvConsumerAdapter>().InSingletonScope();
             Bind<IBcPortalAdapter>().To<BcPortalAdapter>().InSingletonScope();

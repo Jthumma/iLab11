@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using com.gaic.insuredPortal.Core.Domain;
+using com.gaic.insuredPortal.Core.Domain.enums;
 using com.gaic.insuredPortal.Core.Domain.models;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 
@@ -18,7 +19,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Joe",
                     LastName = "Trucker",
-                    BusinessUnit = BusinessUnits.Trucking.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.Trucking.GetDescription(),
                     Roles = new List<RoleItemModel> {RoleItemModel.Insured}
                 };
             }
@@ -30,7 +31,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Team",
                     LastName = "Indy",
-                    BusinessUnit = BusinessUnits.Trucking.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.Trucking.GetDescription(),
                     Roles = new List<RoleItemModel> {RoleItemModel.MotorCarrier}
                 };
             }
@@ -42,7 +43,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Bob",
                     LastName = "Jones",
-                    BusinessUnit = BusinessUnits.Trucking.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.Trucking.GetDescription(),
                     Roles = new List<RoleItemModel> {RoleItemModel.GaicEmployee}
                 };
             }
@@ -54,7 +55,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Andy",
                     LastName = "Agent",
-                    BusinessUnit = BusinessUnits.Trucking.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.Trucking.GetDescription(),
                     Roles = new List<RoleItemModel> {RoleItemModel.Agent}
                 };
             }
@@ -66,7 +67,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Betty",
                     LastName = "Back Office",
-                    BusinessUnit = BusinessUnits.Trucking.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.Trucking.GetDescription(),
                     Roles = new List<RoleItemModel> {RoleItemModel.BackOffice}
                 };
             }
@@ -80,7 +81,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Jane",
                     LastName = "Corporate",
-                    BusinessUnit = BusinessUnits.StrategicComp.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.StrategicComp.GetDescription(),
                     Roles = new List<RoleItemModel> { RoleItemModel.OwnerCorporate }
                 };
             }
@@ -92,7 +93,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Matt",
                     LastName = "Hendrick",
-                    BusinessUnit = BusinessUnits.StrategicComp.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.StrategicComp.GetDescription(),
                     Roles = new List<RoleItemModel> { RoleItemModel.GaicEmployee }
                 };
             }
@@ -104,7 +105,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Steve",
                     LastName = "Agent",
-                    BusinessUnit = BusinessUnits.StrategicComp.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.StrategicComp.GetDescription(),
                     Roles = new List<RoleItemModel> { RoleItemModel.Agent }
                 };
             }
@@ -116,7 +117,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                     Token = token,
                     FirstName = "Sue",
                     LastName = "Nate",
-                    BusinessUnit = BusinessUnits.StrategicComp.GetDescription(),
+                    BusinessUnit = BusinessUnitEnum.StrategicComp.GetDescription(),
                     Roles = new List<RoleItemModel> { RoleItemModel.BackOffice }
                 };
             }
@@ -127,7 +128,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
                 Token = token,
                 FirstName = "Test",
                 LastName = "Account",
-                BusinessUnit = BusinessUnits.Trucking.GetDescription(),
+                BusinessUnit = BusinessUnitEnum.Trucking.GetDescription(),
                 Roles = new List<RoleItemModel> {RoleItemModel.NoAccess}
             };
         }

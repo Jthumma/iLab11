@@ -5,15 +5,15 @@ namespace com.gaic.insuredPortal.DomainServices
 {
     public class AgentService : IAgentService
     {
-        public AgentModel GetAgentInfo(UserModel user)
+        public ProducerModel GetAgentInfo(UserModel user)
         {
-            AgentModel agent = null;
+            ProducerModel producer = null;
             if (user.Roles.Contains(RoleItemModel.GaicEmployee))
             {
-                agent = new AgentModel
+                producer = new ProducerModel
                 {
                     AgencyName = "BB&T Webb Insurance",
-                    AgentCode = "8732489",
+                    Number = "8732489",
                     Name = "Bob Wills",
                     Address =
                         new AddressModel
@@ -28,10 +28,10 @@ namespace com.gaic.insuredPortal.DomainServices
             }
             else
             {
-                agent = new AgentModel
+                producer = new ProducerModel
                 {
                     AgencyName = "Brands Insurance Agency",
-                    AgentCode = "234737",
+                    Number = "234737",
                     Name = "Steve Hauser",
                     Address =
                         new AddressModel
@@ -44,7 +44,7 @@ namespace com.gaic.insuredPortal.DomainServices
                     Contact = new ContactModel {Phone = "5131234567", Email = "brandsins@agency.com"}
                 };
             }
-            return agent;
+            return producer;
         }
     }
 }

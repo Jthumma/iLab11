@@ -19,6 +19,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
         protected ILdapProvider _ldapProvider;
         protected ISingleSignonProvider _singleSignonProvider;
         protected IProducerProvider _producerProvider;
+        protected IFdwInquiryProvider _fdwInquiryProvider { get; set; }
         protected string _token;
         protected UserModel _user;
 
@@ -45,6 +46,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.Tests
             _edwPsarProvider = _kernel.Get<IEdwPsarProvider>();
             _idvConsumerProvider = _kernel.Get<IIdvConsumerProvider>();
             _producerProvider = _kernel.Get<IProducerProvider>();
+            _fdwInquiryProvider = _kernel.Get<IFdwInquiryProvider>();
 
             _token = _singleSignonProvider.GetSingleSignonToken("taccountfis1", "Winter1");
             _user = _ldapProvider.GetPerson("taccountfis1", _token);

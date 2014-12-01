@@ -34,11 +34,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes.eDoc
                                     Zip = "46167"
                                 }
                         },
-                    Agent =
-                        new AgentModel
+                    Producer =
+                        new ProducerModel
                         {
                             AgencyName = "Brands Insurance Agency",
-                            AgentCode = "234737",
+                            Number = "234737",
                             Address =
                                 new AddressModel
                                 {
@@ -79,11 +79,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes.eDoc
                                     Zip = "80631"
                                 }
                         },
-                    Agent =
-                        new AgentModel
+                    Producer =
+                        new ProducerModel
                         {
                             AgencyName = "Brands Insurance Agency",
-                            AgentCode = "234737",
+                            Number = "234737",
                             Address =
                                 new AddressModel
                                 {
@@ -125,11 +125,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes.eDoc
                                     Zip = "46113"
                                 }
                         },
-                    Agent =
-                        new AgentModel
+                    Producer =
+                        new ProducerModel
                         {
                             AgencyName = "Brands Insurance Agency",
-                            AgentCode = "234737",
+                            Number = "234737",
                             Address =
                                 new AddressModel
                                 {
@@ -173,11 +173,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes.eDoc
                                     Zip = "80620"
                                 }
                         },
-                    Agent =
-                        new AgentModel
+                    Producer =
+                        new ProducerModel
                         {
                             AgencyName = "Brands Insurance Agency",
-                            AgentCode = "234737",
+                            Number = "234737",
                             Address =
                                 new AddressModel
                                 {
@@ -219,11 +219,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes.eDoc
                                     Zip = "22902"
                                 }
                         },
-                    Agent =
-                        new AgentModel
+                    Producer =
+                        new ProducerModel
                         {
                             AgencyName = "BB&T Webb Insurance",
-                            AgentCode = "",
+                            Number = "",
                             Address =
                                 new AddressModel
                                 {
@@ -271,11 +271,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes.eDoc
                                     Zip = "80910"
                                 }
                         },
-                    Agent =
-                        new AgentModel
+                    Producer =
+                        new ProducerModel
                         {
                             AgencyName = "Brands Insurance Agency",
-                            AgentCode = "234737",
+                            Number = "234737",
                             Address =
                                 new AddressModel
                                 {

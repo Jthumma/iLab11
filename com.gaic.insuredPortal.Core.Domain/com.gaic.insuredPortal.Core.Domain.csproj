@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessUnits.cs" />
+    <Compile Include="enums\BusinessUnitEnum.cs" />
     <Compile Include="EnumAdapter.cs" />
     <Compile Include="interfaces\provider\ContextType.cs" />
     <Compile Include="interfaces\provider\IBcPortalProvider.cs" />
@@ -64,7 +64,8 @@
     <Compile Include="interfaces\provider\IProducerProvider.cs" />
     <Compile Include="interfaces\service\INotificationService.cs" />
     <Compile Include="models\AddressModel.cs" />
-    <Compile Include="models\AgentModel.cs" />
+    <Compile Include="models\SearchModel.cs" />
+    <Compile Include="models\ProducerModel.cs" />
     <Compile Include="models\ClaimsModel.cs" />
     <Compile Include="Ensure.cs" />
     <Compile Include="EntityMessage.cs" />

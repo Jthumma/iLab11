@@ -1,4 +1,5 @@
-﻿using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
+﻿using System.Collections.Generic;
+using com.gaic.insuredPortal.Core.Domain.interfaces.provider;
 using com.gaic.insuredPortal.Core.Domain.models;
 using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 
@@ -13,10 +14,10 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.providers
             _fdwInquiryAdapter = fdwInquiryAdapter;
         }
 
-        public PolicyModel GetPolicyInfo()
+        public List<PolicyModel> GetPolicyInfo(SearchModel searchCriteria, string token)
         {
-            //return _fdwInquiryAdapter.GetPolicyInfo();
-            return null;
+            return _fdwInquiryAdapter.SearchFdw(searchCriteria, token);
+            
         }
 
         public bool Ping(string token)

@@ -1,4 +1,6 @@
-﻿using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
+﻿using System.Collections.Generic;
+using com.gaic.insuredPortal.Core.Domain.models;
+using com.gaic.insuredPortal.Provider.WcfServices.adapters.interfaces;
 
 namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
 {
@@ -7,6 +9,11 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters.fakes
         public bool Ping(string token)
         {
             return true;
+        }
+
+        public List<PolicyModel> SearchFdw(SearchModel searchCriteria, string token)
+        {
+            return null;
         }
     }
 }

@@ -8,20 +8,26 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
 {
     public class EdwPsarAdapter : IEdwPsarAdapter, IDisposable
     {
-        private readonly EDWPolicySearchAndRetrievalServiceFacadeClient _edwPolicySearchAndRetrievalServiceFacadeClient;
+        private readonly EDWPolicySearchAndRetrievalServiceFacadeClient _edwClient;
 
         public EdwPsarAdapter(IWcfHttpBindingAdapter bindingAdapter,
             IWcfEndpointAddressAdapter endpointAddressAdapter)
         {
-            _edwPolicySearchAndRetrievalServiceFacadeClient =
+            _edwClient =
                 new EDWPolicySearchAndRetrievalServiceFacadeClient(bindingAdapter.Binding,
                     endpointAddressAdapter.EndpointAddress);
+
+            //_edwClient.retrieveEDWPolicyTerm()
+            //_edwClient.searchAndRetrieveLatestEDWPolicyTerm();
+            //_edwClient.searchEDW();
+            
+
         }
 
         public bool Ping(string token)
         {
-            SecureSoapContext.AttachSecurityToken(_edwPolicySearchAndRetrievalServiceFacadeClient.InnerChannel, token);
-            var value = _edwPolicySearchAndRetrievalServiceFacadeClient.ping();
+            SecureSoapContext.AttachSecurityToken(_edwClient.InnerChannel, token);
+            var value = _edwClient.ping();
             return value > 0;
         }
 
@@ -36,7 +42,7 @@ namespace com.gaic.insuredPortal.Provider.WcfServices.adapters
             if (disposing)
             {
                 // dispose managed resources
-                _edwPolicySearchAndRetrievalServiceFacadeClient.Close();
+                _edwClient.Close();
             }
             // free native resources
         }

@@ -4,6 +4,6 @@ namespace com.gaic.insuredPortal.Core.Domain.interfaces.service
 {
     public interface IAgentService
     {
-        AgentModel GetAgentInfo(UserModel user);
+        ProducerModel GetAgentInfo(UserModel user);
     }
 }

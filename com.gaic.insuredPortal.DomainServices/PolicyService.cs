@@ -18,7 +18,8 @@ namespace com.gaic.insuredPortal.DomainServices
 
         public List<PolicyModel> GetPolicies(string policyNumber, UserModel user)
         {
-            return _eDocProvider.GetPolicies(policyNumber, user);
+            //return _eDocProvider.GetPolicies(policyNumber, user);
+            return _fdwInquiryProvider.GetPolicyInfo(new SearchModel() {PolicyNumber = policyNumber}, user.Token);
         }
 
         public PolicyModel  GetPolicyInfo()
